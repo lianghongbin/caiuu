@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.caiuu.core.dao.DetailMapper" >
+  <resultMap id="BaseResultMap" type="com.caiuu.core.entity.Detail" >
+    <result column="caipuid" property="caipuid" jdbcType="INTEGER" />
+    <result column="material" property="material" jdbcType="VARCHAR" />
+    <result column="blending" property="blending" jdbcType="VARCHAR" />
+    <result column="fixing" property="fixing" jdbcType="VARCHAR" />
+    <result column="fire" property="fire" jdbcType="VARCHAR" />
+    <result column="okren" property="okren" jdbcType="VARCHAR" />
+    <result column="noren" property="noren" jdbcType="VARCHAR" />
+    <result column="pkey" property="pkey" jdbcType="VARCHAR" />
+    <result column="ckey" property="ckey" jdbcType="VARCHAR" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="good" property="good" jdbcType="INTEGER" />
+    <result column="bad" property="bad" jdbcType="INTEGER" />
+    <result column="hit" property="hit" jdbcType="INTEGER" />
+    <result column="hitlastweek" property="hitlastweek" jdbcType="INTEGER" />
+    <result column="pubdate" property="pubdate" jdbcType="TIMESTAMP" />
+    <result column="edate" property="edate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.caiuu.core.entity.Detail" extends="BaseResultMap" >
+    <result column="info" property="info" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    caipuid, material, blending, fixing, fire, okren, noren, pkey, ckey, pic, status, 
+    good, bad, hit, hitlastweek, pubdate, edate
+  </sql>
+  <sql id="Blob_Column_List" >
+    info
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.caiuu.core.entity.DetailExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from CaipuDetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.caiuu.core.entity.DetailExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CaipuDetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.caiuu.core.entity.DetailExample" >
+    delete from CaipuDetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.caiuu.core.entity.Detail" >
+    <selectKey resultType="java.lang.Integer" keyProperty="caipuid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into CaipuDetail (material, blending, fixing, 
+      fire, okren, noren, 
+      pkey, ckey, pic, status, 
+      good, bad, hit, hitlastweek, 
+      pubdate, edate, info
+      )
+    values (#{material,jdbcType=VARCHAR}, #{blending,jdbcType=VARCHAR}, #{fixing,jdbcType=VARCHAR}, 
+      #{fire,jdbcType=VARCHAR}, #{okren,jdbcType=VARCHAR}, #{noren,jdbcType=VARCHAR}, 
+      #{pkey,jdbcType=VARCHAR}, #{ckey,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{good,jdbcType=INTEGER}, #{bad,jdbcType=INTEGER}, #{hit,jdbcType=INTEGER}, #{hitlastweek,jdbcType=INTEGER}, 
+      #{pubdate,jdbcType=TIMESTAMP}, #{edate,jdbcType=TIMESTAMP}, #{info,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.caiuu.core.entity.Detail" >
+    <selectKey resultType="java.lang.Integer" keyProperty="caipuid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into CaipuDetail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="material != null" >
+        material,
+      </if>
+      <if test="blending != null" >
+        blending,
+      </if>
+      <if test="fixing != null" >
+        fixing,
+      </if>
+      <if test="fire != null" >
+        fire,
+      </if>
+      <if test="okren != null" >
+        okren,
+      </if>
+      <if test="noren != null" >
+        noren,
+      </if>
+      <if test="pkey != null" >
+        pkey,
+      </if>
+      <if test="ckey != null" >
+        ckey,
+      </if>
+      <if test="pic != null" >
+        pic,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="good != null" >
+        good,
+      </if>
+      <if test="bad != null" >
+        bad,
+      </if>
+      <if test="hit != null" >
+        hit,
+      </if>
+      <if test="hitlastweek != null" >
+        hitlastweek,
+      </if>
+      <if test="pubdate != null" >
+        pubdate,
+      </if>
+      <if test="edate != null" >
+        edate,
+      </if>
+      <if test="info != null" >
+        info,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="material != null" >
+        #{material,jdbcType=VARCHAR},
+      </if>
+      <if test="blending != null" >
+        #{blending,jdbcType=VARCHAR},
+      </if>
+      <if test="fixing != null" >
+        #{fixing,jdbcType=VARCHAR},
+      </if>
+      <if test="fire != null" >
+        #{fire,jdbcType=VARCHAR},
+      </if>
+      <if test="okren != null" >
+        #{okren,jdbcType=VARCHAR},
+      </if>
+      <if test="noren != null" >
+        #{noren,jdbcType=VARCHAR},
+      </if>
+      <if test="pkey != null" >
+        #{pkey,jdbcType=VARCHAR},
+      </if>
+      <if test="ckey != null" >
+        #{ckey,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="good != null" >
+        #{good,jdbcType=INTEGER},
+      </if>
+      <if test="bad != null" >
+        #{bad,jdbcType=INTEGER},
+      </if>
+      <if test="hit != null" >
+        #{hit,jdbcType=INTEGER},
+      </if>
+      <if test="hitlastweek != null" >
+        #{hitlastweek,jdbcType=INTEGER},
+      </if>
+      <if test="pubdate != null" >
+        #{pubdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="edate != null" >
+        #{edate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="info != null" >
+        #{info,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.caiuu.core.entity.DetailExample" resultType="java.lang.Integer" >
+    select count(*) from CaipuDetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update CaipuDetail
+    <set >
+      <if test="record.caipuid != null" >
+        caipuid = #{record.caipuid,jdbcType=INTEGER},
+      </if>
+      <if test="record.material != null" >
+        material = #{record.material,jdbcType=VARCHAR},
+      </if>
+      <if test="record.blending != null" >
+        blending = #{record.blending,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fixing != null" >
+        fixing = #{record.fixing,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fire != null" >
+        fire = #{record.fire,jdbcType=VARCHAR},
+      </if>
+      <if test="record.okren != null" >
+        okren = #{record.okren,jdbcType=VARCHAR},
+      </if>
+      <if test="record.noren != null" >
+        noren = #{record.noren,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pkey != null" >
+        pkey = #{record.pkey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ckey != null" >
+        ckey = #{record.ckey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pic != null" >
+        pic = #{record.pic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.good != null" >
+        good = #{record.good,jdbcType=INTEGER},
+      </if>
+      <if test="record.bad != null" >
+        bad = #{record.bad,jdbcType=INTEGER},
+      </if>
+      <if test="record.hit != null" >
+        hit = #{record.hit,jdbcType=INTEGER},
+      </if>
+      <if test="record.hitlastweek != null" >
+        hitlastweek = #{record.hitlastweek,jdbcType=INTEGER},
+      </if>
+      <if test="record.pubdate != null" >
+        pubdate = #{record.pubdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.edate != null" >
+        edate = #{record.edate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.info != null" >
+        info = #{record.info,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update CaipuDetail
+    set caipuid = #{record.caipuid,jdbcType=INTEGER},
+      material = #{record.material,jdbcType=VARCHAR},
+      blending = #{record.blending,jdbcType=VARCHAR},
+      fixing = #{record.fixing,jdbcType=VARCHAR},
+      fire = #{record.fire,jdbcType=VARCHAR},
+      okren = #{record.okren,jdbcType=VARCHAR},
+      noren = #{record.noren,jdbcType=VARCHAR},
+      pkey = #{record.pkey,jdbcType=VARCHAR},
+      ckey = #{record.ckey,jdbcType=VARCHAR},
+      pic = #{record.pic,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      good = #{record.good,jdbcType=INTEGER},
+      bad = #{record.bad,jdbcType=INTEGER},
+      hit = #{record.hit,jdbcType=INTEGER},
+      hitlastweek = #{record.hitlastweek,jdbcType=INTEGER},
+      pubdate = #{record.pubdate,jdbcType=TIMESTAMP},
+      edate = #{record.edate,jdbcType=TIMESTAMP},
+      info = #{record.info,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update CaipuDetail
+    set caipuid = #{record.caipuid,jdbcType=INTEGER},
+      material = #{record.material,jdbcType=VARCHAR},
+      blending = #{record.blending,jdbcType=VARCHAR},
+      fixing = #{record.fixing,jdbcType=VARCHAR},
+      fire = #{record.fire,jdbcType=VARCHAR},
+      okren = #{record.okren,jdbcType=VARCHAR},
+      noren = #{record.noren,jdbcType=VARCHAR},
+      pkey = #{record.pkey,jdbcType=VARCHAR},
+      ckey = #{record.ckey,jdbcType=VARCHAR},
+      pic = #{record.pic,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      good = #{record.good,jdbcType=INTEGER},
+      bad = #{record.bad,jdbcType=INTEGER},
+      hit = #{record.hit,jdbcType=INTEGER},
+      hitlastweek = #{record.hitlastweek,jdbcType=INTEGER},
+      pubdate = #{record.pubdate,jdbcType=TIMESTAMP},
+      edate = #{record.edate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

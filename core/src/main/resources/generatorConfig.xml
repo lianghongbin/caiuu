@@ -39,9 +39,35 @@
 
 
         <!-- 配置数据库表 -->
-        <table tableName="province" domainObjectName="Province">
+        <table tableName="Caipu" domainObjectName="Cookbook">
             <generatedKey column="id" sqlStatement="mysql" identity="true"/>
         </table>
-
+        <table tableName="CaipuDetail" domainObjectName="Detail">
+            <generatedKey column="caipuid" sqlStatement="mysql" identity="true"/>
+        </table>
+        <table tableName="CaipuImages" domainObjectName="Image">
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+        </table>
+        <table tableName="Category" domainObjectName="Category">
+            <generatedKey column="categoryId" sqlStatement="mysql" identity="true"/>
+        </table>
+        <table tableName="Element" domainObjectName="Element">
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+        </table>
+        <table tableName="Focus" domainObjectName="Focus">
+            <generatedKey column="FocusId" sqlStatement="mysql" identity="true"/>
+        </table>
+        <table tableName="Feedback" domainObjectName="Feedback">
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+        </table>
+        <table tableName="Material" domainObjectName="Material">
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+        </table>
+        <table tableName="Tag" domainObjectName="Tag">
+            <generatedKey column="tagid" sqlStatement="mysql" identity="true"/>
+        </table>
+        <table tableName="Topic" domainObjectName="Topic">
+            <generatedKey column="topicid" sqlStatement="mysql" identity="true"/>
+        </table>
     </context>
 </generatorConfiguration>

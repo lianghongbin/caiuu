@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.caiuu.core.dao.MaterialMapper" >
+  <resultMap id="BaseResultMap" type="com.caiuu.core.entity.Material" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="sname" property="sname" jdbcType="VARCHAR" />
+    <result column="aname" property="aname" jdbcType="VARCHAR" />
+    <result column="fletter" property="fletter" jdbcType="VARCHAR" />
+    <result column="categoryid" property="categoryid" jdbcType="INTEGER" />
+    <result column="weight" property="weight" jdbcType="VARCHAR" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+    <result column="hit" property="hit" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.caiuu.core.entity.MaterialWithBLOBs" extends="BaseResultMap" >
+    <result column="info" property="info" jdbcType="LONGVARCHAR" />
+    <result column="alimentation" property="alimentation" jdbcType="LONGVARCHAR" />
+    <result column="human" property="human" jdbcType="LONGVARCHAR" />
+    <result column="make" property="make" jdbcType="LONGVARCHAR" />
+    <result column="cure" property="cure" jdbcType="LONGVARCHAR" />
+    <result column="other" property="other" jdbcType="LONGVARCHAR" />
+    <result column="remark" property="remark" jdbcType="LONGVARCHAR" />
+    <result column="conflict" property="conflict" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, name, sname, aname, fletter, categoryid, weight, pic, hit
+  </sql>
+  <sql id="Blob_Column_List" >
+    info, alimentation, human, make, cure, other, remark, conflict
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.caiuu.core.entity.MaterialExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from Material
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.caiuu.core.entity.MaterialExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from Material
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from Material
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from Material
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.caiuu.core.entity.MaterialExample" >
+    delete from Material
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.caiuu.core.entity.MaterialWithBLOBs" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into Material (name, sname, aname, 
+      fletter, categoryid, weight, 
+      pic, hit, info, 
+      alimentation, human, make, 
+      cure, other, remark, 
+      conflict)
+    values (#{name,jdbcType=VARCHAR}, #{sname,jdbcType=VARCHAR}, #{aname,jdbcType=VARCHAR}, 
+      #{fletter,jdbcType=VARCHAR}, #{categoryid,jdbcType=INTEGER}, #{weight,jdbcType=VARCHAR}, 
+      #{pic,jdbcType=VARCHAR}, #{hit,jdbcType=INTEGER}, #{info,jdbcType=LONGVARCHAR}, 
+      #{alimentation,jdbcType=LONGVARCHAR}, #{human,jdbcType=LONGVARCHAR}, #{make,jdbcType=LONGVARCHAR}, 
+      #{cure,jdbcType=LONGVARCHAR}, #{other,jdbcType=LONGVARCHAR}, #{remark,jdbcType=LONGVARCHAR}, 
+      #{conflict,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.caiuu.core.entity.MaterialWithBLOBs" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into Material
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="sname != null" >
+        sname,
+      </if>
+      <if test="aname != null" >
+        aname,
+      </if>
+      <if test="fletter != null" >
+        fletter,
+      </if>
+      <if test="categoryid != null" >
+        categoryid,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="pic != null" >
+        pic,
+      </if>
+      <if test="hit != null" >
+        hit,
+      </if>
+      <if test="info != null" >
+        info,
+      </if>
+      <if test="alimentation != null" >
+        alimentation,
+      </if>
+      <if test="human != null" >
+        human,
+      </if>
+      <if test="make != null" >
+        make,
+      </if>
+      <if test="cure != null" >
+        cure,
+      </if>
+      <if test="other != null" >
+        other,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="conflict != null" >
+        conflict,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sname != null" >
+        #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="aname != null" >
+        #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="fletter != null" >
+        #{fletter,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryid != null" >
+        #{categoryid,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="hit != null" >
+        #{hit,jdbcType=INTEGER},
+      </if>
+      <if test="info != null" >
+        #{info,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="alimentation != null" >
+        #{alimentation,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="human != null" >
+        #{human,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="make != null" >
+        #{make,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="cure != null" >
+        #{cure,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="other != null" >
+        #{other,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="conflict != null" >
+        #{conflict,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.caiuu.core.entity.MaterialExample" resultType="java.lang.Integer" >
+    select count(*) from Material
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update Material
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sname != null" >
+        sname = #{record.sname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aname != null" >
+        aname = #{record.aname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fletter != null" >
+        fletter = #{record.fletter,jdbcType=VARCHAR},
+      </if>
+      <if test="record.categoryid != null" >
+        categoryid = #{record.categoryid,jdbcType=INTEGER},
+      </if>
+      <if test="record.weight != null" >
+        weight = #{record.weight,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pic != null" >
+        pic = #{record.pic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hit != null" >
+        hit = #{record.hit,jdbcType=INTEGER},
+      </if>
+      <if test="record.info != null" >
+        info = #{record.info,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.alimentation != null" >
+        alimentation = #{record.alimentation,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.human != null" >
+        human = #{record.human,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.make != null" >
+        make = #{record.make,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.cure != null" >
+        cure = #{record.cure,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.other != null" >
+        other = #{record.other,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.conflict != null" >
+        conflict = #{record.conflict,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update Material
+    set id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      sname = #{record.sname,jdbcType=VARCHAR},
+      aname = #{record.aname,jdbcType=VARCHAR},
+      fletter = #{record.fletter,jdbcType=VARCHAR},
+      categoryid = #{record.categoryid,jdbcType=INTEGER},
+      weight = #{record.weight,jdbcType=VARCHAR},
+      pic = #{record.pic,jdbcType=VARCHAR},
+      hit = #{record.hit,jdbcType=INTEGER},
+      info = #{record.info,jdbcType=LONGVARCHAR},
+      alimentation = #{record.alimentation,jdbcType=LONGVARCHAR},
+      human = #{record.human,jdbcType=LONGVARCHAR},
+      make = #{record.make,jdbcType=LONGVARCHAR},
+      cure = #{record.cure,jdbcType=LONGVARCHAR},
+      other = #{record.other,jdbcType=LONGVARCHAR},
+      remark = #{record.remark,jdbcType=LONGVARCHAR},
+      conflict = #{record.conflict,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update Material
+    set id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      sname = #{record.sname,jdbcType=VARCHAR},
+      aname = #{record.aname,jdbcType=VARCHAR},
+      fletter = #{record.fletter,jdbcType=VARCHAR},
+      categoryid = #{record.categoryid,jdbcType=INTEGER},
+      weight = #{record.weight,jdbcType=VARCHAR},
+      pic = #{record.pic,jdbcType=VARCHAR},
+      hit = #{record.hit,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.caiuu.core.entity.MaterialWithBLOBs" >
+    update Material
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sname != null" >
+        sname = #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="aname != null" >
+        aname = #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="fletter != null" >
+        fletter = #{fletter,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryid != null" >
+        categoryid = #{categoryid,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="hit != null" >
+        hit = #{hit,jdbcType=INTEGER},
+      </if>
+      <if test="info != null" >
+        info = #{info,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="alimentation != null" >
+        alimentation = #{alimentation,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="human != null" >
+        human = #{human,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="make != null" >
+        make = #{make,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="cure != null" >
+        cure = #{cure,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="other != null" >
+        other = #{other,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="conflict != null" >
+        conflict = #{conflict,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.caiuu.core.entity.MaterialWithBLOBs" >
+    update Material
+    set name = #{name,jdbcType=VARCHAR},
+      sname = #{sname,jdbcType=VARCHAR},
+      aname = #{aname,jdbcType=VARCHAR},
+      fletter = #{fletter,jdbcType=VARCHAR},
+      categoryid = #{categoryid,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      hit = #{hit,jdbcType=INTEGER},
+      info = #{info,jdbcType=LONGVARCHAR},
+      alimentation = #{alimentation,jdbcType=LONGVARCHAR},
+      human = #{human,jdbcType=LONGVARCHAR},
+      make = #{make,jdbcType=LONGVARCHAR},
+      cure = #{cure,jdbcType=LONGVARCHAR},
+      other = #{other,jdbcType=LONGVARCHAR},
+      remark = #{remark,jdbcType=LONGVARCHAR},
+      conflict = #{conflict,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.caiuu.core.entity.Material" >
+    update Material
+    set name = #{name,jdbcType=VARCHAR},
+      sname = #{sname,jdbcType=VARCHAR},
+      aname = #{aname,jdbcType=VARCHAR},
+      fletter = #{fletter,jdbcType=VARCHAR},
+      categoryid = #{categoryid,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      hit = #{hit,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

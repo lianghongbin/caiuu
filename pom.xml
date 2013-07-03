@@ -8,6 +8,8 @@
     <artifactId>parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <name>application root</name>
+
     <modules>
         <module>web</module>
         <module>core</module>
@@ -216,8 +218,12 @@
             <dependency>
                 <groupId>net.sourceforge.pinyin4j</groupId>
                 <artifactId>pinyin4j</artifactId>
-                <type>zip</type>
                 <version>2.5</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>1.6.12</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

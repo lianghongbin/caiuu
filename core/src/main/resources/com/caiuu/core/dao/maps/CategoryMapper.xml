@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.caiuu.core.dao.CategoryMapper">
+    <resultMap id="BaseResultMap" type="com.caiuu.core.entity.Category">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="dname" property="dname" jdbcType="VARCHAR"/>
+        <result column="mname" property="mname" jdbcType="VARCHAR"/>
+        <result column="pinyin" property="pinyin" jdbcType="VARCHAR"/>
+        <result column="parentid" property="parentId" jdbcType="INTEGER"/>
+        <result column="createtime" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="cais" property="cais" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="count" resultType="int">
+    select count() from category
+  </select>
+    <select id="deleteById" parameterType="int">
+    delete from category where id=#{id}
+  </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from Category
+    where categoryid = #{categoryid,jdbcType=INTEGER}
+  </delete>
+
+    <insert id="insert" parameterType="Category">
+    insert into category(name,dname,mname,pinyin,parentid,createtime,cais) values(#{name},#{dname},#{mname},#{pinyin},#{parentId},now(),#{cais})
+</insert>
+
+    <update id="update" parameterType="Category">
+        update category set name=#{name},dname=#{dname},mname=#{mname},parentid=#{parentId},cais=#{cais} where id=#{id}
+    </update>
+
+    <select id="selectAll" resultType="Category">
+        select * from category
+    </select>
+</mapper>
