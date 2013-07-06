@@ -27,6 +27,10 @@ public class CategoryController {
     public ModelAndView list() {
         List<Category> categories = categoryService.findAll();
 
-        return new ModelAndView("category", "categories", categories.size());
+        ModelAndView modelAndView = new ModelAndView("category");
+        modelAndView.addObject("size", categories.size());
+        modelAndView.addObject("categories", categories);
+
+        return modelAndView;
     }
 }

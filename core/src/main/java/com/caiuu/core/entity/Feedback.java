@@ -1,19 +1,20 @@
 package com.caiuu.core.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Feedback {
-    private Integer id;
+/**
+ * 意见反馈类
+ */
 
+public class Feedback implements Serializable {
+
+    private int id;
     private String content;
-
     private String phone;
-
     private String ip;
-
     private String referrer;
-
-    private Date createtime;
+    private Date createTime;
 
     public Integer getId() {
         return id;
@@ -28,7 +29,7 @@ public class Feedback {
     }
 
     public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+        this.content = content;
     }
 
     public String getPhone() {
@@ -36,7 +37,7 @@ public class Feedback {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+        this.phone = phone;
     }
 
     public String getIp() {
@@ -44,7 +45,7 @@ public class Feedback {
     }
 
     public void setIp(String ip) {
-        this.ip = ip == null ? null : ip.trim();
+        this.ip = ip;
     }
 
     public String getReferrer() {
@@ -52,14 +53,14 @@ public class Feedback {
     }
 
     public void setReferrer(String referrer) {
-        this.referrer = referrer == null ? null : referrer.trim();
+        this.referrer = referrer;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

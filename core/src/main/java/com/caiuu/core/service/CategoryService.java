@@ -15,7 +15,7 @@ import java.util.List;
  * Description:
  */
 @Service
-@Transactional
+@Transactional(readOnly = true)
 public class CategoryService {
 
     @Autowired

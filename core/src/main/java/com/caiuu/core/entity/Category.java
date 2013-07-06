@@ -8,18 +8,12 @@ public class Category implements Serializable {
     private int id;
 
     private String name;
-
     private String dname;
-
     private String mname;
-
     private String pinyin;
-
     private int parentId;
-
     private Date createTime;
-
-    private Integer cais;
+    private int cais;
 
     public int getId() {
         return id;
@@ -77,11 +71,11 @@ public class Category implements Serializable {
         this.createTime = createTime;
     }
 
-    public Integer getCais() {
+    public int getCais() {
         return cais;
     }
 
-    public void setCais(Integer cais) {
+    public void setCais(int cais) {
         this.cais = cais;
     }
 }

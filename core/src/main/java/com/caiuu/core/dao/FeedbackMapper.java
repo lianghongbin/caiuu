@@ -1,30 +1,18 @@
 package com.caiuu.core.dao;
 
 import com.caiuu.core.entity.Feedback;
-import com.caiuu.core.entity.FeedbackExample;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+@Repository
 public interface FeedbackMapper {
-    int countByExample(FeedbackExample example);
 
-    int deleteByExample(FeedbackExample example);
+    public int count();
 
-    int deleteByPrimaryKey(Integer id);
+    public int deleteById(int id);
 
-    int insert(Feedback record);
+    public List<Feedback> selectAll();
 
-    int insertSelective(Feedback record);
-
-    List<Feedback> selectByExample(FeedbackExample example);
-
-    Feedback selectByPrimaryKey(Integer id);
-
-    int updateByExampleSelective(@Param("record") Feedback record, @Param("example") FeedbackExample example);
-
-    int updateByExample(@Param("record") Feedback record, @Param("example") FeedbackExample example);
-
-    int updateByPrimaryKeySelective(Feedback record);
-
-    int updateByPrimaryKey(Feedback record);
+    public int insert(Feedback feedback);
 }
