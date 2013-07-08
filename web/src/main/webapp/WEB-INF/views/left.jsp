@@ -15,8 +15,8 @@
 <body>
     <p>网友</p>
     <p> <a href="feedback/list" target="mainFrame" style="color:red;">意见反馈</a></p>
-    <p> <a href="Search/SearchLog.aspx" target="mainFrame">搜索日志</a></p>
-    <p> <a href="Search/SearchTop.aspx" target="mainFrame" style="color:red;">搜索排行</a></p>
+    <p> <a href="search/list" target="mainFrame">搜索日志</a></p>
+    <p> <a href="search/top" target="mainFrame" style="color:red;">搜索排行</a></p>
     <p>网站</p>
     <p> <a href="Focus/Focus.aspx" target="mainFrame">焦点图列表</a> </p>
     <p> <a href="Focus/Text.aspx" target="mainFrame">手工内容</a> </p>

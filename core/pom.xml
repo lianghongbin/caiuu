@@ -126,6 +126,7 @@
         <dependency>
             <groupId>net.sourceforge.pinyin4j</groupId>
             <artifactId>pinyin4j</artifactId>
+            <type>zip</type>
         </dependency>
 
         <dependency>
@@ -174,6 +175,7 @@
     </dependencies>
 
     <build>
+        <defaultGoal>install</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.mybatis.generator</groupId>

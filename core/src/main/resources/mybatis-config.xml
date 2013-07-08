@@ -16,7 +16,7 @@
         <!-- 分类 -->
         <typeAlias alias="Category" type="com.caiuu.core.entity.Category"/>
         <typeAlias alias="Feedback" type="com.caiuu.core.entity.Feedback"/>
-        
+        <typeAlias alias="SearchLog" type="com.caiuu.core.entity.SearchLog"/>
         
     </typeAliases>
 </configuration>
