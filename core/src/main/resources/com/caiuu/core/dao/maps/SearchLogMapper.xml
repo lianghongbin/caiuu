@@ -6,15 +6,10 @@
         <result column="key" property="key" jdbcType="VARCHAR" />
         <result column="result" property="result" jdbcType="INTEGER" />
         <result column="ip" property="ip" jdbcType="VARCHAR" />
-        <result column="hit" property="hit" jdbcType="INTEGER" />
         <result column="createtime" property="createTime" jdbcType="TIMESTAMP" />
     </resultMap>
 
-    <select id="selectAll" parameterType="SearchLog">
-        select from searchlog order by id desc
-    </select>
-
-    <select id="selectTop" resultType="SearchLog">
-        select * from searchtop order by hit desc
+    <select id="selectAll" resultType="SearchLog">
+        select * from searchlog order by id desc
     </select>
 </mapper>

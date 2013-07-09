@@ -14,9 +14,10 @@
     </settings>
     <typeAliases>
         <!-- 分类 -->
-        <typeAlias alias="Category" type="com.caiuu.core.entity.Category"/>
-        <typeAlias alias="Feedback" type="com.caiuu.core.entity.Feedback"/>
-        <typeAlias alias="SearchLog" type="com.caiuu.core.entity.SearchLog"/>
-        
+        <typeAlias type="com.caiuu.core.entity.Category" alias="Category"/>
+        <typeAlias type="com.caiuu.core.entity.Feedback" alias="Feedback"/>
+        <typeAlias type="com.caiuu.core.entity.SearchLog" alias="SearchLog"/>
+        <typeAlias type="com.caiuu.core.entity.SearchTop" alias="SearchTop"/>
+
     </typeAliases>
 </configuration>

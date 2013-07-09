@@ -1,7 +1,7 @@
 package com.caiuu.web.controller;
 
-import com.caiuu.core.entity.SearchLog;
-import com.caiuu.core.service.SearchLogService;
+import com.caiuu.core.entity.SearchTop;
+import com.caiuu.core.service.SearchTopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,14 +17,14 @@ import java.util.List;
  */
 @Controller
 @RequestMapping(value = "/admin")
-public class SearchLogController {
+public class SearchTopController {
 
     @Autowired
-    private SearchLogService searchLogService;
+    private SearchTopService searchTopService;
 
-    @RequestMapping(value = "/search/list")
-     public ModelAndView list() {
-        List<SearchLog> searchLogs = searchLogService.findAll();
-        return new ModelAndView("/admin/search/list", "searchLogs", searchLogs);
+    @RequestMapping(value = "/search/top")
+    public ModelAndView top() {
+        List<SearchTop> searchTops = searchTopService.findTop();
+        return new ModelAndView("/admin/search/top", "searchTops", searchTops);
     }
 }

@@ -15,7 +15,6 @@ public class SearchLog implements Serializable {
     private String key;
     private String ip;
     private int result;
-    private int hit;
     private Date createTime;
 
     public int getId() {
@@ -48,14 +47,6 @@ public class SearchLog implements Serializable {
 
     public void setResult(int result) {
         this.result = result;
-    }
-
-    public int getHit() {
-        return hit;
-    }
-
-    public void setHit(int hit) {
-        this.hit = hit;
     }
 
     public Date getCreateTime() {

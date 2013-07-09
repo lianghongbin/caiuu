@@ -1,6 +1,6 @@
 package com.caiuu.core.dao;
 
-import com.caiuu.core.entity.SearchLog;
+import com.caiuu.core.entity.SearchTop;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
  * Description:
  */
 @Repository
-public interface SearchLogMapper {
+public interface SearchTopMapper {
 
-    public List<SearchLog> selectAll();
+    public List<SearchTop> selectTop();
 }

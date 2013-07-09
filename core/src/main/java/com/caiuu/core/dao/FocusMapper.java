@@ -1,30 +1,18 @@
 package com.caiuu.core.dao;
 
 import com.caiuu.core.entity.Focus;
-import com.caiuu.core.entity.FocusExample;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+@Repository
 public interface FocusMapper {
-    int countByExample(FocusExample example);
 
-    int deleteByExample(FocusExample example);
+    public List<Focus> selectAll();
 
-    int deleteByPrimaryKey(Integer focusid);
+    public int deleteById(int id);
 
-    int insert(Focus record);
+    public int insert(Focus focus);
 
-    int insertSelective(Focus record);
-
-    List<Focus> selectByExample(FocusExample example);
-
-    Focus selectByPrimaryKey(Integer focusid);
-
-    int updateByExampleSelective(@Param("record") Focus record, @Param("example") FocusExample example);
-
-    int updateByExample(@Param("record") Focus record, @Param("example") FocusExample example);
-
-    int updateByPrimaryKeySelective(Focus record);
-
-    int updateByPrimaryKey(Focus record);
+    public int update(Focus focus);
 }

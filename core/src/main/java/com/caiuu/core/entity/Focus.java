@@ -3,26 +3,21 @@ package com.caiuu.core.entity;
 import java.util.Date;
 
 public class Focus {
-    private Integer focusid;
 
+    private int id;
     private String title;
-
     private String url;
-
     private String pic43;
-
     private String pic21;
+    private Date publishTime;
+    private Date createTime;
 
-    private Long publishtime;
-
-    private Date createtime;
-
-    public Integer getFocusid() {
-        return focusid;
+    public int getId() {
+        return id;
     }
 
-    public void setFocusid(Integer focusid) {
-        this.focusid = focusid;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -30,7 +25,7 @@ public class Focus {
     }
 
     public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
+        this.title = title;
     }
 
     public String getUrl() {
@@ -38,7 +33,7 @@ public class Focus {
     }
 
     public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
+        this.url = url;
     }
 
     public String getPic43() {
@@ -46,7 +41,7 @@ public class Focus {
     }
 
     public void setPic43(String pic43) {
-        this.pic43 = pic43 == null ? null : pic43.trim();
+        this.pic43 = pic43;
     }
 
     public String getPic21() {
@@ -57,19 +52,19 @@ public class Focus {
         this.pic21 = pic21 == null ? null : pic21.trim();
     }
 
-    public Long getPublishtime() {
-        return publishtime;
+    public Date getPublishime() {
+        return publishTime;
     }
 
-    public void setPublishtime(Long publishtime) {
-        this.publishtime = publishtime;
+    public void setPublishtime(Date publishTime) {
+        this.publishTime = publishTime;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

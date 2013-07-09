@@ -1,7 +1,7 @@
 package com.caiuu.core.service;
 
-import com.caiuu.core.dao.SearchLogMapper;
-import com.caiuu.core.entity.SearchLog;
+import com.caiuu.core.dao.SearchTopMapper;
+import com.caiuu.core.entity.SearchTop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,12 +16,12 @@ import java.util.List;
  */
 @Service
 @Transactional(readOnly = true)
-public class SearchLogService {
+public class SearchTopService {
 
     @Autowired
-    private SearchLogMapper searchLogMapper;
+    private SearchTopMapper searchTopMapper;
 
-    public List<SearchLog> findAll() {
-        return searchLogMapper.selectAll();
+    public List<SearchTop> findTop() {
+        return searchTopMapper.selectTop();
     }
 }
