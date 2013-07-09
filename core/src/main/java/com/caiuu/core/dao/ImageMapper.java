@@ -1,30 +1,15 @@
 package com.caiuu.core.dao;
 
 import com.caiuu.core.entity.Image;
-import com.caiuu.core.entity.ImageExample;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ImageMapper {
-    int countByExample(ImageExample example);
 
-    int deleteByExample(ImageExample example);
+    public int insert(Image image);
 
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(Image record);
-
-    int insertSelective(Image record);
-
-    List<Image> selectByExample(ImageExample example);
-
-    Image selectByPrimaryKey(Integer id);
-
-    int updateByExampleSelective(@Param("record") Image record, @Param("example") ImageExample example);
-
-    int updateByExample(@Param("record") Image record, @Param("example") ImageExample example);
-
-    int updateByPrimaryKeySelective(Image record);
-
-    int updateByPrimaryKey(Image record);
+    public Image select(int id);
 }

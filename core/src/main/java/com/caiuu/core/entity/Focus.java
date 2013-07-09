@@ -52,11 +52,11 @@ public class Focus {
         this.pic21 = pic21 == null ? null : pic21.trim();
     }
 
-    public Date getPublishime() {
+    public Date getPublishTime() {
         return publishTime;
     }
 
-    public void setPublishtime(Date publishTime) {
+    public void setPublishTime(Date publishTime) {
         this.publishTime = publishTime;
     }
 

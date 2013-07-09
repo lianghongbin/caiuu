@@ -18,6 +18,8 @@
         <typeAlias type="com.caiuu.core.entity.Feedback" alias="Feedback"/>
         <typeAlias type="com.caiuu.core.entity.SearchLog" alias="SearchLog"/>
         <typeAlias type="com.caiuu.core.entity.SearchTop" alias="SearchTop"/>
+        <typeAlias type="com.caiuu.core.entity.Focus" alias="Focus"/>
+        <typeAlias type="com.caiuu.core.entity.Image" alias="Image"/>
 
     </typeAliases>
 </configuration>

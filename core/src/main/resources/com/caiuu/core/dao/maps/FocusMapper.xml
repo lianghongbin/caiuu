@@ -2,242 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.caiuu.core.dao.FocusMapper" >
   <resultMap id="BaseResultMap" type="com.caiuu.core.entity.Focus" >
-    <id column="FocusId" property="focusid" jdbcType="INTEGER" />
-    <result column="Title" property="title" jdbcType="VARCHAR" />
-    <result column="URL" property="url" jdbcType="VARCHAR" />
-    <result column="Pic43" property="pic43" jdbcType="VARCHAR" />
-    <result column="Pic21" property="pic21" jdbcType="VARCHAR" />
-    <result column="PublishTime" property="publishtime" jdbcType="BIGINT" />
-    <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="pic43" property="pic43" jdbcType="VARCHAR" />
+    <result column="pic21" property="pic21" jdbcType="VARCHAR" />
+    <result column="publishtime" property="publishTime" jdbcType="TIMESTAMP" />
+    <result column="createtime" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List" >
-    FocusId, Title, URL, Pic43, Pic21, PublishTime, CreateTime
-  </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.caiuu.core.entity.FocusExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from Focus
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from Focus
-    where FocusId = #{focusid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from Focus
-    where FocusId = #{focusid,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.caiuu.core.entity.FocusExample" >
-    delete from Focus
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.caiuu.core.entity.Focus" >
-    <selectKey resultType="java.lang.Integer" keyProperty="focusid" order="AFTER" >
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into Focus (Title, URL, Pic43, 
-      Pic21, PublishTime, CreateTime
-      )
-    values (#{title,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{pic43,jdbcType=VARCHAR}, 
-      #{pic21,jdbcType=VARCHAR}, #{publishtime,jdbcType=BIGINT}, #{createtime,jdbcType=TIMESTAMP}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.caiuu.core.entity.Focus" >
-    <selectKey resultType="java.lang.Integer" keyProperty="focusid" order="AFTER" >
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into Focus
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="title != null" >
-        Title,
-      </if>
-      <if test="url != null" >
-        URL,
-      </if>
-      <if test="pic43 != null" >
-        Pic43,
-      </if>
-      <if test="pic21 != null" >
-        Pic21,
-      </if>
-      <if test="publishtime != null" >
-        PublishTime,
-      </if>
-      <if test="createtime != null" >
-        CreateTime,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="title != null" >
-        #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="url != null" >
-        #{url,jdbcType=VARCHAR},
-      </if>
-      <if test="pic43 != null" >
-        #{pic43,jdbcType=VARCHAR},
-      </if>
-      <if test="pic21 != null" >
-        #{pic21,jdbcType=VARCHAR},
-      </if>
-      <if test="publishtime != null" >
-        #{publishtime,jdbcType=BIGINT},
-      </if>
-      <if test="createtime != null" >
-        #{createtime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.caiuu.core.entity.FocusExample" resultType="java.lang.Integer" >
-    select count(*) from Focus
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update Focus
-    <set >
-      <if test="record.focusid != null" >
-        FocusId = #{record.focusid,jdbcType=INTEGER},
-      </if>
-      <if test="record.title != null" >
-        Title = #{record.title,jdbcType=VARCHAR},
-      </if>
-      <if test="record.url != null" >
-        URL = #{record.url,jdbcType=VARCHAR},
-      </if>
-      <if test="record.pic43 != null" >
-        Pic43 = #{record.pic43,jdbcType=VARCHAR},
-      </if>
-      <if test="record.pic21 != null" >
-        Pic21 = #{record.pic21,jdbcType=VARCHAR},
-      </if>
-      <if test="record.publishtime != null" >
-        PublishTime = #{record.publishtime,jdbcType=BIGINT},
-      </if>
-      <if test="record.createtime != null" >
-        CreateTime = #{record.createtime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update Focus
-    set FocusId = #{record.focusid,jdbcType=INTEGER},
-      Title = #{record.title,jdbcType=VARCHAR},
-      URL = #{record.url,jdbcType=VARCHAR},
-      Pic43 = #{record.pic43,jdbcType=VARCHAR},
-      Pic21 = #{record.pic21,jdbcType=VARCHAR},
-      PublishTime = #{record.publishtime,jdbcType=BIGINT},
-      CreateTime = #{record.createtime,jdbcType=TIMESTAMP}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.caiuu.core.entity.Focus" >
-    update Focus
-    <set >
-      <if test="title != null" >
-        Title = #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="url != null" >
-        URL = #{url,jdbcType=VARCHAR},
-      </if>
-      <if test="pic43 != null" >
-        Pic43 = #{pic43,jdbcType=VARCHAR},
-      </if>
-      <if test="pic21 != null" >
-        Pic21 = #{pic21,jdbcType=VARCHAR},
-      </if>
-      <if test="publishtime != null" >
-        PublishTime = #{publishtime,jdbcType=BIGINT},
-      </if>
-      <if test="createtime != null" >
-        CreateTime = #{createtime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where FocusId = #{focusid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.caiuu.core.entity.Focus" >
-    update Focus
-    set Title = #{title,jdbcType=VARCHAR},
-      URL = #{url,jdbcType=VARCHAR},
-      Pic43 = #{pic43,jdbcType=VARCHAR},
-      Pic21 = #{pic21,jdbcType=VARCHAR},
-      PublishTime = #{publishtime,jdbcType=BIGINT},
-      CreateTime = #{createtime,jdbcType=TIMESTAMP}
-    where FocusId = #{focusid,jdbcType=INTEGER}
-  </update>
+
+    <select id="selectAll" resultType="Focus">
+        select * from focus order by id;
+    </select>
+
+    <insert id="save" parameterType="Focus">
+        insert info focus(title,url,pic43,pic21,publishtime,createtime) values(#{title},#{url},#{pic43},#{pic21},#{publishTime},now())
+    </insert>
+
+    <delete id="deleteById" parameterType="int">
+        delete from focus where id=#{id}
+    </delete>
+
+    <update id="update" parameterType="Focus">
+        update focus set title=#{title},url=#{url},publishtime=#{publishTime} where id=#{id}
+    </update>
 </mapper>

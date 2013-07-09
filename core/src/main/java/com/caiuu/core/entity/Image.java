@@ -3,23 +3,19 @@ package com.caiuu.core.entity;
 import java.util.Date;
 
 public class Image {
-    private Integer id;
 
+    private int id;
     private String file;
-
-    private Integer objid;
-
+    private Integer objId;
     private String extend;
-
     private Integer hit;
-
     private Date date;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -31,12 +27,12 @@ public class Image {
         this.file = file == null ? null : file.trim();
     }
 
-    public Integer getObjid() {
-        return objid;
+    public Integer getObjId() {
+        return objId;
     }
 
-    public void setObjid(Integer objid) {
-        this.objid = objid;
+    public void setObjId(Integer objId) {
+        this.objId = objId;
     }
 
     public String getExtend() {

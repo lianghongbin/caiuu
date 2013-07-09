@@ -19,17 +19,20 @@
     </style>
 </head>
 <body>
-<h1>搜索日志</h1>
+<h1>焦点图 </h1> &nbsp;&nbsp;<a href="view"><h3>添加焦点图</h3></a>
 <table cellspacing="0" rules="all" border="1" id="dgSearchLog" style="width:90%;border-collapse:collapse;">
     <tr style="background-color:#CCCCCC;height:25px;">
         <td>id</td>
-        <td>key</td>
-        <td>ip</td>
-        <td>result</td>
+        <td>title</td>
+        <td>url</td>
+        <td>pic43</td>
+        <td>pic21</td>
+        <td>publishTime</td>
         <td>createTime</td>
+        <td align="center">操作</td>
     </tr>
 
-    <c:forEach items="${searchLogs}" var="log" varStatus="status">
+    <c:forEach items="${focuses}" var="focus" varStatus="status">
         <c:choose>
             <c:when test="${status.index%2==0}">
                 <tr style="height:22px;">
@@ -39,11 +42,14 @@
             </c:otherwise>
         </c:choose>
 
-        <td>${log.id}</td>
-        <td>${log.key}</td>
-        <td>${log.ip}</td>
-        <td>${log.result}</td>
-        <td>${log.createTime}</td>
+        <td>${focus.id}</td>
+        <td>${focus.title}</td>
+        <td>${focus.url}</td>
+        <td>${focus.pic43}</td>
+        <td>${focus.pic21}</td>
+        <td>${focus.publishTime}</td>
+        <td>${focus.createTime}</td>
+        <td>修改 &nbsp; <a href="delete/${focus.id}">删除</a> </td>
         </tr>
     </c:forEach>
 </table>

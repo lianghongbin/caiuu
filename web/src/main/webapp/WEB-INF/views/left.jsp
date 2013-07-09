@@ -18,7 +18,7 @@
     <p> <a href="search/list" target="mainFrame">搜索日志</a></p>
     <p> <a href="search/top" target="mainFrame" style="color:red;">搜索排行</a></p>
     <p>网站</p>
-    <p> <a href="Focus/Focus.aspx" target="mainFrame">焦点图列表</a> </p>
+    <p> <a href="focus/list" target="mainFrame">焦点图列表</a> </p>
     <p> <a href="Focus/Text.aspx" target="mainFrame">手工内容</a> </p>
     <P> <a href="Topic/TopicList.aspx" target="mainFrame">专题列表</a> </P>
     <p>采集</p>

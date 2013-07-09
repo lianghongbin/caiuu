@@ -15,7 +15,7 @@ import java.util.List;
  * Description:
  */
 @Service
-@Transactional(readOnly = true)
+@Transactional
 public class SearchLogService {
 
     @Autowired

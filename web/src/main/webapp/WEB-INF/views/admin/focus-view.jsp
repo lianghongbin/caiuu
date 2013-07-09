@@ -10,7 +10,7 @@
     </style>
 </head>
 <body>
-<form method="post" action="focus/upload" id="form1" enctype="multipart/form-data">
+<form method="post" action="save" id="form1" enctype="multipart/form-data">
     <div>
         <h2>
             添加焦点图</h2>
@@ -30,7 +30,7 @@
         <input type="submit" name="Button1" value="添加" id="Button1" />
         <br />
         <br />
-        <a href="focus/list">焦点图管理</a>
+        <a href="list">焦点图管理</a>
     </div>
 </form>
 </body>
