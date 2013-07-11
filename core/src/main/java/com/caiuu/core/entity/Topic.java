@@ -3,42 +3,31 @@ package com.caiuu.core.entity;
 import java.util.Date;
 
 public class Topic {
-    private Integer topicid;
+
+    private int id;
 
     private String title;
-
     private String url;
-
     private String remark;
+    private String adPic;
+    private String headPic;
 
-    private String adpic;
-
-    private String headpic;
-
-    private Integer materialid;
-
+    private int materialId;
     private String key1;
-
     private String key2;
-
     private String key3;
+    private int hit;
+    private int hitLast;
+    private int status;
+    private Date createTime;
+    private Date lastTime;
 
-    private Integer hit;
-
-    private Integer hitlastweek;
-
-    private Integer state;
-
-    private Date createtime;
-
-    private Date lasttime;
-
-    public Integer getTopicid() {
-        return topicid;
+    public int getId() {
+        return id;
     }
 
-    public void setTopicid(Integer topicid) {
-        this.topicid = topicid;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -46,7 +35,7 @@ public class Topic {
     }
 
     public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
+        this.title = title;
     }
 
     public String getUrl() {
@@ -54,7 +43,7 @@ public class Topic {
     }
 
     public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
+        this.url = url;
     }
 
     public String getRemark() {
@@ -62,31 +51,31 @@ public class Topic {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 
-    public String getAdpic() {
-        return adpic;
+    public String getAdPic() {
+        return adPic;
     }
 
-    public void setAdpic(String adpic) {
-        this.adpic = adpic == null ? null : adpic.trim();
+    public void setAdPic(String adPic) {
+        this.adPic = adPic;
     }
 
-    public String getHeadpic() {
-        return headpic;
+    public String getHeadPic() {
+        return headPic;
     }
 
-    public void setHeadpic(String headpic) {
-        this.headpic = headpic == null ? null : headpic.trim();
+    public void setHeadPic(String headPic) {
+        this.headPic = headPic;
     }
 
-    public Integer getMaterialid() {
-        return materialid;
+    public int getMaterialId() {
+        return materialId;
     }
 
-    public void setMaterialid(Integer materialid) {
-        this.materialid = materialid;
+    public void setMaterialId(int materialId) {
+        this.materialId = materialId;
     }
 
     public String getKey1() {
@@ -94,7 +83,7 @@ public class Topic {
     }
 
     public void setKey1(String key1) {
-        this.key1 = key1 == null ? null : key1.trim();
+        this.key1 = key1;
     }
 
     public String getKey2() {
@@ -102,7 +91,7 @@ public class Topic {
     }
 
     public void setKey2(String key2) {
-        this.key2 = key2 == null ? null : key2.trim();
+        this.key2 = key2;
     }
 
     public String getKey3() {
@@ -110,46 +99,46 @@ public class Topic {
     }
 
     public void setKey3(String key3) {
-        this.key3 = key3 == null ? null : key3.trim();
+        this.key3 = key3;
     }
 
-    public Integer getHit() {
+    public int getHit() {
         return hit;
     }
 
-    public void setHit(Integer hit) {
+    public void setHit(int hit) {
         this.hit = hit;
     }
 
-    public Integer getHitlastweek() {
-        return hitlastweek;
+    public int getHitLast() {
+        return hitLast;
     }
 
-    public void setHitlastweek(Integer hitlastweek) {
-        this.hitlastweek = hitlastweek;
+    public void setHitLast(int hitLast) {
+        this.hitLast = hitLast;
     }
 
-    public Integer getState() {
-        return state;
+    public int getStatus() {
+        return status;
     }
 
-    public void setState(Integer state) {
-        this.state = state;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getLasttime() {
-        return lasttime;
+    public Date getLastTime() {
+        return lastTime;
     }
 
-    public void setLasttime(Date lasttime) {
-        this.lasttime = lasttime;
+    public void setLastTime(Date lastTime) {
+        this.lastTime = lastTime;
     }
 }

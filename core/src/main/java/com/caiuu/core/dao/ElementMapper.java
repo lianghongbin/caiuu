@@ -1,7 +1,7 @@
 package com.caiuu.core.dao;
 
 import com.caiuu.core.entity.Element;
-import com.caiuu.core.entity.ElementExample;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

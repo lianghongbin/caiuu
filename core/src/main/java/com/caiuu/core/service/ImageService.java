@@ -23,7 +23,7 @@ public class ImageService {
         return imageMapper.insert(image);
     }
 
-    public Image get(int id) {
+    public Image find(int id) {
         return imageMapper.select(id);
     }
 }

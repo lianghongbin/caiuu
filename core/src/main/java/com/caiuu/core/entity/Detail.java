@@ -1,50 +1,35 @@
 package com.caiuu.core.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Detail {
-    private Integer caipuid;
+public class Detail implements Serializable {
 
+    private int cookbookId;
     private String material;
-
     private String blending;
-
     private String fixing;
-
     private String fire;
-
     private String okren;
-
     private String noren;
-
     private String pkey;
-
     private String ckey;
-
     private String pic;
-
-    private Integer status;
-
-    private Integer good;
-
-    private Integer bad;
-
-    private Integer hit;
-
-    private Integer hitlastweek;
-
-    private Date pubdate;
-
-    private Date edate;
-
     private String info;
+    private int status;
+    private int good;
+    private int bad;
+    private int hit;
+    private int hitLast;
+    private Date publishTime;
+    private Date lastTime;
 
-    public Integer getCaipuid() {
-        return caipuid;
+    public int getCookbookId() {
+        return cookbookId;
     }
 
-    public void setCaipuid(Integer caipuid) {
-        this.caipuid = caipuid;
+    public void setCookId(int cookbookId) {
+        this.cookbookId = cookbookId;
     }
 
     public String getMaterial() {
@@ -52,7 +37,7 @@ public class Detail {
     }
 
     public void setMaterial(String material) {
-        this.material = material == null ? null : material.trim();
+        this.material = material;
     }
 
     public String getBlending() {
@@ -60,7 +45,7 @@ public class Detail {
     }
 
     public void setBlending(String blending) {
-        this.blending = blending == null ? null : blending.trim();
+        this.blending = blending;
     }
 
     public String getFixing() {
@@ -68,7 +53,7 @@ public class Detail {
     }
 
     public void setFixing(String fixing) {
-        this.fixing = fixing == null ? null : fixing.trim();
+        this.fixing = fixing;
     }
 
     public String getFire() {
@@ -76,7 +61,7 @@ public class Detail {
     }
 
     public void setFire(String fire) {
-        this.fire = fire == null ? null : fire.trim();
+        this.fire = fire;
     }
 
     public String getOkren() {
@@ -84,7 +69,7 @@ public class Detail {
     }
 
     public void setOkren(String okren) {
-        this.okren = okren == null ? null : okren.trim();
+        this.okren = okren;
     }
 
     public String getNoren() {
@@ -92,7 +77,7 @@ public class Detail {
     }
 
     public void setNoren(String noren) {
-        this.noren = noren == null ? null : noren.trim();
+        this.noren = noren;
     }
 
     public String getPkey() {
@@ -100,7 +85,7 @@ public class Detail {
     }
 
     public void setPkey(String pkey) {
-        this.pkey = pkey == null ? null : pkey.trim();
+        this.pkey = pkey;
     }
 
     public String getCkey() {
@@ -108,7 +93,7 @@ public class Detail {
     }
 
     public void setCkey(String ckey) {
-        this.ckey = ckey == null ? null : ckey.trim();
+        this.ckey = ckey;
     }
 
     public String getPic() {
@@ -116,63 +101,7 @@ public class Detail {
     }
 
     public void setPic(String pic) {
-        this.pic = pic == null ? null : pic.trim();
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public Integer getGood() {
-        return good;
-    }
-
-    public void setGood(Integer good) {
-        this.good = good;
-    }
-
-    public Integer getBad() {
-        return bad;
-    }
-
-    public void setBad(Integer bad) {
-        this.bad = bad;
-    }
-
-    public Integer getHit() {
-        return hit;
-    }
-
-    public void setHit(Integer hit) {
-        this.hit = hit;
-    }
-
-    public Integer getHitlastweek() {
-        return hitlastweek;
-    }
-
-    public void setHitlastweek(Integer hitlastweek) {
-        this.hitlastweek = hitlastweek;
-    }
-
-    public Date getPubdate() {
-        return pubdate;
-    }
-
-    public void setPubdate(Date pubdate) {
-        this.pubdate = pubdate;
-    }
-
-    public Date getEdate() {
-        return edate;
-    }
-
-    public void setEdate(Date edate) {
-        this.edate = edate;
+        this.pic = pic;
     }
 
     public String getInfo() {
@@ -180,6 +109,62 @@ public class Detail {
     }
 
     public void setInfo(String info) {
-        this.info = info == null ? null : info.trim();
+        this.info = info;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public int getGood() {
+        return good;
+    }
+
+    public void setGood(int good) {
+        this.good = good;
+    }
+
+    public int getBad() {
+        return bad;
+    }
+
+    public void setBad(int bad) {
+        this.bad = bad;
+    }
+
+    public int getHit() {
+        return hit;
+    }
+
+    public void setHit(int hit) {
+        this.hit = hit;
+    }
+
+    public int getHitLast() {
+        return hitLast;
+    }
+
+    public void setHitLast(int hitLast) {
+        this.hitLast = hitLast;
+    }
+
+    public Date getPublishTime() {
+        return publishTime;
+    }
+
+    public void setPublishTime(Date publishTime) {
+        this.publishTime = publishTime;
+    }
+
+    public Date getLastTime() {
+        return lastTime;
+    }
+
+    public void setLastTime(Date lastTime) {
+        this.lastTime = lastTime;
     }
 }

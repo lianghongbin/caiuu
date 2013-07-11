@@ -1,30 +1,20 @@
 package com.caiuu.core.dao;
 
 import com.caiuu.core.entity.Cookbook;
-import com.caiuu.core.entity.CookbookExample;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+@Repository
 public interface CookbookMapper {
-    int countByExample(CookbookExample example);
 
-    int deleteByExample(CookbookExample example);
+    public int insert(Cookbook cookbook);
 
-    int deleteByPrimaryKey(Integer id);
+    public int update(Cookbook cookbook);
 
-    int insert(Cookbook record);
+    public int delete(int id);
 
-    int insertSelective(Cookbook record);
+    public Cookbook select(int id);
 
-    List<Cookbook> selectByExample(CookbookExample example);
-
-    Cookbook selectByPrimaryKey(Integer id);
-
-    int updateByExampleSelective(@Param("record") Cookbook record, @Param("example") CookbookExample example);
-
-    int updateByExample(@Param("record") Cookbook record, @Param("example") CookbookExample example);
-
-    int updateByPrimaryKeySelective(Cookbook record);
-
-    int updateByPrimaryKey(Cookbook record);
+    public List<Cookbook> selectAll();
 }

@@ -8,13 +8,13 @@ import java.util.List;
 @Repository
 public interface CategoryMapper {
 
-    int count();
+    public int count();
 
-    int deleteById(int id);
+    public int delete(int id);
 
-    int insert(Category category);
+    public int insert(Category category);
 
-    int update(Category category);
+    public int update(Category category);
 
-    List<Category> selectAll();
+    public List<Category> selectAll();
 }

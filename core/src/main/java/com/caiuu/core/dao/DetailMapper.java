@@ -1,26 +1,20 @@
 package com.caiuu.core.dao;
 
 import com.caiuu.core.entity.Detail;
-import com.caiuu.core.entity.DetailExample;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+@Repository
 public interface DetailMapper {
-    int countByExample(DetailExample example);
 
-    int deleteByExample(DetailExample example);
+    public int insert(Detail detail);
 
-    int insert(Detail record);
+    public int update(Detail detail);
 
-    int insertSelective(Detail record);
+    public int delete(int id);
 
-    List<Detail> selectByExampleWithBLOBs(DetailExample example);
+    public Detail select(int id);
 
-    List<Detail> selectByExample(DetailExample example);
-
-    int updateByExampleSelective(@Param("record") Detail record, @Param("example") DetailExample example);
-
-    int updateByExampleWithBLOBs(@Param("record") Detail record, @Param("example") DetailExample example);
-
-    int updateByExample(@Param("record") Detail record, @Param("example") DetailExample example);
+    public List<Detail> selectAll();
 }

@@ -1,22 +1,19 @@
 package com.caiuu.core.entity;
 
 public class Tag {
-    private Integer tagid;
 
+    private int id;
     private String name;
+    private int parentId;
+    private int count;
+    private int sort;
 
-    private Integer parent;
-
-    private Integer count;
-
-    private Integer sort;
-
-    public Integer getTagid() {
-        return tagid;
+    public int getId() {
+        return id;
     }
 
-    public void setTagid(Integer tagid) {
-        this.tagid = tagid;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -24,30 +21,30 @@ public class Tag {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
-    public Integer getParent() {
-        return parent;
+    public int getParentId() {
+        return parentId;
     }
 
-    public void setParent(Integer parent) {
-        this.parent = parent;
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
     }
 
-    public Integer getCount() {
+    public int getCount() {
         return count;
     }
 
-    public void setCount(Integer count) {
+    public void setCount(int count) {
         this.count = count;
     }
 
-    public Integer getSort() {
+    public int getSort() {
         return sort;
     }
 
-    public void setSort(Integer sort) {
+    public void setSort(int sort) {
         this.sort = sort;
     }
 }

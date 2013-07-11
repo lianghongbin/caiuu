@@ -1,29 +1,22 @@
 package com.caiuu.core.entity;
 
 public class Material {
-    private Integer id;
 
+    private int id;
     private String name;
-
     private String sname;
-
     private String aname;
-
-    private String fletter;
-
-    private Integer categoryid;
-
+    private String letter;
+    private int categoryId;
     private String weight;
-
     private String pic;
+    private int hit;
 
-    private Integer hit;
-
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -32,7 +25,7 @@ public class Material {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public String getSname() {
@@ -40,7 +33,7 @@ public class Material {
     }
 
     public void setSname(String sname) {
-        this.sname = sname == null ? null : sname.trim();
+        this.sname = sname;
     }
 
     public String getAname() {
@@ -48,23 +41,23 @@ public class Material {
     }
 
     public void setAname(String aname) {
-        this.aname = aname == null ? null : aname.trim();
+        this.aname = aname;
     }
 
-    public String getFletter() {
-        return fletter;
+    public String getLetter() {
+        return letter;
     }
 
-    public void setFletter(String fletter) {
-        this.fletter = fletter == null ? null : fletter.trim();
+    public void setLetter(String letter) {
+        this.letter = letter;
     }
 
-    public Integer getCategoryid() {
-        return categoryid;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategoryid(Integer categoryid) {
-        this.categoryid = categoryid;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getWeight() {
@@ -72,7 +65,7 @@ public class Material {
     }
 
     public void setWeight(String weight) {
-        this.weight = weight == null ? null : weight.trim();
+        this.weight = weight;
     }
 
     public String getPic() {
@@ -80,14 +73,14 @@ public class Material {
     }
 
     public void setPic(String pic) {
-        this.pic = pic == null ? null : pic.trim();
+        this.pic = pic;
     }
 
-    public Integer getHit() {
+    public int getHit() {
         return hit;
     }
 
-    public void setHit(Integer hit) {
+    public void setHit(int hit) {
         this.hit = hit;
     }
 }

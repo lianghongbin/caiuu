@@ -3,52 +3,38 @@ package com.caiuu.core.entity;
 import java.util.Date;
 
 public class Cookbook {
-    private Integer id;
 
-    private String headpic;
-
+    private int id;
+    private String headPic;
     private String name;
-
     private Integer pid;
-
     private String pname;
-
-    private String ppinyin;
-
-    private Integer cid;
-
+    private String pinyin;
+    private Integer categoryId;
     private String cname;
-
     private Integer sid;
-
     private String sname;
-
     private String remark;
-
     private String author;
-
-    private String authorurl;
-
+    private String url;
     private Integer hit;
+    private Integer hitLast;
+    private Date publishTime;
 
-    private Integer hitlastweek;
-
-    private Date publishtime;
-
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getHeadpic() {
-        return headpic;
+    public String getHeadPic() {
+        return headPic;
     }
 
-    public void setHeadpic(String headpic) {
-        this.headpic = headpic == null ? null : headpic.trim();
+    public void setHeadPic(String headPic) {
+        this.headPic = headPic;
     }
 
     public String getName() {
@@ -56,7 +42,7 @@ public class Cookbook {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public Integer getPid() {
@@ -72,23 +58,23 @@ public class Cookbook {
     }
 
     public void setPname(String pname) {
-        this.pname = pname == null ? null : pname.trim();
+        this.pname = pname;
     }
 
-    public String getPpinyin() {
-        return ppinyin;
+    public String getPinyin() {
+        return pinyin;
     }
 
-    public void setPpinyin(String ppinyin) {
-        this.ppinyin = ppinyin == null ? null : ppinyin.trim();
+    public void setPinyin(String pinyin) {
+        this.pinyin = pinyin;
     }
 
-    public Integer getCid() {
-        return cid;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
-    public void setCid(Integer cid) {
-        this.cid = cid;
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getCname() {
@@ -96,7 +82,7 @@ public class Cookbook {
     }
 
     public void setCname(String cname) {
-        this.cname = cname == null ? null : cname.trim();
+        this.cname = cname;
     }
 
     public Integer getSid() {
@@ -112,7 +98,7 @@ public class Cookbook {
     }
 
     public void setSname(String sname) {
-        this.sname = sname == null ? null : sname.trim();
+        this.sname = sname;
     }
 
     public String getRemark() {
@@ -120,7 +106,7 @@ public class Cookbook {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
     }
 
     public String getAuthor() {
@@ -128,15 +114,15 @@ public class Cookbook {
     }
 
     public void setAuthor(String author) {
-        this.author = author == null ? null : author.trim();
+        this.author = author;
     }
 
-    public String getAuthorurl() {
-        return authorurl;
+    public String getUrl() {
+        return url;
     }
 
-    public void setAuthorurl(String authorurl) {
-        this.authorurl = authorurl == null ? null : authorurl.trim();
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public Integer getHit() {
@@ -147,19 +133,19 @@ public class Cookbook {
         this.hit = hit;
     }
 
-    public Integer getHitlastweek() {
-        return hitlastweek;
+    public Integer getHitLast() {
+        return hitLast;
     }
 
-    public void setHitlastweek(Integer hitlastweek) {
-        this.hitlastweek = hitlastweek;
+    public void setHitLast(Integer hitLast) {
+        this.hitLast = hitLast;
     }
 
-    public Date getPublishtime() {
-        return publishtime;
+    public Date getPublishTime() {
+        return publishTime;
     }
 
-    public void setPublishtime(Date publishtime) {
-        this.publishtime = publishtime;
+    public void setPublishTime(Date publishTime) {
+        this.publishTime = publishTime;
     }
 }

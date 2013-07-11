@@ -24,4 +24,20 @@ public class CategoryService {
     public List<Category> findAll() {
         return categoryMapper.selectAll();
     }
+
+    public int count() {
+        return categoryMapper.count();
+    }
+
+    public int delete(int id) {
+        return categoryMapper.delete(id);
+    }
+
+    public int save(Category category) {
+        return categoryMapper.insert(category);
+    }
+
+    public int update(Category category) {
+        return categoryMapper.update(category);
+    }
 }

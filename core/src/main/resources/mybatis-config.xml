@@ -15,11 +15,19 @@
     <typeAliases>
         <!-- 分类 -->
         <typeAlias type="com.caiuu.core.entity.Category" alias="Category"/>
+        <typeAlias type="com.caiuu.core.entity.Cookbook" alias="Cookbook"/>
+        <typeAlias type="com.caiuu.core.entity.Detail" alias="Detail"/>
         <typeAlias type="com.caiuu.core.entity.Feedback" alias="Feedback"/>
-        <typeAlias type="com.caiuu.core.entity.SearchLog" alias="SearchLog"/>
-        <typeAlias type="com.caiuu.core.entity.SearchTop" alias="SearchTop"/>
         <typeAlias type="com.caiuu.core.entity.Focus" alias="Focus"/>
         <typeAlias type="com.caiuu.core.entity.Image" alias="Image"/>
+        <typeAlias type="com.caiuu.core.entity.Material" alias="Material"/>
+        <typeAlias type="com.caiuu.core.entity.MaterialCategory" alias="MaterialCategory"/>
+        <typeAlias type="com.caiuu.core.entity.SearchLog" alias="SearchLog"/>
+        <typeAlias type="com.caiuu.core.entity.SearchTop" alias="SearchTop"/>
+        <typeAlias type="com.caiuu.core.entity.StaticBlock" alias="StaticBlock"/>
+        <typeAlias type="com.caiuu.core.entity.Tag" alias="Tag"/>
+        <typeAlias type="com.caiuu.core.entity.Temporary" alias="Temporary"/>
+        <typeAlias type="com.caiuu.core.entity.Topic" alias="Topic"/>
 
     </typeAliases>
 </configuration>

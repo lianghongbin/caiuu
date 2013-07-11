@@ -1,37 +1,21 @@
 package com.caiuu.core.dao;
 
 import com.caiuu.core.entity.Material;
-import com.caiuu.core.entity.MaterialExample;
-import com.caiuu.core.entity.MaterialWithBLOBs;
+
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public interface MaterialMapper {
-    int countByExample(MaterialExample example);
 
-    int deleteByExample(MaterialExample example);
+    public int insert(Material material);
 
-    int deleteByPrimaryKey(Integer id);
+    public int update(Material material);
 
-    int insert(MaterialWithBLOBs record);
+    public int delete(int id);
 
-    int insertSelective(MaterialWithBLOBs record);
+    public Material select(int id);
 
-    List<MaterialWithBLOBs> selectByExampleWithBLOBs(MaterialExample example);
-
-    List<Material> selectByExample(MaterialExample example);
-
-    MaterialWithBLOBs selectByPrimaryKey(Integer id);
-
-    int updateByExampleSelective(@Param("record") MaterialWithBLOBs record, @Param("example") MaterialExample example);
-
-    int updateByExampleWithBLOBs(@Param("record") MaterialWithBLOBs record, @Param("example") MaterialExample example);
-
-    int updateByExample(@Param("record") Material record, @Param("example") MaterialExample example);
-
-    int updateByPrimaryKeySelective(MaterialWithBLOBs record);
-
-    int updateByPrimaryKeyWithBLOBs(MaterialWithBLOBs record);
-
-    int updateByPrimaryKey(Material record);
+    public List<Material> selectAll();
 }

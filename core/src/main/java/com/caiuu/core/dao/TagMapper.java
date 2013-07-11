@@ -1,30 +1,19 @@
 package com.caiuu.core.dao;
 
 import com.caiuu.core.entity.Tag;
-import com.caiuu.core.entity.TagExample;
+
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public interface TagMapper {
-    int countByExample(TagExample example);
 
-    int deleteByExample(TagExample example);
+    public List<Tag> selectAll();
 
-    int deleteByPrimaryKey(Integer tagid);
+    public int insert(Tag tag);
 
-    int insert(Tag record);
+    public int delete(int id);
 
-    int insertSelective(Tag record);
-
-    List<Tag> selectByExample(TagExample example);
-
-    Tag selectByPrimaryKey(Integer tagid);
-
-    int updateByExampleSelective(@Param("record") Tag record, @Param("example") TagExample example);
-
-    int updateByExample(@Param("record") Tag record, @Param("example") TagExample example);
-
-    int updateByPrimaryKeySelective(Tag record);
-
-    int updateByPrimaryKey(Tag record);
+    public Tag select(int id);
 }

@@ -1,30 +1,23 @@
 package com.caiuu.core.dao;
 
 import com.caiuu.core.entity.Topic;
-import com.caiuu.core.entity.TopicExample;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface TopicMapper {
-    int countByExample(TopicExample example);
 
-    int deleteByExample(TopicExample example);
+    public int insert(Topic topic);
 
-    int deleteByPrimaryKey(Integer topicid);
+    public int update(Topic topic);
 
-    int insert(Topic record);
+    public int updatePicture(Topic topic);
 
-    int insertSelective(Topic record);
+    public List<Topic> selectAll();
 
-    List<Topic> selectByExample(TopicExample example);
+    public Topic select(int id);
 
-    Topic selectByPrimaryKey(Integer topicid);
-
-    int updateByExampleSelective(@Param("record") Topic record, @Param("example") TopicExample example);
-
-    int updateByExample(@Param("record") Topic record, @Param("example") TopicExample example);
-
-    int updateByPrimaryKeySelective(Topic record);
-
-    int updateByPrimaryKey(Topic record);
+    public int delete(int id);
 }

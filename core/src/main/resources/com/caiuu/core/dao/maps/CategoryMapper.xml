@@ -9,26 +9,22 @@
         <result column="pinyin" property="pinyin" jdbcType="VARCHAR"/>
         <result column="parentid" property="parentId" jdbcType="INTEGER"/>
         <result column="createtime" property="createTime" jdbcType="TIMESTAMP"/>
-        <result column="cais" property="cais" jdbcType="INTEGER"/>
+        <result column="caicount" property="caiCount" jdbcType="INTEGER"/>
     </resultMap>
 
     <select id="count" resultType="int">
-    select count() from category
-  </select>
-    <select id="deleteById" parameterType="int">
-    delete from category where id=#{id}
-  </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from Category
-    where categoryid = #{categoryid,jdbcType=INTEGER}
-  </delete>
+      select count() from category
+    </select>
+    <select id="delete" parameterType="int">
+      delete from category where id=#{id}
+    </select>
 
     <insert id="insert" parameterType="Category">
-    insert into category(name,dname,mname,pinyin,parentid,createtime,cais) values(#{name},#{dname},#{mname},#{pinyin},#{parentId},now(),#{cais})
-</insert>
+      insert into category(name,dname,mname,pinyin,parentid,createtime,caicount) values(#{name},#{dname},#{mname},#{pinyin},#{parentId},now(),1)
+    </insert>
 
     <update id="update" parameterType="Category">
-        update category set name=#{name},dname=#{dname},mname=#{mname},parentid=#{parentId},cais=#{cais} where id=#{id}
+        update category set name=#{name},dname=#{dname},mname=#{mname},parentid=#{parentId} where id=#{id}
     </update>
 
     <select id="selectAll" resultType="Category">
