@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -30,24 +31,27 @@ public class DetailController {
         return new ModelAndView("admin/detail-list", "details", details);
     }
 
-    @RequestMapping(value = "/cookbook/add", method = RequestMethod.POST)
-    public ModelAndView add(Detail detail) {
+    @RequestMapping(value = "/detail/add", method = RequestMethod.POST)
+    @ResponseBody
+    public String add(Detail detail) {
         detailService.save(detail);
 
-        return null;
+        return "success";
     }
 
     @RequestMapping(value = "/detail/update", method = RequestMethod.POST)
-    public ModelAndView update(Detail detail) {
+    @ResponseBody
+    public String update(Detail detail) {
         detailService.update(detail);
-        return null;
+        return "success";
     }
 
     @RequestMapping(value = "/detail/delete/{id}", method = RequestMethod.GET)
-    public ModelAndView delete(@PathVariable int id) {
+    @ResponseBody
+    public String delete(@PathVariable int id) {
         detailService.delete(id);
 
-        return null;
+        return "success";
     }
 
     @RequestMapping(value = "/detail/view/{id}", method = RequestMethod.GET)

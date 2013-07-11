@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -35,16 +36,18 @@ public class StaticBlockController {
     }
 
     @RequestMapping(value = "/static/save", method = RequestMethod.POST)
-    public ModelAndView save(StaticBlock staticBlock) {
+    @ResponseBody
+    public String save(StaticBlock staticBlock) {
         staticBlockService.save(staticBlock);
 
-        return null;
+        return "success";
     }
 
     @RequestMapping(value = "/static/update", method = RequestMethod.POST)
-    public ModelAndView update(StaticBlock staticBlock) {
+    @ResponseBody
+    public String update(StaticBlock staticBlock) {
         staticBlockService.update(staticBlock);
 
-        return null;
+        return "success";
     }
 }

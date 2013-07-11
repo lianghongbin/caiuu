@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.nio.file.Path;
@@ -42,9 +43,10 @@ public class TemporaryController {
     }
 
     @RequestMapping(value = "/temp/delete/{id}")
-    public ModelAndView delete(@PathVariable int id) {
+    @ResponseBody
+    public String delete(@PathVariable int id) {
         temporaryService.delete(id);
 
-        return null;
+        return "success";
     }
 }

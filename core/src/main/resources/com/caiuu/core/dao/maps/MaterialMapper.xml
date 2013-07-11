@@ -11,8 +11,6 @@
     <result column="weight" property="weight" jdbcType="VARCHAR" />
     <result column="pic" property="pic" jdbcType="VARCHAR" />
     <result column="hit" property="hit" jdbcType="INTEGER" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.caiuu.core.entity.MaterialWithBLOBs" extends="BaseResultMap" >
     <result column="info" property="info" jdbcType="LONGVARCHAR" />
     <result column="alimentation" property="alimentation" jdbcType="LONGVARCHAR" />
     <result column="human" property="human" jdbcType="LONGVARCHAR" />

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -32,10 +33,11 @@ public class MaterialCategoryController {
     }
 
     @RequestMapping(value = "/mc/add", method = RequestMethod.POST)
-    public ModelAndView add(MaterialCategory materialCategory) {
+    @ResponseBody
+    public String add(MaterialCategory materialCategory) {
         materialCategoryService.save(materialCategory);
 
-        return null;
+        return "success";
     }
 
     @RequestMapping(value = "/mc/view/{id}", method = RequestMethod.GET)
@@ -45,8 +47,9 @@ public class MaterialCategoryController {
     }
 
     @RequestMapping(value = "/mc/update", method = RequestMethod.POST)
-    public ModelAndView update(MaterialCategory materialCategory) {
+    @ResponseBody
+    public String update(MaterialCategory materialCategory) {
         materialCategoryService.update(materialCategory);
-        return null;
+        return "success";
     }
 }

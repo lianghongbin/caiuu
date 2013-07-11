@@ -5,9 +5,7 @@ import com.caiuu.core.entity.Category;
 import com.caiuu.core.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -25,7 +23,7 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping(value="/category/list", method= RequestMethod.GET)
+    @RequestMapping(value = "/category/list", method = RequestMethod.GET)
     public ModelAndView list() {
         List<Category> categories = categoryService.findAll();
 
@@ -37,16 +35,18 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/category/add", method = RequestMethod.POST)
-    public ModelAndView add(Category category) {
+    @ResponseBody
+    public String add(Category category) {
         categoryService.save(category);
 
-        return null;
+        return "success";
     }
 
     @RequestMapping(value = "/category/delete/{id}")
-    public ModelAndView delete(@PathVariable int id) {
+    @ResponseBody
+    public String delete(@PathVariable int id) {
         categoryService.delete(id);
 
-        return null;
+        return "success";
     }
 }

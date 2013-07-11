@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -31,9 +32,10 @@ public class TagController {
     }
 
     @RequestMapping(value = "/tag/add", method = RequestMethod.POST)
-    public ModelAndView add(Tag tag) {
+    @ResponseBody
+    public String add(Tag tag) {
         tagService.save(tag);
 
-        return null;
+        return "success";
     }
 }

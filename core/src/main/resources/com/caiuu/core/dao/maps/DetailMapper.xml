@@ -19,8 +19,6 @@
         <result column="hitlast" property="hitLast" jdbcType="INTEGER"/>
         <result column="publishtime" property="publishTime" jdbcType="TIMESTAMP"/>
         <result column="lasttime" property="lastTime" jdbcType="TIMESTAMP"/>
-    </resultMap>
-    <resultMap id="ResultMapWithBLOBs" type="com.caiuu.core.entity.Detail" extends="BaseResultMap">
         <result column="info" property="info" jdbcType="LONGVARCHAR"/>
     </resultMap>
 

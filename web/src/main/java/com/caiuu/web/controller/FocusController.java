@@ -15,10 +15,7 @@ import org.apache.commons.fileupload.util.Streams;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletContext;
@@ -54,10 +51,11 @@ public class FocusController {
     }
 
     @RequestMapping(value = "/focus/delete/{id}", method = RequestMethod.GET)
-    public ModelAndView delete(@PathVariable int id) {
+    @ResponseBody
+    public String delete(@PathVariable int id) {
         focusService.deleteById(id);
 
-        return null;
+        return "success";
     }
 
     @RequestMapping(value = "/focus/save", method = RequestMethod.POST)
@@ -69,7 +67,7 @@ public class FocusController {
         if (!isMultipart) {
             return new ModelAndView("redirect:/focus/error");
         }
-System.out.println(title);
+        System.out.println(title);
         // Create a new file upload handler
         ServletFileUpload upload = new ServletFileUpload();
         List<String> pics = new ArrayList<String>(2);
@@ -100,7 +98,8 @@ System.out.println(title);
         }
 
         /*focus.setPic21(pics.get(0));
-        focus.setPic43(pics.get(1))*/;
+        focus.setPic43(pics.get(1))*/
+        ;
 
         focusService.save(focus);
         return null;
