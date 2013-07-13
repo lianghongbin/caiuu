@@ -11,12 +11,16 @@
         <result column="createtime" property="createTime" jdbcType="TIMESTAMP" />
     </resultMap>
 
-    <select id="id" resultType="Temporary" parameterType="int">
+    <select id="count" resultType="int">
+        select count(1) from temporary
+    </select>
+
+    <select id="select" resultType="Temporary" parameterType="int">
         select * from temporary where id=#{id}
     </select>
 
     <select id="selectAll" resultType="Temporary">
-        select * from temporary order by id desc
+        select * from temporary order by id desc limit 100
     </select>
 
     <insert id="insert" parameterType="Temporary">

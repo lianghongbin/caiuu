@@ -25,15 +25,15 @@ public class TopicController {
     @Autowired
     private TopicService topicService;
 
-    @RequestMapping(value = "/topic/view", method = RequestMethod.GET)
+    @RequestMapping(value = "/topic/input", method = RequestMethod.GET)
     public ModelAndView view() {
-        return new ModelAndView("topic-view");
+        return new ModelAndView("admin/topic-input");
     }
 
     @RequestMapping(value = "/topic/list", method = RequestMethod.GET)
     public ModelAndView list() {
         List<Topic> topics = topicService.findAll();
-        return new ModelAndView("topic-list", "topics", topics);
+        return new ModelAndView("admin/topic-list", "topics", topics);
     }
 
     @RequestMapping(value = "/topic/add", method = RequestMethod.POST)
@@ -43,10 +43,16 @@ public class TopicController {
         return "success";
     }
 
+    @RequestMapping(value = "/topic/edit/{id}", method = RequestMethod.GET)
+    public ModelAndView edit(@PathVariable int id) {
+        Topic topic = topicService.find(id);
+        return new ModelAndView("admin/topic-edit", "topic", topic);
+    }
+
     @RequestMapping(value = "/topic/update", method = RequestMethod.POST)
     @ResponseBody
     public String update(Topic topic) {
-        topicService.updatePicture(topic);
+        topicService.update(topic);
         return "success";
     }
 

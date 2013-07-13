@@ -7,10 +7,18 @@ public class Material {
     private String sname;
     private String aname;
     private String letter;
-    private int categoryId;
     private String weight;
     private String pic;
+    private String info;
+    private String remark;
+    private String human;
+    private String make;
+    private String cure;
+    private String other;
+    private String alimentation;
+    private String conflict;
     private int hit;
+    private Category category;
 
     public int getId() {
         return id;
@@ -52,14 +60,6 @@ public class Material {
         this.letter = letter;
     }
 
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
-
     public String getWeight() {
         return weight;
     }
@@ -76,11 +76,83 @@ public class Material {
         this.pic = pic;
     }
 
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getHuman() {
+        return human;
+    }
+
+    public void setHuman(String human) {
+        this.human = human;
+    }
+
+    public String getMake() {
+        return make;
+    }
+
+    public void setMake(String make) {
+        this.make = make;
+    }
+
+    public String getCure() {
+        return cure;
+    }
+
+    public void setCure(String cure) {
+        this.cure = cure;
+    }
+
+    public String getOther() {
+        return other;
+    }
+
+    public void setOther(String other) {
+        this.other = other;
+    }
+
+    public String getAlimentation() {
+        return alimentation;
+    }
+
+    public void setAlimentation(String alimentation) {
+        this.alimentation = alimentation;
+    }
+
+    public String getConflict() {
+        return conflict;
+    }
+
+    public void setConflict(String conflict) {
+        this.conflict = conflict;
+    }
+
     public int getHit() {
         return hit;
     }
 
     public void setHit(int hit) {
         this.hit = hit;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

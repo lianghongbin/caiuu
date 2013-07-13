@@ -15,6 +15,8 @@ import java.util.Map;
 @Repository
 public interface TemporaryMapper {
 
+    public int count();
+
     public int insert(Temporary temporary);
 
     public int batchInsert(List<Temporary> temporaries);

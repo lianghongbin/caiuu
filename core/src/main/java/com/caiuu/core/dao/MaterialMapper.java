@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MaterialMapper {
 
+    public int count();
+
     public int insert(Material material);
 
     public int update(Material material);

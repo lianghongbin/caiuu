@@ -32,4 +32,8 @@ public class StaticBlockService {
     public List<StaticBlock> findAll() {
         return staticBlockMapper.selectAll();
     }
+
+    public StaticBlock find(int id) {
+        return staticBlockMapper.select(id);
+    }
 }

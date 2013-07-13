@@ -11,6 +11,7 @@ import java.util.Date;
 public class StaticBlock {
 
     private int id;
+    private String title;
     private String content;
     private Date createTime;
     private Date lastTime;
@@ -21,6 +22,14 @@ public class StaticBlock {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getContent() {

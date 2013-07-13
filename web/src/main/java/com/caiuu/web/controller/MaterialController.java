@@ -1,6 +1,8 @@
 package com.caiuu.web.controller;
 
+import com.caiuu.core.entity.Category;
 import com.caiuu.core.entity.Material;
+import com.caiuu.core.service.CategoryService;
 import com.caiuu.core.service.MaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,27 +26,41 @@ public class MaterialController {
 
     @Autowired
     private MaterialService materialService;
+    @Autowired
+    private CategoryService categoryService;
 
     @RequestMapping(value = "/material/list")
-    public ModelAndView findAll() {
+    public ModelAndView list() {
         List<Material> materials = materialService.findAll();
+        int count = materialService.count();
+        ModelAndView modelAndView = new ModelAndView("admin/material-list");
+        modelAndView.addObject("count", count);
+        modelAndView.addObject("materials", materials);
 
-        return new ModelAndView("admin/material-list", "materials", materials);
+        return modelAndView;
     }
 
     @RequestMapping(value = "/material/add", method = RequestMethod.POST)
     @ResponseBody
-    public String add(Material material) {
+    public String add(Material material, int categoryId) {
+        Category category = new Category();
+        category.setId(categoryId);
+        material.setCategory(category);
         materialService.save(material);
 
         return "success";
     }
 
-    @RequestMapping(value = "/material/view/{id}", method = RequestMethod.GET)
-    public ModelAndView view(@PathVariable int id) {
+    @RequestMapping(value = "/material/edit/{id}", method = RequestMethod.GET)
+    public ModelAndView edit(@PathVariable int id) {
+        List<Category> categories = categoryService.findAll();
         Material material = materialService.find(id);
 
-        return new ModelAndView("/material/material-view", "material", material);
+        ModelAndView modelAndView = new ModelAndView("admin/material-edit");
+        modelAndView.addObject("material", material);
+        modelAndView.addObject("categories", categories);
+
+        return modelAndView;
     }
 
     @RequestMapping(value = "/material/delete/{id}", method = RequestMethod.GET)

@@ -10,6 +10,8 @@ public interface CategoryMapper {
 
     public int count();
 
+    public Category select(int id);
+
     public int delete(int id);
 
     public int insert(Category category);

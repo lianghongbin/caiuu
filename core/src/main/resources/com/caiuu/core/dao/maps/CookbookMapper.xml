@@ -39,6 +39,6 @@
     </select>
 
     <select id="selectAll" resultType="Cookbook">
-        select * from cookbook order by id desc
+        select * from cookbook order by id desc limit 100
     </select>
 </mapper>

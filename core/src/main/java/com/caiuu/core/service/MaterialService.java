@@ -21,6 +21,10 @@ public class MaterialService {
     @Autowired
     private MaterialMapper materialMapper;
 
+    public int count() {
+        return materialMapper.count();
+    }
+
     public int save(Material material) {
         return materialMapper.insert(material);
     }

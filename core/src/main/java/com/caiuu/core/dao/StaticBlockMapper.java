@@ -18,5 +18,7 @@ public interface StaticBlockMapper {
 
     public int update(StaticBlock block);
 
+    public StaticBlock select(int id);
+
     public List<StaticBlock> selectAll();
 }

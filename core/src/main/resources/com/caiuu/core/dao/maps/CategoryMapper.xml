@@ -15,6 +15,11 @@
     <select id="count" resultType="int">
       select count() from category
     </select>
+
+    <select id="select" parameterType="int" resultType="Category">
+        select * from category where id=#{id}
+    </select>
+
     <select id="delete" parameterType="int">
       delete from category where id=#{id}
     </select>

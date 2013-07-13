@@ -22,6 +22,10 @@ public class TemporaryService {
     @Autowired
     private TemporaryMapper temporaryMapper;
 
+    public int count() {
+        return temporaryMapper.count();
+    }
+
     public int save(Temporary temporary) {
         return temporaryMapper.insert(temporary);
     }

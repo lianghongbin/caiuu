@@ -14,8 +14,12 @@
     </insert>
 
     <update id="update" parameterType="StaticBlock">
-        update staticblock set title=#{title}, content=#{content}, lasttime=now()
+        update staticblock set title=#{title}, content=#{content}, lasttime=now() where id=#{id}
     </update>
+
+    <select id="select" parameterType="int" resultType="StaticBlock">
+        select * from staticblock where id=#{id}
+    </select>
 
     <select id="selectAll" resultType="StaticBlock">
         select * from staticblock order by id desc

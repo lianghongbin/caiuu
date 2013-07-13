@@ -29,6 +29,10 @@ public class CategoryService {
         return categoryMapper.count();
     }
 
+    public Category find(int id) {
+        return categoryMapper.select(id);
+    }
+
     public int delete(int id) {
         return categoryMapper.delete(id);
     }
