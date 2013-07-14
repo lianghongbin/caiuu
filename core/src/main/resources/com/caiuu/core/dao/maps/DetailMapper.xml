@@ -24,12 +24,16 @@
 
     <insert id="insert" parameterType="Detail">
         insert into detail(cookbookid,material,blending,fixing,fire,okren,noren,pkey,ckey,pic,status,good,bad,publishtime,lasttime)
-            values(#{cookbookId},#{material},#{blending},#{fixing},#{fire},#{okren},#{noren},#{pkey},#{ckey},#{pic},#{static},#{good},#{bad},now(),now())
+            values(#{cookbookId},#{material},#{blending},#{fixing},#{fire},#{okren},#{noren},#{pkey},#{ckey},#{pic},#{status},#{good},#{bad},now(),now())
     </insert>
 
     <update id="update" parameterType="Detail">
         update detail set material=#{material},blending=#{blending},fixing=#{fixing},fire=#{fire},okren=#{okren},noren=#{noren},pkey=#{pkey},
                           ckey=#{ckey},pic=#{pic},status=#{status},good=#{good},bad=#{bak},lasttime=#{lasttime} where cookbookid=#{cookbookId}
+    </update>
+
+    <update id="updateContent" parameterType="java.util.Map">
+        update detail set info=#{info} where cookbookid=#{cookbookId}
     </update>
 
     <delete id="delete" parameterType="int">

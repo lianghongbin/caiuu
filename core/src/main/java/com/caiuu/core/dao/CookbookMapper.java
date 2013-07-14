@@ -4,9 +4,12 @@ import com.caiuu.core.entity.Cookbook;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface CookbookMapper {
+
+    public int count();
 
     public int insert(Cookbook cookbook);
 

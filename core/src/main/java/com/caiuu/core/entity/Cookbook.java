@@ -7,14 +7,11 @@ public class Cookbook {
     private int id;
     private String headPic;
     private String name;
+    private String profile;
     private Integer pid;
-    private String pname;
     private String pinyin;
     private Integer categoryId;
     private String cname;
-    private Integer sid;
-    private String sname;
-    private String remark;
     private String author;
     private String url;
     private Integer hit;
@@ -45,20 +42,20 @@ public class Cookbook {
         this.name = name;
     }
 
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
+
     public Integer getPid() {
         return pid;
     }
 
     public void setPid(Integer pid) {
         this.pid = pid;
-    }
-
-    public String getPname() {
-        return pname;
-    }
-
-    public void setPname(String pname) {
-        this.pname = pname;
     }
 
     public String getPinyin() {
@@ -83,30 +80,6 @@ public class Cookbook {
 
     public void setCname(String cname) {
         this.cname = cname;
-    }
-
-    public Integer getSid() {
-        return sid;
-    }
-
-    public void setSid(Integer sid) {
-        this.sid = sid;
-    }
-
-    public String getSname() {
-        return sname;
-    }
-
-    public void setSname(String sname) {
-        this.sname = sname;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
     }
 
     public String getAuthor() {

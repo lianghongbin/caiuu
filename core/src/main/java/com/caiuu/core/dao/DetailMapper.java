@@ -4,6 +4,7 @@ import com.caiuu.core.entity.Detail;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface DetailMapper {
@@ -12,9 +13,11 @@ public interface DetailMapper {
 
     public int update(Detail detail);
 
+    public int updateContent(Map<String,String> map);
+
     public int delete(int id);
 
-    public Detail select(int id);
+    public Detail select(int cookbookId);
 
     public List<Detail> selectAll();
 }

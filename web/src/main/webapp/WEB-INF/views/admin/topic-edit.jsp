@@ -41,7 +41,7 @@
 <form method="post" action="../update" id="topicForm">
 
     <h2>
-        添加新专题&nbsp;&nbsp;&nbsp;<a href="./list">专题管理</a>&nbsp;&nbsp;<a href="TopicCaipu.aspx">专题-菜谱管理</a>
+        修改专题&nbsp;&nbsp;&nbsp;<a href="./list">专题管理</a>&nbsp;&nbsp;<a href="TopicCaipu.aspx">专题-菜谱管理</a>
     </h2>
             <input name="id" type="hidden" value="${topic.id}"/>
         <p>标题：<input name="title" type="text" id="title" value="${topic.title}" style="width:234px;" />

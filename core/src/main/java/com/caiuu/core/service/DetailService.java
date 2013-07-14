@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * User: Administrator
@@ -27,6 +28,10 @@ public class DetailService {
 
     public int update(Detail detail) {
         return detailMapper.update(detail);
+    }
+
+    public int updateContent(Map<String,String> map) {
+        return detailMapper.updateContent(map);
     }
 
     public int delete(int id) {

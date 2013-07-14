@@ -28,7 +28,7 @@ public class Detail implements Serializable {
         return cookbookId;
     }
 
-    public void setCookId(int cookbookId) {
+    public void setCookbookId(int cookbookId) {
         this.cookbookId = cookbookId;
     }
 

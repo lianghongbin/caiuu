@@ -19,4 +19,8 @@ public interface CategoryMapper {
     public int update(Category category);
 
     public List<Category> selectAll();
+
+    public List<Category> selectTopLevel();
+
+    public List<Category> selectByParent(int parentId);
 }

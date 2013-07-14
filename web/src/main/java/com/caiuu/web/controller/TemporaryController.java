@@ -1,9 +1,11 @@
 package com.caiuu.web.controller;
 
+import com.caiuu.core.entity.Category;
+import com.caiuu.core.entity.CategoryLink;
 import com.caiuu.core.entity.Temporary;
+import com.caiuu.core.service.CategoryService;
 import com.caiuu.core.service.TemporaryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.support.ManagedList;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,10 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.nio.file.Path;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * User: Administrator
@@ -28,6 +27,8 @@ public class TemporaryController {
 
     @Autowired
     private TemporaryService temporaryService;
+    @Autowired
+    private CategoryService categoryService;
 
     @RequestMapping(value = "/temp/list", method = RequestMethod.GET)
     public ModelAndView list() {
@@ -36,10 +37,31 @@ public class TemporaryController {
         return new ModelAndView("admin/temp-list", "temporaries", temporaries);
     }
 
-    @RequestMapping(value = "/temp/view/{id}", method = RequestMethod.GET)
-    public ModelAndView view(@PathVariable int id) {
+    @RequestMapping(value = "/temp/edit/{id}", method = RequestMethod.GET)
+    public ModelAndView edit(@PathVariable int id) {
         Temporary temporary = temporaryService.find(id);
-        return new ModelAndView("admin/temp-view", "temporaries", temporary);
+        List<CategoryLink> categoryLinks = categoryService.getCategoryLink();
+        ModelAndView modelAndView = new ModelAndView("admin/temp-edit");
+        modelAndView.addObject("temporary", temporary);
+        modelAndView.addObject("categoryLinks", categoryLinks);
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/temp/view", method = RequestMethod.POST)
+    public ModelAndView view(Temporary temporary, String info, String profile, int categoryId) {
+
+        List<Category> family = categoryService.getCategoryFamilyById(categoryId);
+        Category category = categoryService.find(categoryId);
+
+        ModelAndView modelAndView = new ModelAndView("admin/temp-view");
+        modelAndView.addObject("temporary", temporary);
+        modelAndView.addObject("info", info);
+        modelAndView.addObject("profile", profile);
+        modelAndView.addObject("category", category);
+        modelAndView.addObject("categoryFamily", family);
+
+        return modelAndView;
     }
 
     @RequestMapping(value = "/temp/delete/{id}")

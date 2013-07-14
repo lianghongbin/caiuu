@@ -33,6 +33,14 @@
     </update>
 
     <select id="selectAll" resultType="Category">
-        select * from category
+        select * from category order by id asc
+    </select>
+
+    <select id="selectTopLevel" resultType="Category">
+        select * from category where parentid=0 order by id asc
+    </select>
+
+    <select id="selectByParent" resultType="Category" parameterType="int">
+        select * from category where parentid=#{parentId} order by id asc
     </select>
 </mapper>

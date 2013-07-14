@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * User: Administrator
@@ -20,6 +21,10 @@ public class CookbookService {
 
     @Autowired
     private CookbookMapper cookbookMapper;
+
+    public int count() {
+        return cookbookMapper.count();
+    }
 
     public int save(Cookbook cookbook) {
         return cookbookMapper.insert(cookbook);
