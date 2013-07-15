@@ -20,6 +20,11 @@
             <artifactId>core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.caiuu</groupId>
+            <artifactId>photo</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
         <!-- Spring core & mvc -->
         <dependency>
@@ -106,6 +111,7 @@
     <build>
         <defaultGoal>install</defaultGoal>
         <finalName>web</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

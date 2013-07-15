@@ -28,11 +28,6 @@
             <version>[0.4, 0.5)</version>
         </dependency>
         <dependency>
-            <groupId>com.sun.jimi</groupId>
-            <artifactId>jimi</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
             <groupId>com.mortennobel</groupId>
             <artifactId>java-image-scaling</artifactId>
             <version>0.8.5</version>

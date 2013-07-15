@@ -12,6 +12,11 @@
            http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd" default-autowire="byName">
     <!-- 约定优于配置，约定优于配置 -->
 
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="classpath:photo.properties"/>
+    </bean>
+
     <!-- 配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理，3.04新增功能，需要重新设置spring-mvc-3.0.xsd -->
     <mvc:resources mapping="/images/**" location="/images/"/>
     <mvc:resources mapping="/js/**" location="/js/"/>
@@ -37,4 +42,8 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
 
+    <bean id="photoConfig" class="com.caiuu.web.util.PhotoConfig" scope="singleton">
+        <property name="uploadRoot" value="${photo.upload.root}"/>
+        <property name="watermark" value="${photo.upload.watermark}"/>
+    </bean>
 </beans>
