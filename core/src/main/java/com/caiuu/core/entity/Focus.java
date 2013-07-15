@@ -9,7 +9,7 @@ public class Focus {
     private String url;
     private String pic43;
     private String pic21;
-    private Date publishTime;
+    private String publishTime;
     private Date createTime;
 
     public int getId() {
@@ -52,11 +52,11 @@ public class Focus {
         this.pic21 = pic21 == null ? null : pic21.trim();
     }
 
-    public Date getPublishTime() {
+    public String getPublishTime() {
         return publishTime;
     }
 
-    public void setPublishTime(Date publishTime) {
+    public void setPublishTime(String publishTime) {
         this.publishTime = publishTime;
     }
 

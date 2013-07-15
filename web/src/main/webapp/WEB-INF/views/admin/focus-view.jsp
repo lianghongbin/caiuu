@@ -15,19 +15,19 @@
         <h2>
             添加焦点图</h2>
         <p>
-            标题：<input name="title" type="text" id="title" style="width:370px;" />
+            标题：<input name="title" type="text" style="width:370px;" />
         </p>
         <p>
-            URL：<input name="url" type="text" id="url" style="width:369px;" />
+            URL：<input name="url" type="text" style="width:369px;" />
         </p>
         <p>
-            670*260图片：<input type="file" name="pic43" id="pic43" />
+            670*260图片：<input type="file" name="pic43" />
         </p>
         <p>
-            300*225图片：<input type="file" name="pic21" id="pic21" />
+            300*225图片：<input type="file" name="pic21" />
         </p>
-        <p>发布时间：<input name="txtPublishTime" type="text" value="20130709153300" id="txtPublishTime" /></p>
-        <input type="submit" name="Button1" value="添加" id="Button1" />
+        <p>发布时间：<input name="publishTime" type="text" value="20130709153300" /></p>
+        <input type="submit" value="添加" id="Button1" />
         <br />
         <br />
         <a href="list">焦点图管理</a>

@@ -7,7 +7,7 @@
     <result column="url" property="url" jdbcType="VARCHAR" />
     <result column="pic43" property="pic43" jdbcType="VARCHAR" />
     <result column="pic21" property="pic21" jdbcType="VARCHAR" />
-    <result column="publishtime" property="publishTime" jdbcType="TIMESTAMP" />
+    <result column="publishtime" property="publishTime" jdbcType="VARCHAR" />
     <result column="createtime" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
 

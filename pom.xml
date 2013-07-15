@@ -13,6 +13,7 @@
     <modules>
         <module>web</module>
         <module>core</module>
+        <module>photo</module>
     </modules>
 
     <properties>
