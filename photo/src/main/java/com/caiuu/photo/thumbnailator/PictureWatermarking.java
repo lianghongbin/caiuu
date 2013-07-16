@@ -6,7 +6,6 @@ import com.caiuu.photo.Watermark;
 import com.caiuu.photo.Watermarking;
 import com.caiuu.photo.exception.WatermarkException;
 import net.coobird.thumbnailator.Thumbnails;
-import net.coobird.thumbnailator.geometry.Positions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,7 +35,7 @@ public class PictureWatermarking implements Watermarking {
         logger.debug("print picture watermark start!");
 
         Thumbnails.Builder builder = (Thumbnails.Builder) operation.getSource();
-        CaiuuPosition position = new CaiuuPosition(0,10,0,10);
+        CaiuuPosition position = new CaiuuPosition(0,30,0,30);
 
         Thumbnails.Builder watermarkBuilder = builder.watermark(position, ImageIO.read(new File(watermark.getResource())), 0.5f);
         operation.setSource(watermarkBuilder);

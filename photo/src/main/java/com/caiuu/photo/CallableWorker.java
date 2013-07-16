@@ -1,7 +1,6 @@
 package com.caiuu.photo;
 
 
-import com.caiuu.photo.exception.WatermarkException;
 import net.coobird.thumbnailator.Thumbnails;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +26,7 @@ public class CallableWorker implements Callable<byte[]> {
 
 
     @Override
-    public byte[] call() throws Exception {
+    public byte[] call() {
         logger.warn("Current thread count is : " + DefaultProcessorImpl.getThreadCount());
 
         //先做图片缩放
@@ -56,14 +55,18 @@ public class CallableWorker implements Callable<byte[]> {
                 if (watermarking != null) {
                     watermarking.execute(operation, watermark);
                 }
-            } catch (WatermarkException e) {
+            } catch (Exception e) {
                 logger.error("watermark image failed！", e);
             }
         }
 
 
         Thumbnails.Builder builder = (Thumbnails.Builder) operation.getSource();
+        try {
         builder.toFile(operation.getTarget());
+        }catch(Exception e) {
+            logger.error("save image to file error!", e);
+        }
 
         return new byte[0];
     }

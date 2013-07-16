@@ -62,8 +62,6 @@ public class PhotoController {
 
             String targetFile = photoConfig.getUploadRoot() + File.separator + i + ".jpg";
 
-
-
             FileOutputStream outputStream = null;
             try {
                 outputStream = new FileOutputStream(targetFile);
@@ -78,7 +76,7 @@ public class PhotoController {
                 }
             }
 
-            String scaleFile = photoConfig.getUploadRoot() +File.separator + "_800*900_.jpg";
+            String scaleFile = photoConfig.getUploadRoot() +File.separator + "thumb_800*900_abcd.jpg";
 
             DefaultProcessorImpl processor = new DefaultProcessorImpl();
             Operation operation = new Operation();

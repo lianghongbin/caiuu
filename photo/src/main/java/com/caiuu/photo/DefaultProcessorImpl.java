@@ -36,7 +36,6 @@ public class DefaultProcessorImpl implements Processor {
 
     public void setExecutorFactory(AbstractExecutorFactory executorFactory) {
         this.executorFactory = executorFactory;
-        logger.warn("------setExecutorFactory down------");
     }
 
     /**
@@ -50,13 +49,9 @@ public class DefaultProcessorImpl implements Processor {
         CallableWorker worker = new CallableWorker(operation, executorFactory);
 
         try {
-            logger.info("DefaultProcessorImpl->process(), before new thread, current thread name: " + Thread.currentThread().getName());
             return executorService.submit(worker).get();
         } catch (Exception ex) {
-
-            logger.error(ex.getMessage());
-        }finally {
-            threadCount.decrementAndGet();
+            logger.error("concurrent thread run error!", ex);
         }
 
         return new byte[0];

@@ -24,7 +24,7 @@ public class PhotoTest {
         operation.setTarget("/Users/lianghongbin/Pictures/test.jpg");
         Watermark watermark = new Watermark();
         watermark.setType(WatermarkType.ICON);
-        watermark.setResource("/Users/lianghongbin/Pictures/water.jpg");
+        watermark.setResource("/Users/lianghongbin/Pictures/watermark.jpg");
         List<Watermark> watermarks = new ArrayList<Watermark>();
         watermarks.add(watermark);
 
@@ -33,8 +33,6 @@ public class PhotoTest {
         size.setHeight(900);
         operation.setSize(size);
         operation.setWatermarks(watermarks);
-
-
 
         processor.setExecutorFactory(new ThumbnailatExecutorFactory());
         processor.process(operation);

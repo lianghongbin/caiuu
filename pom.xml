@@ -259,7 +259,7 @@
                 </os>
             </activation>
             <properties>
-                <photo.upload.root>/Users/lianghongbin/Pictures/watermark.jpg</photo.upload.root>
+                <photo.upload.root>/Users/lianghongbin/Pictures</photo.upload.root>
                 <photo.upload.watermark>/Users/lianghongbin/Pictures/watermark.jpg</photo.upload.watermark>
             </properties>
         </profile>

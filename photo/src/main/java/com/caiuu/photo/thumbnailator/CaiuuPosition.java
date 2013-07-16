@@ -19,7 +19,7 @@ public class CaiuuPosition implements Position {
     private int insetRight;
     private int insetTop;
     private int insetBottom;
-    private PositionType type;
+    private PositionType type = PositionType.BOTTOM_RIGHT;
 
     public void setPositionType(PositionType type) {
         this.type = type;
@@ -35,7 +35,7 @@ public class CaiuuPosition implements Position {
     }
 
     @Override
-    public Point calculate(int enclosingWidth, int enclosingHeight, int width, int height, int insetLeft, int insetRight, int insetTop, int insetBottom) {
+    public Point calculate(int enclosingWidth, int enclosingHeight, int width, int height, int l, int r, int t, int b) {
 
         int x,y;
         switch (type) {
