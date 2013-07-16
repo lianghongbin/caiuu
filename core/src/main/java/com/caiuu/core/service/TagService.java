@@ -2,11 +2,13 @@ package com.caiuu.core.service;
 
 import com.caiuu.core.dao.TagMapper;
 import com.caiuu.core.entity.Tag;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * User: Administrator
@@ -21,8 +23,8 @@ public class TagService {
     @Autowired
     private TagMapper tagMapper;
 
-    public List<Tag> findAll() {
-        return tagMapper.selectAll();
+    public int findCount(Map<String,String> map) {
+        return tagMapper.selectCount(map);
     }
 
     public int save(Tag tag) {
@@ -35,5 +37,9 @@ public class TagService {
 
     public Tag find(int id) {
         return tagMapper.select(id);
+    }
+
+    public List<Tag> findAll(Map<String,String> map, RowBounds rowBounds) {
+        return tagMapper.selectAll(map,rowBounds);
     }
 }

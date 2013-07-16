@@ -9,6 +9,10 @@
     <result column="sort" property="sort" jdbcType="INTEGER" />
   </resultMap>
 
+    <select id="selectCount" parameterType="map" resultType="int">
+        select count(1) from tag where id>#{id};
+    </select>
+
     <insert id="insert" parameterType="Tag">
         insert into tag(name,parentid,count,sort)
         values(#{name},#{parentId},#{count},#{sort})
@@ -22,7 +26,7 @@
         delete from tag where id=#{id}
     </delete>
 
-    <select id="selectAll" resultType="Tag">
-        select * from tag order by id desc
+    <select id="selectAll" parameterType="java.util.Map" resultType="Tag">
+        select * from tag where id>#{id} order by id desc
     </select>
 </mapper>

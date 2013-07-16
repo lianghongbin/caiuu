@@ -3,6 +3,9 @@
         "http://www.mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+    <properties>
+        <property name="dialect" value="mysql"/>
+    </properties>
     <settings>
         <!-- 全局启用或禁用延迟加载。当禁用时，所有关联对象都会即时加载。 -->
         <setting name="lazyLoadingEnabled" value="true"/>
@@ -12,6 +15,7 @@
         <!-- 当启用时，有延迟加载属性的对象在被调用时将会完全加载任意属性。否则，每种属性将会按需要加载。-->
         <setting name="aggressiveLazyLoading" value="true"/>
     </settings>
+
     <typeAliases>
         <!-- 分类 -->
         <typeAlias type="com.caiuu.core.entity.Category" alias="Category"/>
@@ -30,4 +34,9 @@
         <typeAlias type="com.caiuu.core.entity.Topic" alias="Topic"/>
 
     </typeAliases>
+
+    <plugins>
+        <plugin interceptor="com.caiuu.core.interceptor.PaginationInterceptor">
+        </plugin>
+    </plugins>
 </configuration>

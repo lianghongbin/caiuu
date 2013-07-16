@@ -1,3 +1,4 @@
+<%@ page import="com.caiuu.web.util.Page" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -18,6 +19,10 @@
 <h2>
     食调分类管理
 </h2>
+<%
+    Page outPage = (Page) request.getAttribute("page");
+    out.print(outPage.toString());
+%>
 <table cellspacing="0" rules="all" border="1" id="dgTopic" style="width:95%;border-collapse:collapse;">
     <tr style="background-color:#CCCCCC;height:25px;">
         <td align="center">ID</td>
