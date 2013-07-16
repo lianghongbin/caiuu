@@ -5,8 +5,8 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="url" property="url" jdbcType="VARCHAR" />
-    <result column="pic43" property="pic43" jdbcType="VARCHAR" />
-    <result column="pic21" property="pic21" jdbcType="VARCHAR" />
+    <result column="bigphoto" property="bigPhoto" jdbcType="VARCHAR" />
+    <result column="smallphoto" property="smallPhoto" jdbcType="VARCHAR" />
     <result column="publishtime" property="publishTime" jdbcType="VARCHAR" />
     <result column="createtime" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -16,7 +16,7 @@
     </select>
 
     <insert id="save" parameterType="Focus">
-        insert info focus(title,url,pic43,pic21,publishtime,createtime) values(#{title},#{url},#{pic43},#{pic21},#{publishTime},now())
+        insert info focus(title,url,bigphoto,smallphoto,publishtime,createtime) values(#{title},#{url},#{bigPhoto},#{smallPhoto},#{publishTime},now())
     </insert>
 
     <delete id="deleteById" parameterType="int">

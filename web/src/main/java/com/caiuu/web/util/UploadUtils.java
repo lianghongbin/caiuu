@@ -1,10 +1,13 @@
 package com.caiuu.web.util;
 
+import com.caiuu.photo.PhotoUtil;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
+import java.util.Random;
 
 /**
  * User: Administrator
@@ -14,21 +17,18 @@ import java.util.Date;
  */
 public class UploadUtils {
 
-    private static String imageRoot = "e:/upload";
+    public static String generateDir() {
+        StringBuilder builder = new StringBuilder(5);
+        builder.append("Y").append(File.separator).append("MM").append(File.separator).append("dd");
+        SimpleDateFormat format = new SimpleDateFormat(builder.toString());
+        return format.format(new Date());
+    }
 
-    public static String upload(String name, InputStream inputStream) throws IOException, FileNotFoundException{
-
-        String ext = StringUtils.substringAfterLast(name, ".");
-        String pureName = Long.toString(new Date().getTime());
-        String dir = new SimpleDateFormat("Y-m-d").toString();
-        String fileName = imageRoot + File.separator + dir + File.separator + pureName + File.separator + ext;
-        OutputStream outputStream = new FileOutputStream(fileName);
-        byte[] buffer = new byte[1024];
-        int length;
-        while ((length = inputStream.read(buffer)) >0) {
-            outputStream.write(buffer);
-        }
-
-        return fileName;
+    public static String generateName() {
+        long time = new Date().getTime();
+        String hexTime = Long.toHexString(time);
+        Random random = new Random();
+        String hexRandom = Long.toHexString(random.nextInt(10000));
+        return hexTime + hexRandom;
     }
 }

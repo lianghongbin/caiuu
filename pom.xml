@@ -246,7 +246,7 @@
             </activation>
             <properties>
                 <photo.upload.root>e:\upload</photo.upload.root>
-                <photo.upload.watermark>e:\upload\watermark.jpg</photo.upload.watermark>
+                <photo.upload.watermark>e:\upload\watermark.png</photo.upload.watermark>
             </properties>
         </profile>
         <profile>
@@ -260,7 +260,7 @@
             </activation>
             <properties>
                 <photo.upload.root>/Users/lianghongbin/Pictures</photo.upload.root>
-                <photo.upload.watermark>/Users/lianghongbin/Pictures/watermark.jpg</photo.upload.watermark>
+                <photo.upload.watermark>/Users/lianghongbin/Pictures/watermark.png</photo.upload.watermark>
             </properties>
         </profile>
     </profiles>

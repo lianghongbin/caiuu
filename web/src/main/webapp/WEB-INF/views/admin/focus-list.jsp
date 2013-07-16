@@ -66,8 +66,8 @@
         <td>${focus.id}</td>
         <td>${focus.title}</td>
         <td>${focus.url}</td>
-        <td>${focus.pic43}</td>
-        <td>${focus.pic21}</td>
+        <td>${focus.bigPhoto}</td>
+        <td>${focus.smallPhoto}</td>
         <td>${focus.publishTime}</td>
         <td>${focus.createTime}</td>
         <td>修改 &nbsp; <a href="#" onclick="deleteFocus('${focus.id}')">删除</a></td>

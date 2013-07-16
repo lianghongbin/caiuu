@@ -63,8 +63,8 @@ public class CallableWorker implements Callable<byte[]> {
 
         Thumbnails.Builder builder = (Thumbnails.Builder) operation.getSource();
         try {
-        builder.toFile(operation.getTarget());
-        }catch(Exception e) {
+            builder.toFile(operation.getTarget());
+        } catch (Exception e) {
             logger.error("save image to file error!", e);
         }
 

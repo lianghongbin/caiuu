@@ -7,8 +7,8 @@ public class Focus {
     private int id;
     private String title;
     private String url;
-    private String pic43;
-    private String pic21;
+    private String bigPhoto;
+    private String smallPhoto;
     private String publishTime;
     private Date createTime;
 
@@ -36,20 +36,20 @@ public class Focus {
         this.url = url;
     }
 
-    public String getPic43() {
-        return pic43;
+    public String getBigPhoto() {
+        return bigPhoto;
     }
 
-    public void setPic43(String pic43) {
-        this.pic43 = pic43;
+    public void setBigPhoto(String bigPhoto) {
+        this.bigPhoto = bigPhoto;
     }
 
-    public String getPic21() {
-        return pic21;
+    public String getSmallPhoto() {
+        return smallPhoto;
     }
 
-    public void setPic21(String pic21) {
-        this.pic21 = pic21 == null ? null : pic21.trim();
+    public void setSmallPhoto(String smallPhoto) {
+        this.smallPhoto = smallPhoto;
     }
 
     public String getPublishTime() {

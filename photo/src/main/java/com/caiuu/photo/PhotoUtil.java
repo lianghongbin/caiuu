@@ -1,5 +1,7 @@
 package com.caiuu.photo;
 
+import com.caiuu.photo.thumbnailator.ThumbnailatExecutorFactory;
+
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
@@ -8,9 +10,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 /**
  * User: Administrator
@@ -39,7 +39,7 @@ public class PhotoUtil {
         return map;
     }
 
-    private static String getFormat(Object o) {
+    public static String getFormat(Object o) {
         try {
 
             ImageInputStream iis = ImageIO.createImageInputStream(o);
@@ -55,5 +55,23 @@ public class PhotoUtil {
         }
 
         return null;
+    }
+
+    public static void thumbnail(String source, String target, String watermarkFile, Size size) {
+        DefaultProcessorImpl processor = new DefaultProcessorImpl();
+        Operation operation = new Operation();
+        operation.setFile(source);
+        operation.setTarget(target);
+        Watermark watermark = new Watermark();
+        watermark.setType(WatermarkType.ICON);
+        watermark.setResource(watermarkFile);
+        List<Watermark> watermarks = new ArrayList<Watermark>();
+        watermarks.add(watermark);
+
+        operation.setSize(size);
+        operation.setWatermarks(watermarks);
+
+        processor.setExecutorFactory(new ThumbnailatExecutorFactory());
+        processor.process(operation);
     }
 }

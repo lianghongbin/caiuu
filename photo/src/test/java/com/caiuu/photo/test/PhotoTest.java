@@ -28,9 +28,7 @@ public class PhotoTest {
         List<Watermark> watermarks = new ArrayList<Watermark>();
         watermarks.add(watermark);
 
-        Size size = new Size();
-        size.setWidth(800);
-        size.setHeight(900);
+        Size size = new Size(800, 900);
         operation.setSize(size);
         operation.setWatermarks(watermarks);
 
