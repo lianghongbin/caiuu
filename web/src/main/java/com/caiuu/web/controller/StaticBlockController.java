@@ -19,30 +19,30 @@ import java.util.List;
  * Description:
  */
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = "/admin/static")
 public class StaticBlockController {
 
     @Autowired
     private StaticBlockService staticBlockService;
 
-    @RequestMapping(value = "/static/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
         List<StaticBlock> staticBlocks = staticBlockService.findAll();
         return new ModelAndView("admin/static-list", "staticBlocks", staticBlocks);
     }
 
-    @RequestMapping(value = "/static/input", method = RequestMethod.GET)
+    @RequestMapping(value = "/input", method = RequestMethod.GET)
     public ModelAndView input() {
         return new ModelAndView("admin/static-input");
     }
 
-    @RequestMapping(value = "/static/edit/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable int id) {
         StaticBlock staticBlock = staticBlockService.find(id);
         return new ModelAndView("admin/static-edit", "staticBlock", staticBlock);
     }
 
-    @RequestMapping(value = "/static/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public String add(StaticBlock staticBlock) {
         staticBlockService.save(staticBlock);
@@ -50,7 +50,7 @@ public class StaticBlockController {
         return "success";
     }
 
-    @RequestMapping(value = "/static/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
     public String update(StaticBlock staticBlock) {
         staticBlockService.update(staticBlock);

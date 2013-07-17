@@ -17,13 +17,13 @@ import java.util.List;
  * Description:
  */
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = "/admin/category")
 public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping(value = "/category/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
         List<Category> categories = categoryService.findAll();
 
@@ -34,7 +34,7 @@ public class CategoryController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/category/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public String add(Category category) {
         categoryService.save(category);
@@ -42,7 +42,7 @@ public class CategoryController {
         return "success";
     }
 
-    @RequestMapping(value = "/category/delete/{id}")
+    @RequestMapping(value = "/delete/{id}")
     @ResponseBody
     public String delete(@PathVariable int id) {
         categoryService.delete(id);

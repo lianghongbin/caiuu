@@ -19,44 +19,44 @@ import java.util.List;
  * Description:
  */
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = "/admin/topic")
 public class TopicController {
 
     @Autowired
     private TopicService topicService;
 
-    @RequestMapping(value = "/topic/input", method = RequestMethod.GET)
+    @RequestMapping(value = "/input", method = RequestMethod.GET)
     public ModelAndView view() {
         return new ModelAndView("admin/topic-input");
     }
 
-    @RequestMapping(value = "/topic/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
         List<Topic> topics = topicService.findAll();
         return new ModelAndView("admin/topic-list", "topics", topics);
     }
 
-    @RequestMapping(value = "/topic/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public String add(Topic topic) {
         topicService.save(topic);
         return "success";
     }
 
-    @RequestMapping(value = "/topic/edit/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable int id) {
         Topic topic = topicService.find(id);
         return new ModelAndView("admin/topic-edit", "topic", topic);
     }
 
-    @RequestMapping(value = "/topic/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
     public String update(Topic topic) {
         topicService.update(topic);
         return "success";
     }
 
-    @RequestMapping(value = "/topic/delete/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     @ResponseBody
     public String delete(@PathVariable int id) {
         topicService.delete(id);

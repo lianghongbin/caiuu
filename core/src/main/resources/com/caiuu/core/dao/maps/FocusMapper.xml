@@ -11,12 +11,12 @@
     <result column="createtime" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
 
-    <select id="selectAll" resultType="Focus">
-        select * from focus order by id;
+    <select id="select" parameterType="int" resultType="Focus">
+        select * from focus where id=#{id}
     </select>
 
-    <insert id="save" parameterType="Focus">
-        insert info focus(title,url,bigphoto,smallphoto,publishtime,createtime) values(#{title},#{url},#{bigPhoto},#{smallPhoto},#{publishTime},now())
+    <insert id="insert" parameterType="Focus">
+        insert into focus(title,url,bigphoto,smallphoto,publishtime,createtime) values(#{title},#{url},#{bigPhoto},#{smallPhoto},#{publishTime},now())
     </insert>
 
     <delete id="deleteById" parameterType="int">
@@ -26,4 +26,8 @@
     <update id="update" parameterType="Focus">
         update focus set title=#{title},url=#{url},publishtime=#{publishTime} where id=#{id}
     </update>
+
+    <select id="selectAll" resultType="Focus">
+        select * from focus order by id;
+    </select>
 </mapper>

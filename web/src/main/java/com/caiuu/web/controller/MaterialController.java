@@ -21,7 +21,7 @@ import java.util.List;
  * Description:
  */
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = "/admin/material")
 public class MaterialController {
 
     @Autowired
@@ -29,7 +29,7 @@ public class MaterialController {
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping(value = "/material/list")
+    @RequestMapping(value = "/list")
     public ModelAndView list() {
         List<Material> materials = materialService.findAll();
         int count = materialService.count();
@@ -40,7 +40,7 @@ public class MaterialController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/material/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public String add(Material material, int categoryId) {
         Category category = new Category();
@@ -51,7 +51,7 @@ public class MaterialController {
         return "success";
     }
 
-    @RequestMapping(value = "/material/edit/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable int id) {
         List<Category> categories = categoryService.findAll();
         Material material = materialService.find(id);
@@ -63,14 +63,14 @@ public class MaterialController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/material/delete/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     @ResponseBody
     public String delete(@PathVariable int id) {
         materialService.delete(id);
         return "success";
     }
 
-    @RequestMapping(value = "/material/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
     public String update(Material material) {
         materialService.update(material);

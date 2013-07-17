@@ -21,7 +21,6 @@
         }
     </style>
     <script type="text/javascript">
-
         $(document).ready(function () {
             var options = {
                 //beforeSubmit:  showRequest,  // 提交前调用的方法
@@ -38,11 +37,11 @@
 
         function showResponse(responseText, statusText) {
             if (responseText == 'success') {
-                alert("添加焦点图成功！");
-                document.location = "list";
+                alert("更新焦点图成功！");
+                document.location = "../list";
             }
 
-            alert("添加焦点图失败！");
+            alert("更新焦点图失败！");
         }
 
         $(document).ready(function () {
@@ -51,28 +50,19 @@
     </script>
 </head>
 <body>
-<form method="post" action="save" id="focusForm" enctype="multipart/form-data">
+<form method="post" action="../update" id="focusForm">
     <div>
-        <h2>添加焦点图&nbsp;&nbsp;<a href="list">焦点图管理</a></h2>
-
-        <p>
-            标题：<input name="title" type="text" style="width:370px;"/>
+        <h2>修改焦点图&nbsp;&nbsp;<a href="../list">焦点图管理</a></h2>
+        <p><input name="id" type="hidden" value="${focus.id}"/>
+            标题：<input name="title" type="text" value="${focus.title}" style="width:370px;"/>
         </p>
 
         <p>
-            URL：<input name="url" type="text" style="width:369px;"/>
+            URL：<input name="url" type="text" value="${focus.url}" style="width:369px;"/>
         </p>
 
-        <p>
-            670*260图片：<input type="file" name="big"/>
-        </p>
-
-        <p>
-            300*225图片：<input type="file" name="small"/>
-        </p>
-
-        <p>发布时间：<input type="text" name="publishTime" id="publishTime"></p>
-        <input type="submit" value="添加" id="Button1"/>
+        <p>发布时间：<input type="text" name="publishTime" value="${focus.publishTime}" id="publishTime"></p>
+        <input type="submit" value="修改" id="Button1"/>
         <br/>
         <br/>
 

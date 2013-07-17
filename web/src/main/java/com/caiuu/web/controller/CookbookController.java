@@ -24,7 +24,7 @@ import java.util.Map;
  * Description:
  */
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = "/admin/cookbook")
 public class CookbookController {
 
     @Autowired
@@ -34,7 +34,7 @@ public class CookbookController {
     @Autowired
     private TemporaryService temporaryService;
 
-    @RequestMapping(value = "/cookbook/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
         List<Cookbook> cookbooks = cookbookService.findAll();
         int count = cookbookService.count();
@@ -45,7 +45,7 @@ public class CookbookController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/cookbook/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public String add(Cookbook cookbook, String info, int temporaryId) {
         int cookbookId = cookbookService.save(cookbook);
@@ -58,7 +58,7 @@ public class CookbookController {
         return "success";
     }
 
-    @RequestMapping(value = "/cookbook/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
     public String update(Cookbook cookbook, String info) {
         Map<String,String> map = new HashMap<String, String>(1);
@@ -70,7 +70,7 @@ public class CookbookController {
         return "success";
     }
 
-    @RequestMapping(value = "/cookbook/delete/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     @ResponseBody
     public String delete(@PathVariable int id) {
         cookbookService.delete(id);
@@ -78,7 +78,7 @@ public class CookbookController {
         return "success";
     }
 
-    @RequestMapping(value = "/cookbook/edit/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable int id) {
         Cookbook cookbook = cookbookService.find(id);
         Detail detail = detailService.find(id);

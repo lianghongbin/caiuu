@@ -22,7 +22,7 @@ import java.util.List;
  * Description:
  */
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = "/admin/temp")
 public class TemporaryController {
 
     @Autowired
@@ -30,14 +30,14 @@ public class TemporaryController {
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping(value = "/temp/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
         List<Temporary> temporaries = temporaryService.selectAll();
 
         return new ModelAndView("admin/temp-list", "temporaries", temporaries);
     }
 
-    @RequestMapping(value = "/temp/edit/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable int id) {
         Temporary temporary = temporaryService.find(id);
         List<CategoryLink> categoryLinks = categoryService.getCategoryLink();
@@ -48,7 +48,7 @@ public class TemporaryController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/temp/view", method = RequestMethod.POST)
+    @RequestMapping(value = "/view", method = RequestMethod.POST)
     public ModelAndView view(Temporary temporary, String info, String profile, int categoryId) {
 
         List<Category> family = categoryService.getCategoryFamilyById(categoryId);
@@ -64,7 +64,7 @@ public class TemporaryController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/temp/delete/{id}")
+    @RequestMapping(value = "/delete/{id}")
     @ResponseBody
     public String delete(@PathVariable int id) {
         temporaryService.delete(id);

@@ -21,8 +21,8 @@ public class FocusService {
     @Autowired
     private FocusMapper focusMapper;
 
-    public List<Focus> findAll() {
-        return focusMapper.selectAll();
+    public Focus find(int id) {
+        return focusMapper.select(id);
     }
 
     public int save(Focus focus) {
@@ -35,5 +35,9 @@ public class FocusService {
 
     public int deleteById(int id) {
         return focusMapper.deleteById(id);
+    }
+
+    public List<Focus> findAll() {
+        return focusMapper.selectAll();
     }
 }

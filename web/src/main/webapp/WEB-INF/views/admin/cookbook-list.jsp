@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head><title>
 </title>
-    <script type="text/javascript" src="../../js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../../../js/jquery-1.10.2.min.js"></script>
     <script src="../../js/jquery.form.js"></script>
     <script type="text/javascript">
         var deleteFunction = function (id) {

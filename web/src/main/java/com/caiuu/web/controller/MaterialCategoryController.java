@@ -19,20 +19,20 @@ import java.util.List;
  * Description:
  */
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = "/admin/mc")
 public class MaterialCategoryController {
 
     @Autowired
     private MaterialCategoryService materialCategoryService;
 
-    @RequestMapping(value = "/mc/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
         List<MaterialCategory> materialCategories = materialCategoryService.findAll();
 
         return new ModelAndView("/admin/mc-list", "mcs", materialCategories);
     }
 
-    @RequestMapping(value = "/mc/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public String add(MaterialCategory materialCategory) {
         materialCategoryService.save(materialCategory);
@@ -40,13 +40,13 @@ public class MaterialCategoryController {
         return "success";
     }
 
-    @RequestMapping(value = "/mc/view/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
     public ModelAndView find(@PathVariable int id) {
         MaterialCategory materialCategory = materialCategoryService.find(id);
         return new ModelAndView("/admin/mc-view", "mc", materialCategory);
     }
 
-    @RequestMapping(value = "/mc/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
     public String update(MaterialCategory materialCategory) {
         materialCategoryService.update(materialCategory);

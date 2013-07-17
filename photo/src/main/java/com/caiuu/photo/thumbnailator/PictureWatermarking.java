@@ -35,7 +35,7 @@ public class PictureWatermarking implements Watermarking {
         logger.debug("print picture watermark start!");
 
         Thumbnails.Builder builder = (Thumbnails.Builder) operation.getSource();
-        CaiuuPosition position = new CaiuuPosition(0,30,0,30);
+        CaiuuPosition position = new CaiuuPosition(0,10,0,10);
 
         Thumbnails.Builder watermarkBuilder = builder.watermark(position, ImageIO.read(new File(watermark.getResource())), 0.5f);
         operation.setSource(watermarkBuilder);

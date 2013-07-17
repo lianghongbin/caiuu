@@ -16,15 +16,15 @@ import java.util.List;
  * Description:
  */
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = "/admin/search")
 public class SearchLogController {
 
     @Autowired
     private SearchLogService searchLogService;
 
-    @RequestMapping(value = "/search/list")
+    @RequestMapping(value = "/list")
      public ModelAndView list() {
         List<SearchLog> searchLogs = searchLogService.findAll();
-        return new ModelAndView("/admin/search/list", "searchLogs", searchLogs);
+        return new ModelAndView("admin/search/list", "searchLogs", searchLogs);
     }
 }

@@ -1,38 +1,28 @@
 package com.caiuu.web.controller;
 
 import com.caiuu.core.entity.Focus;
-import com.caiuu.core.entity.Image;
 import com.caiuu.core.service.FocusService;
-import com.caiuu.core.service.ImageService;
-import com.caiuu.photo.*;
-import com.caiuu.photo.thumbnailator.ThumbnailatExecutorFactory;
+import com.caiuu.photo.PhotoUtil;
+import com.caiuu.photo.Size;
 import com.caiuu.web.util.PhotoConfig;
 import com.caiuu.web.util.UploadUtils;
-import org.apache.commons.fileupload.FileItemFactory;
-import org.apache.commons.fileupload.FileItemIterator;
-import org.apache.commons.fileupload.FileItemStream;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.fileupload.util.Streams;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -52,15 +42,32 @@ public class FocusController {
     private PhotoConfig photoConfig;
     private final static Logger logger = LoggerFactory.getLogger(FocusController.class);
 
-    @RequestMapping(value = "/view")
-    public ModelAndView view() {
-        return new ModelAndView("admin/focus-view");
-    }
-
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
         List<Focus> focuses = focusService.findAll();
         return new ModelAndView("admin/focus-list", "focuses", focuses);
+    }
+
+    @RequestMapping(value = "/view", method = RequestMethod.GET)
+    public ModelAndView view() {
+        return new ModelAndView("admin/focus-view");
+    }
+
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public ModelAndView edit(@PathVariable int id) {
+        Focus focus = focusService.find(id);
+        return new ModelAndView("admin/focus-edit", "focus", focus);
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @ResponseBody
+    public String update(Focus focus) {
+        Focus org = focusService.find(focus.getId());
+        focus.setBigPhoto(org.getBigPhoto());
+        focus.setSmallPhoto(org.getSmallPhoto());
+        focusService.save(focus);
+
+        return "success";
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
@@ -78,40 +85,33 @@ public class FocusController {
         MultipartHttpServletRequest re = (MultipartHttpServletRequest) request;
         Map<String, MultipartFile> map = re.getFileMap();
 
-        String thumbnail;
-        String target;
-        String photoName;
         String saveName;
         Size size;
-        File uploadDir;
-        String targetDir;
+        String bigSaveName = null;
+        String smallSaveName = null;
+
 
         for (MultipartFile file : map.values()) {
 
+            String photoName = UploadUtils.generateName(); //上传源文件名称
+            String dir = UploadUtils.generateDir();
             if (file.getName().equals("big")) {
-                photoName = UploadUtils.generateName();
-                saveName = photoName + File.separator + "670-260_" + photoName + ".jpg";
+                saveName = dir + File.separator + "670-260_" + photoName + ".jpg";
+                bigSaveName = saveName;
                 size = new Size(670, 260);
-
-                targetDir = photoConfig.getUploadRoot() + File.separator + UploadUtils.generateDir();
-                uploadDir = new File(targetDir);
-                if (!uploadDir.exists()) {
-                    uploadDir.mkdirs();
-                }
             } else {
-                photoName = UploadUtils.generateName();
-                saveName = photoName + File.separator + "300-225_" + photoName + ".jpg";
+                saveName = dir + File.separator + "300-225_" + photoName + ".jpg";
+                smallSaveName = saveName;
                 size = new Size(330, 225);
-
-                targetDir = photoConfig.getUploadRoot() + File.separator + UploadUtils.generateDir();
-                uploadDir = new File(targetDir);
-                if (!uploadDir.exists()) {
-                    uploadDir.mkdirs();
-                }
             }
 
-            thumbnail = photoConfig.getUploadRoot() + File.separator + saveName;
-            target = targetDir + File.separator + photoName+".jpg";
+            File uploadDir = new File(photoConfig.getUploadRoot() + File.separator + dir);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdirs();
+            }
+
+            String thumbnail = photoConfig.getUploadRoot() + File.separator + saveName;
+            String target = new File(uploadDir, photoName + ".jpg").getAbsolutePath();     //上传源文件完整路径
 
             FileOutputStream outputStream = null;
             try {
@@ -121,6 +121,7 @@ public class FocusController {
             } catch (IOException e) {
                 logger.error("图片上传失败！", e);
                 try {
+                    assert outputStream != null;
                     outputStream.close();
                 } catch (IOException e1) {
                     e1.printStackTrace();
@@ -131,6 +132,10 @@ public class FocusController {
 
             PhotoUtil.thumbnail(target, thumbnail, photoConfig.getWatermark(), size);
         }
+
+        focus.setBigPhoto(bigSaveName);
+        focus.setSmallPhoto(smallSaveName);
+        focusService.save(focus);
 
         return "success";
     }

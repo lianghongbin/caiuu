@@ -29,18 +29,18 @@ import java.util.Map;
  * Description:
  */
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = "/admin/photo")
 public class PhotoController {
 
     @Autowired
     private PhotoConfig photoConfig;
 
-    @RequestMapping(value = "/photo/view", method = RequestMethod.GET)
+    @RequestMapping(value = "/view", method = RequestMethod.GET)
     public ModelAndView view() {
         return new ModelAndView("admin/photo-view");
     }
 
-    @RequestMapping(value = "/photo/upload", method = RequestMethod.POST)
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public ModelAndView upload(Focus focus, HttpServletRequest request, HttpServletResponse response) {
         MultipartHttpServletRequest re = (MultipartHttpServletRequest) request;
 

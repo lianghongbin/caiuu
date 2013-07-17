@@ -19,19 +19,19 @@ import java.util.List;
  * Description:
  */
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = "/admin/detail")
 public class DetailController {
 
     @Autowired
     private DetailService detailService;
 
-    @RequestMapping(value = "/detail/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
         List<Detail> details = detailService.findAll();
         return new ModelAndView("admin/detail-list", "details", details);
     }
 
-    @RequestMapping(value = "/detail/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public String add(Detail detail) {
         detailService.save(detail);
@@ -39,14 +39,14 @@ public class DetailController {
         return "success";
     }
 
-    @RequestMapping(value = "/detail/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
     public String update(Detail detail) {
         detailService.update(detail);
         return "success";
     }
 
-    @RequestMapping(value = "/detail/delete/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     @ResponseBody
     public String delete(@PathVariable int id) {
         detailService.delete(id);
@@ -54,7 +54,7 @@ public class DetailController {
         return "success";
     }
 
-    @RequestMapping(value = "/detail/view/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
     public ModelAndView view(@PathVariable int id) {
         Detail detail = detailService.find(id);
         return new ModelAndView("admin/detail-view", "detail", detail);

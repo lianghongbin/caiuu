@@ -8,11 +8,13 @@ import java.util.List;
 @Repository
 public interface FocusMapper {
 
-    public List<Focus> selectAll();
+    public Focus select(int id);
 
     public int deleteById(int id);
 
     public int insert(Focus focus);
 
     public int update(Focus focus);
+
+    public List<Focus> selectAll();
 }

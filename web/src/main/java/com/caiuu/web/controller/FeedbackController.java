@@ -17,13 +17,13 @@ import java.util.List;
  * Description:
  */
 @Controller
-@RequestMapping(value="/admin")
+@RequestMapping(value="/admin/feedback")
 public class FeedbackController {
 
     @Autowired
     private FeedbackService feedbackService;
 
-    @RequestMapping(value="/feedback/list", method = RequestMethod.GET)
+    @RequestMapping(value="/list", method = RequestMethod.GET)
     public ModelAndView list() {
         List<Feedback> feedbacks = feedbackService.findAll();
 
