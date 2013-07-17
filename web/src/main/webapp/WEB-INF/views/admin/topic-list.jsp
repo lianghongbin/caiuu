@@ -16,7 +16,7 @@
 </head>
 <body>
 <h2>
-    专题管理&nbsp;&nbsp;&nbsp;<a href="./input">添加新专题</a>&nbsp;&nbsp;<a href="TopicCaipu.aspx">专题-菜谱管理</a>
+    专题管理&nbsp;&nbsp;&nbsp;<a href="./input">添加新专题</a></a>
 </h2>
 <table cellspacing="0" rules="all" border="1" id="dgTopic" style="width:95%;border-collapse:collapse;">
     <tr style="background-color:#CCCCCC;height:25px;">
@@ -56,7 +56,7 @@
         <td align="center">${topic.status}</td>
         <td><a href="${topic.url}" target="_blank">${topic.url}</a></td>
         <td align="center"><a href="./edit/${topic.id}" target="_self">修改内容</a></td>
-        <td align="center"><a href="./editpic/${topic.id}">修改图片</a></td>
+        <td align="center"><a href="./epic/${topic.id}">修改图片</a></td>
         </tr>
     </c:forEach>
 
