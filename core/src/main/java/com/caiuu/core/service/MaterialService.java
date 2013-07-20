@@ -2,6 +2,7 @@ package com.caiuu.core.service;
 
 import com.caiuu.core.dao.MaterialMapper;
 import com.caiuu.core.entity.Material;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,7 @@ public class MaterialService {
     @Autowired
     private MaterialMapper materialMapper;
 
-    public int count() {
+    public int findCount() {
         return materialMapper.count();
     }
 
@@ -41,7 +42,7 @@ public class MaterialService {
         return materialMapper.select(id);
     }
 
-    public List<Material> findAll() {
-        return materialMapper.selectAll();
+    public List<Material> findAll(RowBounds rowBounds) {
+        return materialMapper.selectAll(rowBounds);
     }
 }

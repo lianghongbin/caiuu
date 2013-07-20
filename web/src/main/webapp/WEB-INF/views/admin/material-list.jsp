@@ -1,3 +1,4 @@
+<%@ page import="com.caiuu.web.util.Page" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -36,7 +37,10 @@
 <body>
 <h2>食材管理</h2>
 
-<p>共${count}条记录</p>
+<p><%
+    Page outPage = (Page) request.getAttribute("page");
+    out.print(outPage.toString());
+%></p>
 <table cellspacing="0" rules="all" border="1" id="Table1" style="width:100%;border-collapse:collapse;">
     <tr align="center" style="background-color:#999999;">
         <td style="width:20px;">ID</td>
@@ -88,5 +92,8 @@
         </tr>
     </c:forEach>
 </table>
+<p><%
+    out.print(outPage.toString());
+%></p>
 </body>
 </html>

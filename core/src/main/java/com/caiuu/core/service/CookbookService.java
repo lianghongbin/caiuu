@@ -2,6 +2,7 @@ package com.caiuu.core.service;
 
 import com.caiuu.core.dao.CookbookMapper;
 import com.caiuu.core.entity.Cookbook;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +23,7 @@ public class CookbookService {
     @Autowired
     private CookbookMapper cookbookMapper;
 
-    public int count() {
+    public int findCount() {
         return cookbookMapper.count();
     }
 
@@ -42,7 +43,7 @@ public class CookbookService {
         return cookbookMapper.select(id);
     }
 
-    public List<Cookbook> findAll() {
-        return cookbookMapper.selectAll();
+    public List<Cookbook> findAll(RowBounds rowBounds) {
+        return cookbookMapper.selectAll(rowBounds);
     }
 }

@@ -23,8 +23,8 @@ public class TagService {
     @Autowired
     private TagMapper tagMapper;
 
-    public int findCount(Map<String,String> map) {
-        return tagMapper.selectCount(map);
+    public int findCount() {
+        return tagMapper.selectCount();
     }
 
     public int save(Tag tag) {
@@ -39,7 +39,7 @@ public class TagService {
         return tagMapper.select(id);
     }
 
-    public List<Tag> findAll(Map<String,String> map, RowBounds rowBounds) {
-        return tagMapper.selectAll(map,rowBounds);
+    public List<Tag> findAll(RowBounds rowBounds) {
+        return tagMapper.selectAll(rowBounds);
     }
 }

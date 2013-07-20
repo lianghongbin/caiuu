@@ -22,15 +22,15 @@
     <p> <a href="static/list" target="mainFrame">手工内容</a> </p>
     <P> <a href="topic/list" target="mainFrame">专题列表</a> </P>
     <p>采集</p>
-    <p><a href="temp/list" target="mainFrame" style="color:red;">采集的菜谱</a></p>
+    <p><a href="temp/list/1" target="mainFrame" style="color:red;">采集的菜谱</a></p>
     <p>菜谱</p>
     <p> <a href="category/list" target="mainFrame">菜谱分类管理</a> </p>
-    <p> <a href="cookbook/list" target="mainFrame">菜谱列表</a> </p>
+    <p> <a href="cookbook/list/1" target="mainFrame">菜谱列表</a> </p>
     <p> <a href="Topic/TopicCaipu.aspx" target="mainFrame">菜谱-专题管理</a> </p>
     <p>食调</p>
-    <p> <a href="tag/list" target="mainFrame">食调分类管理</a> </p>
+    <p> <a href="tag/list/1" target="mainFrame">食调分类管理</a> </p>
     <p>食材</p>
     <p> <a href="mc/list" target="mainFrame">食材分类管理</a></p>
-    <p> <a href="material/list" target="mainFrame">食材列表</a></p>
+    <p> <a href="material/list/1" target="mainFrame">食材列表</a></p>
 </body>
 </html>

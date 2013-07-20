@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.caiuu.core.dao.TopicMapper" >
-  <resultMap id="BaseResultMap" type="com.caiuu.core.entity.Topic" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="url" property="url" jdbcType="VARCHAR" />
-    <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="adpic" property="adPic" jdbcType="VARCHAR" />
-    <result column="headpic" property="headPic" jdbcType="VARCHAR" />
-    <result column="materialid" property="materialId" jdbcType="INTEGER" />
-    <result column="key1" property="key1" jdbcType="VARCHAR" />
-    <result column="key2" property="key2" jdbcType="VARCHAR" />
-    <result column="key3" property="key3" jdbcType="VARCHAR" />
-    <result column="hit" property="hit" jdbcType="INTEGER" />
-    <result column="hitlast" property="hitLast" jdbcType="INTEGER" />
-    <result column="status" property="status" jdbcType="INTEGER" />
-    <result column="createtime" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="lasttime" property="lastTime" jdbcType="TIMESTAMP" />
-  </resultMap>
+<mapper namespace="com.caiuu.core.dao.TopicMapper">
+    <resultMap id="BaseResultMap" type="com.caiuu.core.entity.Topic">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="adpic" property="adPic" jdbcType="VARCHAR"/>
+        <result column="headpic" property="headPic" jdbcType="VARCHAR"/>
+        <result column="materialid" property="materialId" jdbcType="INTEGER"/>
+        <result column="key1" property="key1" jdbcType="VARCHAR"/>
+        <result column="key2" property="key2" jdbcType="VARCHAR"/>
+        <result column="key3" property="key3" jdbcType="VARCHAR"/>
+        <result column="hit" property="hit" jdbcType="INTEGER"/>
+        <result column="hitlast" property="hitLast" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="createtime" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="lasttime" property="lastTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
 
     <select id="select" resultType="Topic" parameterType="int">
         select * from topic where id=#{id}
@@ -37,8 +37,17 @@
         key3=#{key3},lasttime=now() where id=#{id}
     </update>
 
-    <update id="updatePicture" parameterType="Topic">
-        update topic set adpic=#{adPic},headPic=#{headPic} where id=#{id}
+    <update id="updatePicture" parameterType="map">
+        update topic
+        <set>
+            <if test="adPic != null">
+                adpic = #{adPic},
+            </if>
+            <if test="headPic != null">
+                headpic = #{headPic},
+            </if>
+        </set>
+        where id=#{id}
     </update>
 
     <delete id="delete" parameterType="int">

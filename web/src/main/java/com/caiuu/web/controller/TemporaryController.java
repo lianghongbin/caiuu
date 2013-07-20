@@ -5,6 +5,9 @@ import com.caiuu.core.entity.CategoryLink;
 import com.caiuu.core.entity.Temporary;
 import com.caiuu.core.service.CategoryService;
 import com.caiuu.core.service.TemporaryService;
+import com.caiuu.web.util.Page;
+import com.caiuu.web.util.RowBoundsUtil;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,11 +33,23 @@ public class TemporaryController {
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ModelAndView list() {
-        List<Temporary> temporaries = temporaryService.selectAll();
+    @RequestMapping(value = "/list/{num}", method = RequestMethod.GET)
+    public ModelAndView list(@PathVariable int num) {
+        int currentPage = num < 1 ? 1 : num;
+        Page page = new Page();
+        page.setPageSize(40);
+        page.setCurrentPage(currentPage);
+        page.setTotalRows(temporaryService.findCount());
+        page.setUrl("./{0}");
 
-        return new ModelAndView("admin/temp-list", "temporaries", temporaries);
+        RowBounds rowBounds = RowBoundsUtil.generate(page);
+        List<Temporary> temporaries = temporaryService.findAll(rowBounds);
+
+        ModelAndView modelAndView = new ModelAndView("admin/temp-list");
+        modelAndView.addObject("temporaries", temporaries);
+        modelAndView.addObject("page", page);
+
+        return modelAndView;
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)

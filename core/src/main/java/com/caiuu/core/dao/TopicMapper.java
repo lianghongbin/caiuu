@@ -3,6 +3,8 @@ package com.caiuu.core.dao;
 import com.caiuu.core.entity.Topic;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +15,7 @@ public interface TopicMapper {
 
     public int update(Topic topic);
 
-    public int updatePicture(Topic topic);
+    public int updatePicture(Map<String,String> map);
 
     public List<Topic> selectAll();
 

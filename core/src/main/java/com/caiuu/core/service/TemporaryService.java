@@ -2,6 +2,7 @@ package com.caiuu.core.service;
 
 import com.caiuu.core.dao.TemporaryMapper;
 import com.caiuu.core.entity.Temporary;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +23,7 @@ public class TemporaryService {
     @Autowired
     private TemporaryMapper temporaryMapper;
 
-    public int count() {
+    public int findCount() {
         return temporaryMapper.count();
     }
 
@@ -38,8 +39,8 @@ public class TemporaryService {
         return temporaryMapper.select(id);
     }
 
-    public List<Temporary> selectAll() {
-        return temporaryMapper.selectAll();
+    public List<Temporary> findAll(RowBounds rowBounds) {
+        return temporaryMapper.selectAll(rowBounds);
     }
 
     public int delete(int id) {

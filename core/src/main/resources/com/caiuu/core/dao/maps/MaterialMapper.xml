@@ -45,6 +45,6 @@
     </select>
 
     <select id="selectAll" resultMap="BaseResultMap">
-        select * from material order by id asc limit 100
+        select * from material order by id asc
     </select>
 </mapper>

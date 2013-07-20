@@ -1,6 +1,7 @@
 package com.caiuu.core.dao;
 
 import com.caiuu.core.entity.Cookbook;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,5 +20,5 @@ public interface CookbookMapper {
 
     public Cookbook select(int id);
 
-    public List<Cookbook> selectAll();
+    public List<Cookbook> selectAll(RowBounds rowBounds);
 }

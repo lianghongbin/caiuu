@@ -4,6 +4,7 @@ import com.caiuu.core.entity.Material;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -19,5 +20,5 @@ public interface MaterialMapper {
 
     public Material select(int id);
 
-    public List<Material> selectAll();
+    public List<Material> selectAll(RowBounds rowBounds);
 }

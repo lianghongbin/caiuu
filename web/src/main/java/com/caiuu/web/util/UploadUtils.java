@@ -26,7 +26,7 @@ public class UploadUtils {
 
     public static String generateName() {
         long time = new Date().getTime();
-        String hexTime = Long.toHexString(time);
+        String hexTime = Long.toHexString(time).toUpperCase();
         Random random = new Random();
         String hexRandom = Long.toHexString(random.nextInt(10000));
         return hexTime + hexRandom;

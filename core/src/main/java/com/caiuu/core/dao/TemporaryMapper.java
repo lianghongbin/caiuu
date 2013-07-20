@@ -1,6 +1,7 @@
 package com.caiuu.core.dao;
 
 import com.caiuu.core.entity.Temporary;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public interface TemporaryMapper {
 
     public Temporary select(int id);
 
-    public List<Temporary> selectAll();
+    public List<Temporary> selectAll(RowBounds rowBounds);
 
     public int delete(int id);
 

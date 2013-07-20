@@ -23,8 +23,8 @@
     </resultMap>
 
     <insert id="insert" parameterType="Detail">
-        insert into detail(cookbookid,material,blending,fixing,fire,okren,noren,pkey,ckey,pic,status,good,bad,publishtime,lasttime)
-            values(#{cookbookId},#{material},#{blending},#{fixing},#{fire},#{okren},#{noren},#{pkey},#{ckey},#{pic},#{status},#{good},#{bad},now(),now())
+        insert into detail(cookbookid,material,blending,fixing,fire,okren,noren,pkey,ckey,info,pic,status,good,bad,publishtime,lasttime)
+            values(#{cookbookId},#{material},#{blending},#{fixing},#{fire},#{okren},#{noren},#{pkey},#{ckey},#{info},#{pic},#{status},#{good},#{bad},now(),now())
     </insert>
 
     <update id="update" parameterType="Detail">

@@ -41,7 +41,7 @@ public class PhotoController {
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public ModelAndView upload(Focus focus, HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView upload(HttpServletRequest request, HttpServletResponse response) {
         MultipartHttpServletRequest re = (MultipartHttpServletRequest) request;
 
         Map<String, MultipartFile> map = re.getFileMap();

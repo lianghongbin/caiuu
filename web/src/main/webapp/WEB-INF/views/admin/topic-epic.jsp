@@ -46,12 +46,12 @@
     </script>
 </head>
 <body>
-<form method="post" action="../upic" id="topicForm">
+<form method="post" action="../upic" id="topicForm" enctype="multipart/form-data">
 
     <h2>
         修改专题图片&nbsp;&nbsp;&nbsp;<a href="../list">专题管理</a></a>
     </h2>
-    <input name="id" type="hidden" value="${topic.id}"/>
+    <input name="id" type="hidden" value="${id}"/>
 
     <p><input name="title" value="${title}" readonly="true"/></p>
 

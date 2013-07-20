@@ -46,4 +46,15 @@
         <property name="uploadRoot" value="${photo.upload.root}"/>
         <property name="watermark" value="${photo.upload.watermark}"/>
     </bean>
+
+    <!-- 异常处理器 -->
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.Exception">
+                    error
+                </prop>
+            </props>
+        </property>
+    </bean>
 </beans>

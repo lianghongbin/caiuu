@@ -1,3 +1,4 @@
+<%@ page import="com.caiuu.web.util.Page" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -15,7 +16,7 @@
             }
 
             $.ajax({
-                url: "./delete/" + id,
+                url: "../delete/" + id,
                 type: "GET",
                 contentType: "text/html; charset=utf-8",
                 dataType: "text"
@@ -34,6 +35,10 @@
 </head>
 <body>
 <h3>菜谱列表</h3>
+<p><%
+    Page outPage = (Page) request.getAttribute("page");
+    out.print(outPage.toString());
+%></p>
 <table cellspacing="0" rules="all" border="1" id="dgCategory" style="border-color:#CCCCCC;border-collapse:collapse;">
     <tr style="color:White;background-color:#666666;">
         <td>名称</td>
@@ -57,11 +62,13 @@
         <td><img src="http://img.caiuu.com/${cookbook.headPic}"/></td>
         <td>${cookbook.hitLast}</td>
         <td>${cookbook.publishTime}</td>
-        <td>分类 <a href="./edit/${cookbook.id}">修改</a> <a href="#" onclick="return deleteFunction('${cookbook.id}')">删除</a> </td>
+        <td>分类 <a href="../edit/${cookbook.id}">修改</a> <a href="#" onclick="return deleteFunction('${cookbook.id}')">删除</a> </td>
         </tr>
     </c:forEach>
 
 </table>
-
+<p><%
+    out.print(outPage.toString());
+%></p>
 </body>
 </html>

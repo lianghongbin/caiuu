@@ -96,11 +96,11 @@ public class FocusController {
             String photoName = UploadUtils.generateName(); //上传源文件名称
             String dir = UploadUtils.generateDir();
             if (file.getName().equals("big")) {
-                saveName = dir + File.separator + "670-260_" + photoName + ".jpg";
+                saveName = dir + File.separator+ photoName + "_670x260"  + ".jpg";
                 bigSaveName = saveName;
                 size = new Size(670, 260);
             } else {
-                saveName = dir + File.separator + "300-225_" + photoName + ".jpg";
+                saveName = dir + File.separator+ photoName + "_300x225"  + ".jpg";
                 smallSaveName = saveName;
                 size = new Size(330, 225);
             }

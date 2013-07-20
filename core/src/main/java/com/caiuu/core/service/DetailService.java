@@ -31,6 +31,14 @@ public class DetailService {
     }
 
     public int updateContent(Map<String,String> map) {
+        Detail detail = detailMapper.select(Integer.parseInt(map.get("cookbookId")));
+        if (detail == null) {
+            Detail d = new Detail();
+            d.setCookbookId(Integer.parseInt(map.get("cookbookId")));
+            d.setInfo(map.get("info"));
+            return detailMapper.insert(d);
+        }
+
         return detailMapper.updateContent(map);
     }
 

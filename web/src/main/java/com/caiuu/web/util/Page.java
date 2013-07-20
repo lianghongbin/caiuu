@@ -76,6 +76,8 @@ public class Page {
     @Override
     public String toString() {
         StringBuilder buffer = new StringBuilder();
+        buffer.append("共 ").append(getTotalPages()).append(" 页&nbsp;&nbsp;");
+        buffer.append("当前第 ").append(getCurrentPage()).append(" 页&nbsp;&nbsp;");
         if (getTotalPages() > 1 && currentPage > 1) {
             buffer.append("<a href=\"");
             buffer.append(urlFormat(1));

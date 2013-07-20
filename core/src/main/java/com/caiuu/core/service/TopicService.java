@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * User: Administrator
@@ -29,8 +30,8 @@ public class TopicService {
         return topicMapper.update(topic);
     }
 
-    public int updatePicture(Topic topic) {
-        return topicMapper.updatePicture(topic);
+    public int updatePicture(Map<String,String> map) {
+        return topicMapper.updatePicture(map);
     }
 
     public List<Topic> findAll() {

@@ -1,3 +1,4 @@
+<%@ page import="com.caiuu.web.util.Page" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -30,11 +31,16 @@
 </head>
 <body>
 <h2>采集临时菜谱管理</h2>
-
+<p>
+<%
+    Page outPage = (Page) request.getAttribute("page");
+    out.print(outPage.toString());
+%>
+</p>
 <ul>
     <c:forEach items="${temporaries}" var="temporary" varStatus="status">
         <li>
-            <p><a href="${temporary.url}" target="_blank">${temporary.title}</a>&nbsp;&nbsp;<a href="./edit/${temporary.id}">编辑</a> </p>
+            <p><a href="${temporary.url}" target="_blank">${temporary.title}</a>&nbsp;&nbsp;<a href="../edit/${temporary.id}">编辑</a> </p>
 
             <p>字节：${temporary.length}，作者：${temporary.source}</p>
 
@@ -43,5 +49,10 @@
     </c:forEach>
 
 </ul>
+<p>
+<%
+    out.print(outPage.toString());
+%>
+</p>
 </body>
 </html>

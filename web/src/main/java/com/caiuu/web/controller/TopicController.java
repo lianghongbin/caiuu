@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -65,17 +66,16 @@ public class TopicController {
         String bigSaveName = null;
         String smallSaveName = null;
 
-
         for (MultipartFile file : map.values()) {
 
             String photoName = UploadUtils.generateName(); //上传源文件名称
             String dir = UploadUtils.generateDir();
             if (file.getName().equals("adPhoto")) {
-                saveName = dir + File.separator + "990-200_" + photoName + ".jpg";
+                saveName = dir + File.separator+ photoName + "_990x200"  + ".jpg";
                 bigSaveName = StringUtils.replace(saveName, "\\", "/");
                 size = new Size(990, 200);
             } else {
-                saveName = dir + File.separator + "160-120_" + photoName + ".jpg";
+                saveName = dir + File.separator+ photoName + "_160x120"  + ".jpg";
                 smallSaveName = StringUtils.replace(saveName, "\\", "/");
                 size = new Size(160, 120);
             }
@@ -149,9 +149,61 @@ public class TopicController {
 
     @RequestMapping(value = "/upic", method = RequestMethod.POST)
     @ResponseBody
-    public String upic(int id, HttpServletRequest request){
+    public String upic(String id, HttpServletRequest request){
         MultipartHttpServletRequest re = (MultipartHttpServletRequest) request;
         Map<String, MultipartFile> map = re.getFileMap();
+        Map<String,String> updateMap = new HashMap<String, String>();
+        String saveName;
+        Size size;
+        String bigSaveName;
+        String smallSaveName;
+
+        for (MultipartFile file : map.values()) {
+
+            String photoName = UploadUtils.generateName(); //上传源文件名称
+            String dir = UploadUtils.generateDir();
+            if (file.getName().equals("adPic")) {
+                saveName = dir + File.separator + "990-200_" + photoName + ".jpg";
+                bigSaveName = StringUtils.replace(saveName, "\\", "/");
+                updateMap.put("adPic", bigSaveName);
+                size = new Size(990, 200);
+            } else {
+                saveName = dir + File.separator + "160-120_" + photoName + ".jpg";
+                smallSaveName = StringUtils.replace(saveName, "\\", "/");
+                updateMap.put("headPic", smallSaveName);
+                size = new Size(160, 120);
+            }
+
+            File uploadDir = new File(photoConfig.getUploadRoot() + File.separator + dir);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdirs();
+            }
+
+            String thumbnail = photoConfig.getUploadRoot() + File.separator + saveName;
+            String target = new File(uploadDir, photoName + ".jpg").getAbsolutePath();     //上传源文件完整路径
+
+            FileOutputStream outputStream = null;
+            try {
+                outputStream = new FileOutputStream(target);
+                FileCopyUtils.copy(file.getBytes(), outputStream);//上传代码
+                outputStream.close();
+            } catch (IOException e) {
+                logger.error("图片上传失败！", e);
+                try {
+                    assert outputStream != null;
+                    outputStream.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+
+                return "error";
+            }
+
+            PhotoUtil.thumbnail(target, thumbnail, photoConfig.getWatermark(), size);
+        }
+
+        updateMap.put("id", id);
+        topicService.updatePicture(updateMap);
         return "success";
     }
 }

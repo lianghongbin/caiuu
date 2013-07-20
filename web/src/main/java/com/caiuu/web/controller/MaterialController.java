@@ -2,8 +2,12 @@ package com.caiuu.web.controller;
 
 import com.caiuu.core.entity.Category;
 import com.caiuu.core.entity.Material;
+import com.caiuu.core.entity.Temporary;
 import com.caiuu.core.service.CategoryService;
 import com.caiuu.core.service.MaterialService;
+import com.caiuu.web.util.Page;
+import com.caiuu.web.util.RowBoundsUtil;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,13 +33,21 @@ public class MaterialController {
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping(value = "/list")
-    public ModelAndView list() {
-        List<Material> materials = materialService.findAll();
-        int count = materialService.count();
+    @RequestMapping(value = "/list/{num}", method = RequestMethod.GET)
+    public ModelAndView list(@PathVariable int num) {
+        int currentPage = num < 1 ? 1 : num;
+        Page page = new Page();
+        page.setPageSize(10);
+        page.setCurrentPage(currentPage);
+        page.setTotalRows(materialService.findCount());
+        page.setUrl("./{0}");
+
+        RowBounds rowBounds = RowBoundsUtil.generate(page);
+        List<Material> materials = materialService.findAll(rowBounds);
+
         ModelAndView modelAndView = new ModelAndView("admin/material-list");
-        modelAndView.addObject("count", count);
         modelAndView.addObject("materials", materials);
+        modelAndView.addObject("page", page);
 
         return modelAndView;
     }

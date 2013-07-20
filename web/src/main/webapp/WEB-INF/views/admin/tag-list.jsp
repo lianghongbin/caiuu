@@ -46,5 +46,8 @@
     </c:forEach>
 
 </table>
+<%
+    out.print(outPage.toString());
+%>
 </body>
 </html>

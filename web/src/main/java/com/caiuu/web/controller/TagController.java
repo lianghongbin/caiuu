@@ -32,16 +32,15 @@ public class TagController {
 
     @RequestMapping(value = "/list/{num}", method = RequestMethod.GET)
     public ModelAndView list(@PathVariable int num) {
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("id", "80");
         int currentPage = num < 1 ? 1 : num;
         Page page = new Page();
+        page.setPageSize(20);
         page.setCurrentPage(currentPage);
-        page.setTotalRows(tagService.findCount(map));
+        page.setTotalRows(tagService.findCount());
         page.setUrl("./{0}");
 
         RowBounds rowBounds = RowBoundsUtil.generate(page);
-        List<Tag> tags = tagService.findAll(map, rowBounds);
+        List<Tag> tags = tagService.findAll(rowBounds);
 
         ModelAndView modelAndView = new ModelAndView("admin/tag-list");
         modelAndView.addObject("tags", tags);
