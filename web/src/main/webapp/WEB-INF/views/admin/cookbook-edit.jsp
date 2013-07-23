@@ -15,7 +15,7 @@
             $("#file").uploadify({
                 method: 'post',
                 swf: '../../../js/uploadify.swf',  // uploadify.swf在项目中的路径
-                uploader: '../update',  // 后台UploadController处理上传的方法
+                uploader: '../upload',  // 后台UploadController处理上传的方法
                 fileObjName: 'file',         // The name of the file object to use in your server-side script
                 successTimeout: 30,                 // The number of seconds to wait for Flash to detect the server's response after the file has finished uploading
                 removeCompleted: false,              // Remove queue items from the queue when they are done uploading
@@ -25,16 +25,19 @@
                 width: 120,
                 onUploadSuccess: function (file, data, response) {//上传完成时触发（每个文件触发一次）
                     var divshow = $("#showUpload");
-                    divshow.append("<img src=\"" + data + "\"/>");
-                    divshow.append("<a href=\"../sethead/");
-                    divshow.append(${cookbook.id});
-                    divshow.append("/").append(data);
-                    divshow.append("\">设为头图</a>");
+                    var html = "<img src=\""+data+"\"/>"
+                                + "<a href=\"#\" onclick=\"setHeadPhoto('"
+                                + data
+                                + "')\">设为首图</a>";
+                    divshow.append(html);
                 }
             });
         });
 
-
+        var setHeadPhoto = function (savePhoto) {
+            $("#headPic").val(savePhoto)
+            $("#orgHeadPic").attr("src",savePhoto);
+        }
     </script>
     <style type="text/css">
         body, div, p, table, td, span, a {
@@ -84,7 +87,7 @@
         <tr>
             <td>名称：</td>
             <td colspan="2"><input name="name" type="text" id="name" value="${cookbook.name}" style="width:234px;"/>
-                <input type="hidden" name="headPic" value="${cookbook.headPic}"/>
+                <input type="hidden" id="headPic" name="headPic" value="${cookbook.headPic}"/>
             </td>
 
         </tr>
@@ -105,7 +108,8 @@
                           style="height:148px;width:736px;">${detail.info}</textarea>
             </td>
             <td>
-                <p><img src="${cookbook.headPic}"/></p>
+                <p><img id="orgHeadPic" src="${cookbook.headPic}"/></p>
+
                 <div id="showUpload"></div>
             </td>
         </tr>

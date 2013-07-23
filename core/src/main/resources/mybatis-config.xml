@@ -32,7 +32,7 @@
         <typeAlias type="com.caiuu.core.entity.Tag" alias="Tag"/>
         <typeAlias type="com.caiuu.core.entity.Temporary" alias="Temporary"/>
         <typeAlias type="com.caiuu.core.entity.Topic" alias="Topic"/>
-
+        <typeAlias type="com.caiuu.core.entity.CategoryMap" alias="CategoryMap"/>
     </typeAliases>
 
     <plugins>

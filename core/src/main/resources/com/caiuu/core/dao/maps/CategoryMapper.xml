@@ -43,4 +43,8 @@
     <select id="selectByParent" resultType="Category" parameterType="int">
         select * from category where parentid=#{parentId} order by id asc
     </select>
+
+    <select id="selectNameById" resultType="string" parameterType="int">
+        select name from category where id=#{id}
+    </select>
 </mapper>

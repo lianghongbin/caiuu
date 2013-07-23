@@ -32,5 +32,7 @@
     <p>食材</p>
     <p> <a href="mc/list" target="mainFrame">食材分类管理</a></p>
     <p> <a href="material/list/1" target="mainFrame">食材列表</a></p>
+    <p>抓取</p>
+    <p> <a href="map/list/0/1" target="mainFrame">分类-菜谱映射</a></p>
 </body>
 </html>

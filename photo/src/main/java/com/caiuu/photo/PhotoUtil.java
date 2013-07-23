@@ -7,7 +7,6 @@ import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
@@ -20,13 +19,13 @@ import java.util.*;
  */
 public class PhotoUtil {
 
-    public static Map<String, Long> getInfo(String filePath) {
-        Map<String, Long> map = new HashMap<String, Long>(3);
+    public static Map<String, Integer> getInfo(String filePath) {
+        Map<String, Integer> map = new HashMap<String, Integer>(3);
         File imgFile = new File(filePath);
         try {
             BufferedImage buff = ImageIO.read(imgFile);
-            map.put("width", buff.getWidth() * 1L);
-            map.put("height", buff.getHeight() * 1L);
+            map.put("width", buff.getWidth());
+            map.put("height", buff.getHeight());
 
         } catch (FileNotFoundException e) {
             System.err.println("所给的图片文件" + imgFile.getPath() + "不存在！计算图片尺寸大小信息失败！");

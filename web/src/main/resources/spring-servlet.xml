@@ -47,14 +47,14 @@
         <property name="watermark" value="${photo.upload.watermark}"/>
     </bean>
 
-    <!-- 异常处理器 -->
-    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-        <property name="exceptionMappings">
-            <props>
-                <prop key="java.lang.Exception">
-                    error
-                </prop>
-            </props>
-        </property>
-    </bean>
+    <!--&lt;!&ndash; 异常处理器 &ndash;&gt;-->
+    <!--<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
+        <!--<property name="exceptionMappings">-->
+            <!--<props>-->
+                <!--<prop key="java.lang.Exception">-->
+                    <!--error-->
+                <!--</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+    <!--</bean>-->
 </beans>
