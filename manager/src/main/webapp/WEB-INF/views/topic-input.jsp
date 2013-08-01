@@ -54,7 +54,7 @@
     <p>标题：<input name="title" type="text" id="title" style="width:234px;"/>
         &nbsp;<span class="STYLE2">9个汉字以内</span></p>
 
-    <p>URL：www.caiuu.com/topic/<input name="url" type="text" id="url" style="width:123px;"/>/<span
+    <p>URL：www.meishihome.com/topic/<input name="url" type="text" id="url" style="width:123px;"/>/<span
             class="STYLE2">（纯字母）</span></p>
 
     <p>简介：<textarea name="remark" rows="2" cols="20" id="remark" style="height:148px;width:736px;"></textarea>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meishihome.core.dao.StaticBlockMapper" >
+    <resultMap id="BaseResultMap" type="com.meishihome.core.entity.StaticBlock" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="content" property="content" jdbcType="VARCHAR" />
+        <result column="createtime" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="lasttime" property="lastTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <insert id="insert" parameterType="StaticBlock">
+        insert into staticblock(title,content,createtime,lasttime) values(#{title},#{content},now(),now())
+    </insert>
+
+    <update id="update" parameterType="StaticBlock">
+        update staticblock set title=#{title}, content=#{content}, lasttime=now() where id=#{id}
+    </update>
+
+    <select id="select" parameterType="int" resultType="StaticBlock">
+        select * from staticblock where id=#{id}
+    </select>
+
+    <select id="selectAll" resultType="StaticBlock">
+        select * from staticblock order by id desc
+    </select>
+</mapper>

@@ -46,7 +46,7 @@
             <input name="id" type="hidden" value="${topic.id}"/>
         <p>标题：<input name="title" type="text" id="title" value="${topic.title}" style="width:234px;" />
             &nbsp;<span class="STYLE2">9个汉字以内</span></p>
-        <p>URL：www.caiuu.com/topic/<input name="url" type="text" id="url" value=${topic.url} style="width:123px;" />/<span class="STYLE2">（纯字母）</span></p>
+        <p>URL：www.meishihome.com/topic/<input name="url" type="text" id="url" value=${topic.url} style="width:123px;" />/<span class="STYLE2">（纯字母）</span></p>
         <p>简介：<textarea name="remark" rows="2" cols="20" id="remark" style="height:148px;width:736px;">${topic.remark}</textarea>
         </p>
         <p>关键词：<input name="key1" type="text" id="key1" value="${topic.key1}" style="width:85px;" />

@@ -1,6 +1,6 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.caiuu.core.entity.CategoryLink" %>
-<%@ page import="com.caiuu.core.entity.Category" %>
+<%@ page import="com.meishihome.core.entity.CategoryLink" %>
+<%@ page import="com.meishihome.core.entity.Category" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>

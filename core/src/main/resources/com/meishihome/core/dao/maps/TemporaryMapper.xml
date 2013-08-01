@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meishihome.core.dao.TemporaryMapper" >
+    <resultMap id="BaseResultMap" type="com.meishihome.core.entity.Temporary" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="content" property="content" jdbcType="VARCHAR" />
+        <result column="length" property="length" jdbcType="INTEGER" />
+        <result column="source" property="source" jdbcType="VARCHAR" />
+        <result column="url" property="url" jdbcType="VARCHAR" />
+        <result column="createtime" property="createTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <select id="count" resultType="int">
+        select count(1) from temporary
+    </select>
+
+    <select id="select" resultType="Temporary" parameterType="int">
+        select * from temporary where id=#{id}
+    </select>
+
+    <select id="selectAll" resultType="Temporary">
+        select * from temporary order by id desc
+    </select>
+
+    <insert id="insert" parameterType="Temporary">
+        insert into temporary(title,content,length,source,url,createtime)
+        values(#{title},#{content},#{length},#{source},#{url},now())
+    </insert>
+
+    <insert id="batchInsert" parameterType="java.util.List">
+        insert into temporary(title,content,length,source,url,createtime) values
+        <foreach collection="list" item="item" separator=",">
+            ( #{item.title}, #{item.content}, #{item.length},
+            #{item.source}, #{item.url},now() )
+        </foreach>
+    </insert>
+
+    <delete id="delete" parameterType="int">
+        delete from temporary where id=#{id}
+    </delete>
+
+    <delete id="batchDelete" parameterType="java.util.List">
+        delete from temporary where id in
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

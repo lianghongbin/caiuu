@@ -13,7 +13,7 @@
     <context:property-placeholder location="classpath*:jdbc.properties"/>
 
     <!-- (Annotation方式配置services)enable component scanning (beware that this does not enable com.lvzu.travelcom.lvzu.traveldao.maps scanning!) -->
-    <context:component-scan base-package="com.caiuu.core"/>
+    <context:component-scan base-package="com.meishihome.core"/>
 
     <!-- enable autowire -->
     <context:annotation-config/>
@@ -30,7 +30,7 @@
     </bean>
 
     <aop:config>
-        <aop:advisor pointcut="execution(* com.caiuu.core.service..*.*(..))" advice-ref="txAdvice"/>
+        <aop:advisor pointcut="execution(* com.meishihome.core.service..*.*(..))" advice-ref="txAdvice"/>
     </aop:config>
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
@@ -49,12 +49,12 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
-        <property name="mapperLocations" value="classpath:com/caiuu/core/dao/**/*.xml"/>
+        <property name="mapperLocations" value="classpath:com/meishihome/core/dao/**/*.xml"/>
     </bean>
 
     <!-- scan for mappers and let them be autowired -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- Mapper接口所在包名，Spring会自动查找其下的Mapper -->
-        <property name="basePackage" value="com.caiuu.core.dao"/>
+        <property name="basePackage" value="com.meishihome.core.dao"/>
     </bean>
 </beans>

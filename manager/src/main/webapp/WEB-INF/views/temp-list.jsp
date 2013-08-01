@@ -1,4 +1,4 @@
-<%@ page import="com.caiuu.web.util.Page" %>
+<%@ page import="com.meishihome.web.util.Page" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>

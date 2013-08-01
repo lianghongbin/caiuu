@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meishihome.core.dao.CategoryMapMapper">
+    <resultMap id="BaseResultMap" type="com.meishihome.core.entity.CategoryMap">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="categoryid" property="categoryId" jdbcType="INTEGER"/>
+        <result column="fetched" property="fetched" jdbcType="INTEGER" javaType="BOOLEAN"/>
+        <result column="createtime" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="fetchtime" property="fetchTime" jdbcType="TIMESTAMP"/>
+        <association property="categoryName" column="categoryid" javaType="String"
+                     select="com.meishihome.core.dao.CategoryMapper.selectNameById"/>
+    </resultMap>
+    <insert id="insert" parameterType="CategoryMap">
+       insert into categorymap(categoryid, name,fetched,createtime) values
+       (#{categoryId},#{name},false,now())
+   </insert>
+
+    <delete id="delete" parameterType="int">
+        delete from categorymap where id=#{id}
+    </delete>
+
+    <select id="selectByCategoryId" parameterType="int" resultMap="BaseResultMap">
+        select * from categorymap where categoryid=#{categoryId}
+    </select>
+
+    <select id="selectAll" parameterType="map" resultMap="BaseResultMap">
+        select * from categorymap
+        <where>
+            <if test="name!=null">
+                and name like '%#{name}%'
+            </if>
+        </where>
+
+        order by id desc
+    </select>
+
+    <select id="selectCount" resultType="int" parameterType="map">
+        select count(1) from categorymap
+        <where>
+            <if test="name!=null">
+                name like '%#{name}%'
+            </if>
+        </where>
+    </select>
+
+    <insert id="batchInsert" parameterType="CategoryMap">
+        insert into categorymap(categoryid, name,fetched,createtime)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.categoryId},#{item.name},false,now())
+        </foreach>
+    </insert>
+
+    <select id="selectCountByCategoryId" parameterType="int" resultType="int">
+        select count(1) from categorymap where categoryid=#{categoryId}
+    </select>
+</mapper>
