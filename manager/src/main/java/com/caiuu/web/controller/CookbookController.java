@@ -7,10 +7,7 @@ import com.caiuu.core.service.DetailService;
 import com.caiuu.core.service.TemporaryService;
 import com.caiuu.photo.PhotoUtil;
 import com.caiuu.photo.Size;
-import com.caiuu.web.util.Page;
-import com.caiuu.web.util.PhotoConfig;
-import com.caiuu.web.util.RowBoundsUtil;
-import com.caiuu.web.util.UploadUtils;
+import com.caiuu.web.util.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
@@ -76,10 +73,13 @@ public class CookbookController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public String add(Cookbook cookbook, String info, int temporaryId) {
+        String pinyin = PinyinUtils.cn2Spell(cookbook.getName());
+        cookbook.setPinyin(pinyin);
         int cookbookId = cookbookService.save(cookbook);
         Detail detail = new Detail();
         detail.setCookbookId(cookbookId);
         detail.setInfo(info);
+
         detailService.save(detail);
         temporaryService.delete(temporaryId);
 
@@ -88,55 +88,17 @@ public class CookbookController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
-    public String update(Cookbook cookbook, String info, HttpServletRequest request) {
-        MultipartHttpServletRequest re = (MultipartHttpServletRequest) request;
-        List<MultipartFile> files = re.getMultiFileMap().get("file");
+    public String update(Cookbook cookbook, String info) {
 
-
-        String saveName = "";
-        if (files != null){
-            MultipartFile file = files.get(0);
-            Size size = new Size(160, 120);
-            String photoName = UploadUtils.generateName(); //上传源文件名称
-            String dir = UploadUtils.generateDir();
-            saveName = StringUtils.replace(dir + File.separator + photoName + "_" + size.getWidth() + "x" + size.getHeight() + ".jpg", "\\", "/");
-
-            File uploadDir = new File(photoConfig.getUploadRoot() + File.separator + dir);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdirs();
-            }
-
-            String thumbnail = photoConfig.getUploadRoot() + File.separator + saveName;
-            String target = new File(uploadDir, photoName + ".jpg").getAbsolutePath();     //上传源文件完整路径
-
-            FileOutputStream outputStream = null;
-            try {
-                outputStream = new FileOutputStream(target);
-                FileCopyUtils.copy(file.getBytes(), outputStream);//上传代码
-                outputStream.close();
-            } catch (IOException e) {
-                logger.error("图片上传失败！", e);
-                try {
-                    assert outputStream != null;
-                    outputStream.close();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-
-                return "error";
-            }
-
-            PhotoUtil.thumbnail(target, thumbnail, photoConfig.getWatermark(), size);
-            cookbook.setHeadPic(saveName);
-        }
-
-        Map<String, String> map = new HashMap<String, String>(1);
+        Map<String, String> map = new HashMap<String, String>(2);
         map.put("cookbookId", Integer.toString(cookbook.getId()));
         map.put("info", info);
         detailService.updateContent(map);
+        String pinyin = PinyinUtils.cn2Spell(cookbook.getName());
+        cookbook.setPinyin(pinyin);
         cookbookService.update(cookbook);
 
-        return saveName;
+        return "success";
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
@@ -156,5 +118,52 @@ public class CookbookController {
         modelAndView.addObject("detail", detail);
 
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    @ResponseBody
+    public String upload(HttpServletRequest request) {
+        MultipartHttpServletRequest re = (MultipartHttpServletRequest) request;
+        List<MultipartFile> files = re.getMultiFileMap().get("file");
+
+
+        String saveName = "";
+        if (files == null) {
+            return null;
+        }
+        MultipartFile file = files.get(0);
+        Size size = new Size(160, 120);
+        String photoName = UploadUtils.generateName(); //上传源文件名称
+        String dir = UploadUtils.generateDir();
+        saveName = StringUtils.replace(dir + File.separator + photoName + "_" + size.getWidth() + "x" + size.getHeight() + ".jpg", "\\", "/");
+
+        File uploadDir = new File(photoConfig.getUploadRoot() + File.separator + dir);
+        if (!uploadDir.exists()) {
+            uploadDir.mkdirs();
+        }
+
+        String thumbnail = photoConfig.getUploadRoot() + File.separator + saveName;
+        String target = new File(uploadDir, photoName + ".jpg").getAbsolutePath();     //上传源文件完整路径
+
+        FileOutputStream outputStream = null;
+        try {
+            outputStream = new FileOutputStream(target);
+            FileCopyUtils.copy(file.getBytes(), outputStream);//上传代码
+            outputStream.close();
+        } catch (IOException e) {
+            logger.error("图片上传失败！", e);
+            try {
+                assert outputStream != null;
+                outputStream.close();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+
+            return "error";
+        }
+
+        PhotoUtil.thumbnail(target, thumbnail, photoConfig.getWatermark(), size);
+
+        return saveName;
     }
 }

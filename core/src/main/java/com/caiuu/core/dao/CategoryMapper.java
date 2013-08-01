@@ -18,6 +18,8 @@ public interface CategoryMapper {
 
     public int update(Category category);
 
+    public String selectNameById(int id);
+
     public List<Category> selectAll();
 
     public List<Category> selectTopLevel();

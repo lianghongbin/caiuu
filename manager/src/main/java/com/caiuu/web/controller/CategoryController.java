@@ -3,6 +3,7 @@ package com.caiuu.web.controller;
 
 import com.caiuu.core.entity.Category;
 import com.caiuu.core.service.CategoryService;
+import com.caiuu.web.util.PinyinUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +38,8 @@ public class CategoryController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public String add(Category category) {
+        String pinyin = PinyinUtils.cn2Spell(category.getName());
+        category.setPinyin(pinyin);
         categoryService.save(category);
 
         return "success";

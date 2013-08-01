@@ -123,11 +123,6 @@
             <artifactId>ezmorph</artifactId>
             <version>1.0.6</version>
         </dependency>
-        <dependency>
-            <groupId>net.sourceforge.pinyin4j</groupId>
-            <artifactId>pinyin4j</artifactId>
-            <type>zip</type>
-        </dependency>
 
         <dependency>
             <groupId>org.mybatis</groupId>
