@@ -6,7 +6,7 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath:applicationContext-web.xml,
+            classpath:applicationContext.xml,
             classpath*:applicationContext-core.xml
         </param-value>
     </context-param>
@@ -46,16 +46,12 @@
         <servlet-name>spring</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>spring</servlet-name>
-        <url-pattern>/index.htm</url-pattern>
-    </servlet-mapping>
 
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
 
     <welcome-file-list>
-        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

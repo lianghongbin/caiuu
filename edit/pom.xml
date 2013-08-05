@@ -8,10 +8,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>web</artifactId>
+    <artifactId>edit</artifactId>
     <packaging>war</packaging>
 
-    <name>web</name>
+    <name>edit</name>
 
     <dependencies>
 
@@ -114,15 +114,11 @@
             <groupId>net.sourceforge.pinyin4j</groupId>
             <artifactId>pinyin4j</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
-        </dependency>
     </dependencies>
 
     <build>
         <defaultGoal>install</defaultGoal>
-        <finalName>manager</finalName>
+        <finalName>edit</finalName>
 
         <plugins>
             <plugin>
@@ -132,14 +128,6 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.1</version>
-                <configuration>
-                    <path>/</path>
                 </configuration>
             </plugin>
             <plugin>

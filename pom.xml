@@ -11,7 +11,7 @@
     <name>application root</name>
 
     <modules>
-        <module>manager</module>
+        <module>edit</module>
         <module>core</module>
         <module>photo</module>
         <module>web</module>
@@ -223,6 +223,11 @@
                 <artifactId>aspectjweaver</artifactId>
                 <version>1.6.12</version>
             </dependency>
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>2.3.20</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -245,6 +250,7 @@
                 </os>
             </activation>
             <properties>
+                <logger.root>e:\logs</logger.root>
                 <photo.upload.root>e:\upload</photo.upload.root>
                 <photo.upload.watermark>e:\upload\watermark.png</photo.upload.watermark>
             </properties>
@@ -259,6 +265,7 @@
                 </os>
             </activation>
             <properties>
+                <logger.root>/tmp/logs</logger.root>
                 <photo.upload.root>/Users/lianghongbin/Pictures</photo.upload.root>
                 <photo.upload.watermark>/Users/lianghongbin/Pictures/watermark.png</photo.upload.watermark>
             </properties>

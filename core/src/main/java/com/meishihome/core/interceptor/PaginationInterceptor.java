@@ -1,6 +1,5 @@
 package com.meishihome.core.interceptor;
 
-
 import com.meishihome.core.dialect.Dialect;
 import com.meishihome.core.dialect.MySql5Dialect;
 import com.meishihome.core.dialect.OracleDialect;
@@ -8,6 +7,8 @@ import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.plugin.*;
 import org.apache.ibatis.reflection.MetaObject;
+import org.apache.ibatis.reflection.factory.DefaultObjectFactory;
+import org.apache.ibatis.reflection.wrapper.DefaultObjectWrapperFactory;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
@@ -25,7 +26,7 @@ public class PaginationInterceptor implements Interceptor {
     public Object intercept(Invocation invocation) throws Throwable {
         StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
         BoundSql boundSql = statementHandler.getBoundSql();
-        MetaObject metaStatementHandler = MetaObject.forObject(statementHandler);
+        MetaObject metaStatementHandler = MetaObject.forObject(statementHandler,new DefaultObjectFactory(), new DefaultObjectWrapperFactory());
         RowBounds rowBounds = (RowBounds) metaStatementHandler.getValue("delegate.rowBounds");
         if (rowBounds == null || rowBounds == RowBounds.DEFAULT) {
             return invocation.proceed();

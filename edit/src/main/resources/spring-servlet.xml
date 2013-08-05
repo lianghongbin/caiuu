@@ -18,7 +18,7 @@
     </bean>
 
     <!-- 扫描所有的controller -->
-    <context:component-scan base-package="com.meishihome.web" />
+    <context:component-scan base-package="com.meishihome.edit" />
 
     <!-- 启用spring mvc 注解 -->
     <context:annotation-config />
@@ -31,30 +31,14 @@
     <!-- 支持上传文件 -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
-        <property name="cache" value="true" />
-        <property name="suffix" value=".ftl" />
-        <property name="contentType" value="text/html;charset=UTF-8"></property>
-        <property name="requestContextAttribute" value="request" />
-        <property name="exposeSpringMacroHelpers" value="true" />
-        <property name="exposeRequestAttributes" value="true" />
-        <property name="exposeSessionAttributes" value="true" />
+    <!-- InternalResourceViewResolver默认的就是JstlView所以这里就不用配置viewClass了 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"></property>
+        <property name="suffix" value=".jsp"></property>
     </bean>
 
-    <bean id="freemarkerConfig"
-          class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-        <property name="templateLoaderPath" value="/WEB-INF/views/"/>
-        <property name="freemarkerSettings">
-            <props>
-                <prop key="locale">zh_CN</prop>
-                <prop key="template_update_delay">0</prop><!--生产环境该值要设置大些-->
-                <prop key="default_encoding">UTF-8</prop>
-                <prop key="number_format">#.##</prop>
-                <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
-                <prop key="classic_compatible">true</prop>
-                <prop key="template_exception_handler">ignore</prop>
-            </props>
-        </property>
+    <bean id="photoConfig" class="com.meishihome.edit.util.PhotoConfig" scope="singleton">
+        <property name="uploadRoot" value="${photo.upload.root}"/>
+        <property name="watermark" value="${photo.upload.watermark}"/>
     </bean>
 </beans>
