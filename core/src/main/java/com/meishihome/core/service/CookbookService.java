@@ -46,4 +46,8 @@ public class CookbookService {
     public List<Cookbook> findAll(RowBounds rowBounds) {
         return cookbookMapper.selectAll(rowBounds);
     }
+
+    public List<Cookbook> findByCrowd(int crowdId) {
+        return cookbookMapper.selectByCrowd(crowdId);
+    }
 }

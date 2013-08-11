@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meishihome.core.dao.CrowdMapper" >
+  <resultMap id="BaseResultMap" type="com.meishihome.core.entity.Crowd" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+  </resultMap>
+
+    <sql id="columns">
+        id,name,pid,sort
+    </sql>
+
+    <select id="select" parameterType="int" resultType="Crowd">
+        select
+         <include refid="columns"/>
+         from crowd where id=#{id}
+    </select>
+
+    <insert id="insert" parameterType="Crowd">
+        insert into crowd(name,pid,sort) values(#{name},#{pid},#{sort})
+    </insert>
+
+    <delete id="deleteById" parameterType="int">
+        delete from crowd where id=#{id}
+    </delete>
+
+    <update id="update" parameterType="Crowd">
+        update crowd set name=#{name},pid=#{pid},sort=#{sort} where id=#{id}
+    </update>
+
+    <select id="selectAll" resultType="Crowd">
+        select * from crowd order by sort asc
+    </select>
+</mapper>

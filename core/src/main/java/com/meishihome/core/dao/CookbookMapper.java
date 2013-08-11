@@ -21,4 +21,6 @@ public interface CookbookMapper {
     public Cookbook select(int id);
 
     public List<Cookbook> selectAll(RowBounds rowBounds);
+
+    public List<Cookbook> selectByCrowd(int crowdId);
 }

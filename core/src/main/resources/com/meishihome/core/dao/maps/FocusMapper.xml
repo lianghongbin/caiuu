@@ -28,6 +28,10 @@
     </update>
 
     <select id="selectAll" resultType="Focus">
-        select * from focus order by id;
+        select * from focus order by id desc;
+    </select>
+
+    <select id="selectRows" resultType="Focus" parameterType="int">
+        select * from focus order by id desc limit #{count}
     </select>
 </mapper>

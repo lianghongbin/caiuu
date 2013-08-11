@@ -40,4 +40,8 @@ public class FocusService {
     public List<Focus> findAll() {
         return focusMapper.selectAll();
     }
+
+    public List<Focus> findRows(int count) {
+        return focusMapper.selectRows(count);
+    }
 }

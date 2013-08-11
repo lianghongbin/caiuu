@@ -15,7 +15,11 @@
         <result column="hit" property="hit" jdbcType="INTEGER"/>
         <result column="hitlast" property="hitLast" jdbcType="INTEGER"/>
         <result column="publishtime" property="publishTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
 
+    <resultMap id="simpleMap" type="com.meishihome.core.entity.Cookbook">
+        <id column="cookbookid" property="id" jdbcType="INTEGER"/>
+        <result column="cookbookname" property="name" jdbcType="VARCHAR"/>
     </resultMap>
 
     <select id="count" resultType="int">
@@ -42,5 +46,9 @@
 
     <select id="selectAll" resultType="Cookbook">
         select * from cookbook order by id desc
+    </select>
+
+    <select id="selectByCrowd" parameterType="int" resultMap="simpleMap">
+        select * from crowd_m_cookbook_view where crowdid=#{crowdId}
     </select>
 </mapper>

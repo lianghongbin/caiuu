@@ -33,6 +33,9 @@
         <typeAlias type="com.meishihome.core.entity.Temporary" alias="Temporary"/>
         <typeAlias type="com.meishihome.core.entity.Topic" alias="Topic"/>
         <typeAlias type="com.meishihome.core.entity.CategoryMap" alias="CategoryMap"/>
+        <typeAlias type="com.meishihome.core.entity.Crowd" alias="Crowd"/>
+        <typeAlias type="com.meishihome.core.entity.CMRelation" alias="CMRelation"/>
+        <typeAlias type="com.meishihome.core.entity.MCRelation" alias="MCRelation"/>
     </typeAliases>
 
     <plugins>

@@ -17,4 +17,6 @@ public interface FocusMapper {
     public int update(Focus focus);
 
     public List<Focus> selectAll();
+
+    public List<Focus> selectRows(int count);
 }
