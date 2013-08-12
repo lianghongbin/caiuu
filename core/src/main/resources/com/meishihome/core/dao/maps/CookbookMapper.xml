@@ -20,6 +20,8 @@
     <resultMap id="simpleMap" type="com.meishihome.core.entity.Cookbook">
         <id column="cookbookid" property="id" jdbcType="INTEGER"/>
         <result column="cookbookname" property="name" jdbcType="VARCHAR"/>
+        <result column="headpic" property="headPic" jdbcType="VARCHAR"/>
+        <result column="profile" property="profile" jdbcType="VARCHAR"/>
     </resultMap>
 
     <select id="count" resultType="int">
@@ -50,5 +52,10 @@
 
     <select id="selectByCrowd" parameterType="int" resultMap="simpleMap">
         select * from crowd_m_cookbook_view where crowdid=#{crowdId}
+    </select>
+
+    <!--首页精选-->
+    <select id="selectBetter" resultMap="BaseResultMap">
+        select headpic,name,id from cookbook
     </select>
 </mapper>

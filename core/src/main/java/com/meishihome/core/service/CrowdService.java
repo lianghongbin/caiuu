@@ -40,4 +40,8 @@ public class CrowdService {
     public List<Crowd> findAll() {
         return crowdMapper.selectAll();
     }
+
+    public List<Crowd> findChildren(int parentId) {
+        return crowdMapper.selectChildren(parentId);
+    }
 }

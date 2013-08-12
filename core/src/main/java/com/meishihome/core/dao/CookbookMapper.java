@@ -22,5 +22,12 @@ public interface CookbookMapper {
 
     public List<Cookbook> selectAll(RowBounds rowBounds);
 
-    public List<Cookbook> selectByCrowd(int crowdId);
+    public List<Cookbook> selectByCrowd(int crowdId, RowBounds rowBounds);
+
+    /**
+     * 精选菜谱
+     * @param rowBounds 分页参数
+     * @return 菜谱列表
+     */
+    public List<Cookbook> selectBetter(RowBounds rowBounds);
 }

@@ -21,4 +21,19 @@ public interface MaterialMapper {
     public Material select(int id);
 
     public List<Material> selectAll(RowBounds rowBounds);
+
+    /**
+     * 根据季节取当季食材
+     * @param season 季节
+     * @return 食材列表
+     */
+    public List<Material> selectBySeason(int season);
+
+    /**
+     * 根据人员先食材
+     * @param crowdId 人群ID
+     * @param rowBounds 分页
+     * @return 食材列表
+     */
+    public List<Material> selectByCrowd(int crowdId, RowBounds rowBounds);
 }

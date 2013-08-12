@@ -33,4 +33,8 @@
     <select id="selectAll" resultType="Crowd">
         select * from crowd order by sort asc
     </select>
+
+    <select id="selectChildren" parameterType="int" resultType="Crowd">
+        select * from crowd where pid=#{parentId} order by sort asc
+    </select>
 </mapper>

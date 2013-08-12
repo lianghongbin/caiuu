@@ -5,6 +5,7 @@ import com.meishihome.core.entity.Focus;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface CrowdMapper {
@@ -18,4 +19,6 @@ public interface CrowdMapper {
     public int update(Crowd focus);
 
     public List<Crowd> selectAll();
+
+    public List<Crowd> selectChildren(int parentId);
 }

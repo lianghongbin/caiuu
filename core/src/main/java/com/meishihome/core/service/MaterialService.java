@@ -45,4 +45,23 @@ public class MaterialService {
     public List<Material> findAll(RowBounds rowBounds) {
         return materialMapper.selectAll(rowBounds);
     }
+
+    /**
+     * 根据季节取当季食材
+     * @param season 季节
+     * @return 食材列表
+     */
+    public List<Material> findBySeason(int season) {
+        return materialMapper.selectBySeason(season);
+    }
+
+    /**
+     * 根据人员先食材
+     * @param crowdId 人群ID
+     * @param rowBounds 分页
+     * @return 食材列表
+     */
+    public List<Material> findByCrowd(int crowdId, RowBounds rowBounds) {
+        return materialMapper.selectByCrowd(crowdId, rowBounds);
+    }
 }

@@ -22,6 +22,12 @@
                      javaType="Category" select="com.meishihome.core.dao.CategoryMapper.select"/>
     </resultMap>
 
+    <resultMap id="CMViewMap" type="com.meishihome.core.entity.Material">
+        <id column="mid" property="id" jdbcType="INTEGER"/>
+        <result column="mname" property="name" jdbcType="VARCHAR"/>
+        <result column="mpic" property="pic" jdbcType="VARCHAR"/>
+    </resultMap>
+
     <select id="count" resultType="int">
         select count(1) from material
     </select>
@@ -46,5 +52,13 @@
 
     <select id="selectAll" resultMap="BaseResultMap">
         select * from material order by id asc
+    </select>
+
+    <select id="selectBySeason" resultMap="BaseResultMap" parameterType="int">
+        select * from material where season=#{season} limit 24
+    </select>
+
+    <select id="selectByCrowd" resultMap="CMViewMap" parameterType="int">
+        select * from c_m_view where cid=#{crowdId}
     </select>
 </mapper>

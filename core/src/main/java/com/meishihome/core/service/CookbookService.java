@@ -47,7 +47,16 @@ public class CookbookService {
         return cookbookMapper.selectAll(rowBounds);
     }
 
-    public List<Cookbook> findByCrowd(int crowdId) {
-        return cookbookMapper.selectByCrowd(crowdId);
+    public List<Cookbook> findByCrowd(int crowdId, RowBounds rowBounds) {
+        return cookbookMapper.selectByCrowd(crowdId, rowBounds);
+    }
+
+    /**
+     * 精选菜谱
+     * @param rowBounds 分页参数
+     * @return 菜谱列表
+     */
+    public List<Cookbook> findBetter(RowBounds rowBounds) {
+        return cookbookMapper.selectBetter(rowBounds);
     }
 }
