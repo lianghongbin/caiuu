@@ -64,4 +64,13 @@ public class MaterialService {
     public List<Material> findByCrowd(int crowdId, RowBounds rowBounds) {
         return materialMapper.selectByCrowd(crowdId, rowBounds);
     }
+
+    /**
+     * 热门食材
+     * @param rowBounds 分页
+     * @return 食材列表
+     */
+    public List<Material> findHotter(RowBounds rowBounds) {
+        return materialMapper.selectHotter(rowBounds);
+    }
 }

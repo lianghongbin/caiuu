@@ -36,4 +36,11 @@ public interface MaterialMapper {
      * @return 食材列表
      */
     public List<Material> selectByCrowd(int crowdId, RowBounds rowBounds);
+
+    /**
+     * 热门食材
+     * @param rowBounds 分页
+     * @return 食材列表
+     */
+    public List<Material> selectHotter(RowBounds rowBounds);
 }

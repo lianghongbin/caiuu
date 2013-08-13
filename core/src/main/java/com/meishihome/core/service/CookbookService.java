@@ -59,4 +59,13 @@ public class CookbookService {
     public List<Cookbook> findBetter(RowBounds rowBounds) {
         return cookbookMapper.selectBetter(rowBounds);
     }
+
+    /**
+     * 热门菜谱
+     * @param rowBounds 分页参数
+     * @return 菜谱列表
+     */
+    public List<Cookbook> findHotter(RowBounds rowBounds) {
+        return cookbookMapper.selectHotter(rowBounds);
+    }
 }

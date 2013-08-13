@@ -28,6 +28,7 @@
         <result column="mpic" property="pic" jdbcType="VARCHAR"/>
     </resultMap>
 
+
     <select id="count" resultType="int">
         select count(1) from material
     </select>
@@ -60,5 +61,9 @@
 
     <select id="selectByCrowd" resultMap="CMViewMap" parameterType="int">
         select * from c_m_view where cid=#{crowdId}
+    </select>
+
+    <select id="selectHotter" resultMap="BaseResultMap">
+        select id,name,pic from material order by hit desc
     </select>
 </mapper>

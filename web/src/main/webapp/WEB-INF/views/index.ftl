@@ -179,511 +179,119 @@
 <!--end当季食材-->
 <!--star孕妇食谱-->
 <div class="part-a">
-<div class="gravida-wrap">
-    <div class="hd">
-        <h2><i></i><a href="#">孕妇食谱</a></h2>
+    <div class="gravida-wrap">
+        <div class="hd">
+            <h2><i></i><a href="#">孕妇食谱</a></h2>
 
-        <p class="target fr">
-        <#list hyCrowds as crowd>
-            <a href="#">${crowd.name}</a>
+            <p class="target fr">
+            <#list hyCrowds as crowd>
+                <a href="#">${crowd.name}</a>
+            </#list>
+            </p>
+        </div>
+        <div class="gravida-pic-wrap">
+        <#list cookbooks as cookbook>
+            <#if cookbook_index == 0>
+                <div class="gravida-pic">
+                    <a href="#">
+                        <img src="${cookbook.headPic}" width="386" height="240"/></a>
+                    <span class="gravida-pop-shadow"></span>
+                    <span class="gravida-pop-tx"><a href="#">${cookbook.name}</a></span>
+                </div>
+                <p class="gravida-pic-tx">${cookbook.profile}</p>
+            </#if>
         </#list>
-        </p>
-    </div>
-    <div class="gravida-pic-wrap">
-    <#list cookbooks as cookbook>
-        <#if cookbook_index == 0>
-            <div class="gravida-pic">
-                <a href="#">
-                    <img src="${cookbook.headPic}" width="386" height="240"/></a>
-                <span class="gravida-pop-shadow"></span>
-                <span class="gravida-pop-tx"><a href="#">${cookbook.name}</a></span>
-            </div>
-            <p class="gravida-pic-tx">${cookbook.profile}</p>
-        </#if>
-    </#list>
-    </div>
-    <ul class="ul-gravida">
-    <#list cookbooks as cookbook>
-        <#if cookbook_index != 0>
-            <li>
-                <a href="#">
-                    <img src="${cookbook.headPic}" width="160" height="120"/></a>
+        </div>
+        <ul class="ul-gravida">
+        <#list cookbooks as cookbook>
+            <#if cookbook_index != 0>
+                <li>
+                    <a href="#">
+                        <img src="${cookbook.headPic}" width="160" height="120"/></a>
 
-                <p class="gravida-tx"><a href="#">${cookbook.name}</a></p>
-            </li>
-        </#if>
-    </#list>
-    </ul>
-    <div class="g-foodstuff">
-        <a href="#" class="a-l-food">孕妇食材</a>
-        <ul>
-        <#list yfMaterials as material>
-            <li>
-                <a href="#">
-                    <img src="${material.pic}" width="117" height="117"/></a>
-                <span class="scroll-pic-shadow"></span>
-                <span class="scroll-pic-tx"><a href="#">${material.name}</a></span>
-            </li>
+                    <p class="gravida-tx"><a href="#">${cookbook.name}</a></p>
+                </li>
+            </#if>
         </#list>
         </ul>
-        <a href="#" class="a-r-more">更多</a>
+        <div class="g-foodstuff">
+            <a href="#" class="a-l-food">孕妇食材</a>
+            <ul>
+            <#list yfMaterials as material>
+                <li>
+                    <a href="#">
+                        <img src="${material.pic}" width="117" height="117"/></a>
+                    <span class="scroll-pic-shadow"></span>
+                    <span class="scroll-pic-tx"><a href="#">${material.name}</a></span>
+                </li>
+            </#list>
+            </ul>
+            <a href="#" class="a-r-more">更多</a>
+        </div>
     </div>
-</div>
-<div class="delicious">
-<div class="delicious-nav">
-    <ul id="orderTab">
-        <li class="cur"><a href="javascript:void(0);">美食排行榜</a></li>
-        <li><a href="javascript:void(0);">食材排行榜</a></li>
-    </ul>
-</div>
-<ul class="delicious-ul" id="orderTab_0">
-<li class="spread">
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
+    <div class="delicious">
+        <div class="delicious-nav">
+            <ul id="orderTab">
+                <li class="cur"><a href="javascript:void(0);">美食排行榜</a></li>
+                <li><a href="javascript:void(0);">食材排行榜</a></li>
+            </ul>
+        </div>
+        <ul class="delicious-ul" id="orderTab_0">
 
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
+        <#list hotCookbooks as cookbook>
+            <#if cookbook_index == 0>
+                <li class="spread">
+                    <dl class="spread-dl">
+                        <dt>
+                            <img src="${cookbook.headPic}" width="105" height="79"/></dt>
+                        <dd>
+                            <h3 class="spr-h3"><a href="#">${cookbook.name}</a></h3>
 
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">1</span><a href="#">香蕉鸡蛋卷饼</a>
+                            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
+
+                            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
+                        </dd>
+                    </dl>
+                </li>
+            <#else>
+                <li>
+                    <div class="cutout-ul">
+                        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
+                        <span class="<#if cookbook_index < 3>cut-num red<#else>cut-num</#if>">${cookbook_index+1}</span><a href="#">${cookbook.name}</a>
+                    </div>
+                </li>
+            </#if>
+        </#list>
+        </ul>
+        <ul class="delicious-ul" id="orderTab_1" style="display: none;">
+
+        <#list hotMaterials as material>
+            <#if material_index==0>
+                <li class="spread">
+                    <dl class="spread-dl">
+                        <dt>
+                            <img src="${material.pic}" width="105" height="79"/></dt>
+                        <dd>
+                            <h3 class="spr-h3"><a href="#">${material.name}</a></h3>
+
+                            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
+
+                            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
+                        </dd>
+                    </dl>
+                </li>
+            <#else>
+                <li>
+                    <div class="cutout-ul">
+                        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
+                        <span class="<#if material_index < 3>cut-num red<#else>cut-num</#if>">${material_index + 1}</span><a
+                            href="#">${material.name}</a>
+                    </div>
+                </li>
+            </#if>
+        </#list>
+        </ul>
     </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num red">2</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num red">3</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">4</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">5</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">6</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">7</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p">
-                <a href="#">幼儿食谱</a>/<a href="#">高血压调理</a>/p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">8</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">9</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">10</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">11</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">12</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱/高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">13</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-</ul>
-<ul class="delicious-ul" id="orderTab_1" style="display: none;">
-<li class="spread">
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">sssss</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">1</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num red">2</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num red">3</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">4</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">5</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">6</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">7</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">8</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">9</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">10</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">11</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">12</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-<li>
-    <dl class="spread-dl">
-        <dt>
-            <img src="images/pic06.jpg" width="105" height="79"/></dt>
-        <dd>
-            <h3 class="spr-h3"><a href="#">香蕉鸡蛋卷饼</a></h3>
-
-            <p class="spr-p"><a href="#">幼儿食谱</a>/<a href="#">高血压调理</a></p>
-
-            <p class="spr-sch-s"><span class="spr-schedule"><span></span></span></p>
-        </dd>
-    </dl>
-    <div class="cutout-ul">
-        <span class="cutout-ul-fr"><span class="spr-schedule"><span></span></span></span>
-        <span class="cut-num">13</span><a href="#">香蕉鸡蛋卷饼</a>
-    </div>
-</li>
-</ul>
-</div>
 </div>
 <!--end孕妇食谱-->
 <!--star精品食谱-->
@@ -728,9 +336,9 @@
             <h3><a href="#">菜系</a></h3>
 
             <p>
-                <#list categories as category>
-                    <a href="#">${category.name}</a>
-                </#list>
+            <#list categories as category>
+                <a href="#">${category.name}</a>
+            </#list>
             </p>
 
             <h3><a href="#">家常</a></h3>
@@ -743,11 +351,11 @@
             <h3><a href="#">人群</a></h3>
 
             <p>
-                <#list crowds as crowd>
-                    <#if crowd.pid==0>
+            <#list crowds as crowd>
+                <#if crowd.pid==0>
                     <a href="#">${crowd.name}</a>
-                    </#if>
-                </#list>
+                </#if>
+            </#list>
             </p>
         </div>
     </div>
@@ -956,6 +564,8 @@ function hidedesc(o) {
     };
     initGoTop('gotop');
 
+    var page = 1;
+
     //初始化瀑布流
     new F.waterfall({
         container: 'waterfallContent', //容器ID
@@ -963,31 +573,17 @@ function hidedesc(o) {
         columnNumber: 4,    //列数
         surplusHeight: 200, //敏感度，越大敏感
         getDate: function () {
-
-            //异步请求数据，并填充数据
-            /*
-                var that = this;
-                $.ajax({
-                    success:function(data){
-                        //此处代码逻辑
-                        //1、循环数据构建 html
-                        //2、调用that.addBox插入容器
-                        //3、设置状态为可以追加状态   此变量可以用来控制是否可以继续触发
-                    }
-                });
-                //更详细代码参考实例代码
-            */
             var that = this;
             $.ajax({
                 type: "GET",
                 url: "waterfall.htm",
+                data: {pageNum: page++},
                 contentType: "application/json;charset=UTF-8",
                 dataType: "json"
             }).done(function (data) {
                         $.each(data, function (i, item) {
-                            alert(item.id + ","  + item.name);
                             var tpl = '<div onmouseout="hidedesc(this);" onmouseover="showdesc(this);" class="goods-pic">\
-                                <a href="#"><img width="240" height="409" src="images/pic06.jpg"></a>\
+                                <a href="#"><img width="240" height="409" src="' + item.headPic + '"></a>\
                                 <div class="goods-pic-pop">\
                                     <div class="goods-pop-shadow"></div>\
                                     <div class="goods-pop-tx">\
@@ -996,8 +592,8 @@ function hidedesc(o) {
                                     </div>\
                                 </div>\
                                 <div class="goods-txt">\
-                                    <h3><a href="#">'+item.name+'</a></h3>\
-                                    <p><a href="#">红烧茄子是家常菜菜谱，此菜是素菜中的精细者，历史久远。北魏高阳太守贾思勰在《齐民要术》素食篇中。</a></p>\
+                                    <h3><a href="#">' + item.name + '</a></h3>\
+                                    <p><a href="#">' + item.profile + '</a></p>\
                                 </div>\
                             </div>';
 
@@ -1014,7 +610,6 @@ function hidedesc(o) {
                     }).error(function () {
                         alert("error!");
                     });
-
 
 
         }

@@ -3,6 +3,8 @@ package com.meishihome.web.controller;
 import com.google.gson.Gson;
 import com.meishihome.core.entity.*;
 import com.meishihome.core.service.*;
+import com.meishihome.core.util.Page;
+import com.meishihome.core.util.RowBoundsUtil;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,6 +44,8 @@ public class IndexController {
         List<Material> materials = materialService.findBySeason(currentMonth());    //当季食材
         List<Cookbook> betterCookbooks = cookbookService.findBetter(new RowBounds(0, 15));   //精选菜谱
         List<Category> categories = categoryService.findTopLevel();
+        List<Cookbook> hotCookbooks = cookbookService.findHotter(new RowBounds(0, 13));     //美食排行
+        List<Material> hotMaterials = materialService.findHotter(new RowBounds(0, 13));     //食材排行
 
         ModelAndView model = new ModelAndView("index");
         model.addObject("crowds", crowds);
@@ -52,14 +56,20 @@ public class IndexController {
         model.addObject("yfMaterials", yfMaterials);
         model.addObject("betterCookbooks", betterCookbooks);
         model.addObject("categories", categories);
+        model.addObject("hotCookbooks", hotCookbooks);
+        model.addObject("hotMaterials", hotMaterials);
 
         return model;
     }
 
     @RequestMapping(value = "/waterfall.htm", method = RequestMethod.GET)
     @ResponseBody
-    public String waterfall(@RequestParam(required = false) Integer time) {
-        List<Cookbook> cookbooks = cookbookService.findAll(new RowBounds(0, 10));
+    public String waterfall(@RequestParam(required = false) Integer pageNum) {
+
+        pageNum = pageNum > 0 ? pageNum : 1;
+        int offset = (pageNum-1)*10;
+        RowBounds rowBounds = new RowBounds(offset, 10);
+        List<Cookbook> cookbooks = cookbookService.findAll(rowBounds);
         Gson gson = new Gson();
 
         return gson.toJson(cookbooks);

@@ -58,4 +58,9 @@
     <select id="selectBetter" resultMap="BaseResultMap">
         select headpic,name,id from cookbook
     </select>
+
+    <!--首页热门菜谱-->
+    <select id="selectHotter" resultMap="BaseResultMap">
+        select headpic,name,id from cookbook order by hit desc
+    </select>
 </mapper>
